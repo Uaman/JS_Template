@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vote</title>
+  <link rel="stylesheet" href="./style/style3.css">
+  <script src="./src/main.js" defer></script>
+</head>
+<body>
+<div class="poll-container">
+  <form id="poll-form" method="post" action="#results">
+    <h1>Poll Question</h1>
+    <div class="question">What is your favorite color?</div>
+
+    <div class="options">
+      <div class="option">
+        <input type="radio" id="blue" name="color" value="blue" required>
+        <label for="blue">
+          <div class="radio-button"></div>
+          Blue
+        </label>
+      </div>
+
+      <div class="option">
+        <input type="radio" id="green" name="color" value="green">
+        <label for="green">
+          <div class="radio-button"></div>
+          Green
+        </label>
+      </div>
+
+      <div class="option">
+        <input type="radio" id="red" name="color" value="red">
+        <label for="red">
+          <div class="radio-button"></div>
+          Red
+        </label>
+      </div>
+
+      <div class="option">
+        <input type="radio" id="yellow" name="color" value="yellow">
+        <label for="yellow">
+          <div class="radio-button"></div>
+          Yellow
+        </label>
+      </div>
+    </div>
+
+    <button type="submit" class="vote-button">Vote</button>
+  </form>
+
+</div>
+</body>
+</html>

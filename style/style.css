@@ -236,6 +236,12 @@ body {
     flex-grow: 1;
     text-align: left;
 }
+.nav-pizza-icon {
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+    margin-right: 8px;
+}
 .pizza-options-wrapper {
     display: flex;
     justify-content: center;

@@ -1,13 +1,712 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uk">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple HTML Page</title>
-    <link rel="stylesheet" href="./style/style.css">
-    <script src="./src/main.js" defer></script>
+    <title>Погода - Пошук по містах</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: #f0f0f0;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        /* Пошук */
+        .search-section {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 40px;
+            align-items: center;
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 15px 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            font-size: 16px;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .search-input:focus {
+            border-color: #4285f4;
+        }
+
+        .search-input::placeholder {
+            color: #999;
+        }
+
+        .search-button {
+            padding: 15px 30px;
+            background: #4285f4;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .search-button:hover {
+            background: #3367d6;
+        }
+
+        /* Основна інформація */
+        .main-weather {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+            align-items: center;
+        }
+
+        .weather-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .city-name {
+            font-size: 48px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 5px;
+            line-height: 1;
+        }
+
+        .country {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .temperature {
+            font-size: 72px;
+            font-weight: 300;
+            color: #333;
+            line-height: 1;
+            margin-bottom: 10px;
+        }
+
+        .weather-description {
+            font-size: 24px;
+            color: #666;
+            text-transform: capitalize;
+        }
+
+        .weather-visual {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .main-weather-icon {
+            width: 200px;
+            height: 200px;
+            margin-bottom: 30px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .sun-icon {
+            width: 100px;
+            height: 100px;
+            background: #ffd700;
+            border-radius: 50%;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+        }
+
+        .sun-rays {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+        }
+
+        .ray {
+            position: absolute;
+            width: 30px;
+            height: 4px;
+            background: #ffd700;
+            border-radius: 2px;
+            top: 50%;
+            left: 50%;
+        }
+
+        .ray:nth-child(1) { transform: translate(-50%, -50%) rotate(0deg) translateX(70px); }
+        .ray:nth-child(2) { transform: translate(-50%, -50%) rotate(45deg) translateX(70px); }
+        .ray:nth-child(3) { transform: translate(-50%, -50%) rotate(90deg) translateX(70px); }
+        .ray:nth-child(4) { transform: translate(-50%, -50%) rotate(135deg) translateX(70px); }
+        .ray:nth-child(5) { transform: translate(-50%, -50%) rotate(180deg) translateX(70px); }
+        .ray:nth-child(6) { transform: translate(-50%, -50%) rotate(225deg) translateX(70px); }
+        .ray:nth-child(7) { transform: translate(-50%, -50%) rotate(270deg) translateX(70px); }
+        .ray:nth-child(8) { transform: translate(-50%, -50%) rotate(315deg) translateX(70px); }
+
+        .weather-details {
+            display: flex;
+            gap: 30px;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .detail-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .detail-label {
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .detail-value {
+            font-weight: 600;
+        }
+
+        /* Прогноз на 7 днів */
+        .forecast-section {
+            margin-top: 40px;
+        }
+
+        .forecast-container {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .forecast-carousel {
+            display: flex;
+            transition: transform 0.3s ease;
+            gap: 20px;
+        }
+
+        .forecast-card {
+            min-width: 200px;
+            background: #f8f9fa;
+            border-radius: 16px;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid #eee;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .forecast-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .forecast-day {
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .forecast-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 15px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .forecast-icon .sun-icon {
+            width: 40px;
+            height: 40px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .forecast-icon .sun-rays {
+            position: absolute;
+            top: 53%;
+            left: 60%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+        }
+
+        .forecast-icon .sun-rays .ray {
+            width: 15px;
+            height: 2px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform-origin: 0 50%;
+        }
+
+        .forecast-icon .sun-rays .ray:nth-child(1) { transform: translate(-50%, -50%) rotate(0deg) translateX(30px); }
+        .forecast-icon .sun-rays .ray:nth-child(2) { transform: translate(-50%, -50%) rotate(45deg) translateX(30px); }
+        .forecast-icon .sun-rays .ray:nth-child(3) { transform: translate(-50%, -50%) rotate(90deg) translateX(30px); }
+        .forecast-icon .sun-rays .ray:nth-child(4) { transform: translate(-50%, -50%) rotate(135deg) translateX(30px); }
+        .forecast-icon .sun-rays .ray:nth-child(5) { transform: translate(-50%, -50%) rotate(180deg) translateX(30px); }
+        .forecast-icon .sun-rays .ray:nth-child(6) { transform: translate(-50%, -50%) rotate(225deg) translateX(30px); }
+        .forecast-icon .sun-rays .ray:nth-child(7) { transform: translate(-50%, -50%) rotate(270deg) translateX(30px); }
+        .forecast-icon .sun-rays .ray:nth-child(8) { transform: translate(-50%, -50%) rotate(315deg) translateX(30px); }
+
+        .cloud-icon {
+            width: 50px;
+            height: 30px;
+            background: #95a5a6;
+            border-radius: 15px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .cloud-icon::before {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            background: #95a5a6;
+            border-radius: 50%;
+            top: -12px;
+            left: 8px;
+        }
+
+        .cloud-icon::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #95a5a6;
+            border-radius: 50%;
+            top: -8px;
+            right: 8px;
+        }
+
+        .rain-drops {
+            position: absolute;
+            top: 70%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .drop {
+            width: 3px;
+            height: 8px;
+            background: #3498db;
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            position: absolute;
+            animation: rain 1s infinite;
+        }
+
+        .drop:nth-child(1) { left: -10px; animation-delay: 0s; }
+        .drop:nth-child(2) { left: 0px; animation-delay: 0.3s; }
+        .drop:nth-child(3) { left: 10px; animation-delay: 0.6s; }
+
+        @keyframes rain {
+            0% { transform: translateY(0px); opacity: 1; }
+            100% { transform: translateY(15px); opacity: 0; }
+        }
+
+        .forecast-temps {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .high-temp {
+            font-size: 20px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .low-temp {
+            font-size: 16px;
+            color: #666;
+        }
+
+        /* Навігація каруселі */
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: white;
+            border: 2px solid #eee;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            font-size: 18px;
+            color: #666;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .carousel-nav:hover {
+            background: #f8f9fa;
+            border-color: #4285f4;
+            color: #4285f4;
+        }
+
+        .carousel-nav.prev {
+            left: -20px;
+        }
+
+        .carousel-nav.next {
+            right: -20px;
+        }
+
+        /* Адаптивність */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+                background: white;
+            }
+
+            .container {
+                padding: 20px;
+                box-shadow: none;
+                border-radius: 0;
+            }
+
+            .search-section {
+                flex-direction: row;
+                gap: 10px;
+            }
+
+            .search-input {
+                padding: 12px 16px;
+                font-size: 14px;
+            }
+
+            .search-button {
+                padding: 12px 20px;
+                font-size: 14px;
+                white-space: nowrap;
+            }
+
+            .main-weather {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                text-align: left;
+            }
+
+            .weather-info {
+                order: 1;
+            }
+
+            .weather-visual {
+                order: 2;
+                align-items: flex-start;
+                flex-direction: row;
+                justify-content: space-between;
+            }
+
+            .main-weather-icon {
+                width: 120px;
+                height: 120px;
+                order: 2;
+            }
+
+            .weather-details {
+                order: 1;
+                flex-direction: column;
+                gap: 15px;
+                align-items: flex-start;
+            }
+
+            .detail-item {
+                align-items: flex-start;
+                flex-direction: row;
+                gap: 5px;
+            }
+
+            .city-name {
+                font-size: 32px;
+            }
+
+            .temperature {
+                font-size: 48px;
+            }
+
+            .weather-description {
+                font-size: 18px;
+            }
+
+            .forecast-carousel {
+                gap: 15px;
+            }
+
+            .forecast-card {
+                min-width: 100px;
+                padding: 15px 10px;
+            }
+
+            .forecast-day {
+                font-size: 14px;
+                margin-bottom: 10px;
+            }
+
+            .forecast-icon {
+                width: 50px;
+                height: 50px;
+                margin-bottom: 10px;
+            }
+
+            .forecast-icon .sun-icon {
+                width: 30px;
+                height: 30px;
+            }
+
+            .forecast-icon .sun-rays .ray {
+                width: 12px;
+                height: 1.5px;
+            }
+
+            .forecast-icon .sun-rays .ray:nth-child(1) { transform: translate(-50%, -50%) rotate(0deg) translateX(22px); }
+            .forecast-icon .sun-rays .ray:nth-child(2) { transform: translate(-50%, -50%) rotate(45deg) translateX(22px); }
+            .forecast-icon .sun-rays .ray:nth-child(3) { transform: translate(-50%, -50%) rotate(90deg) translateX(22px); }
+            .forecast-icon .sun-rays .ray:nth-child(4) { transform: translate(-50%, -50%) rotate(135deg) translateX(22px); }
+            .forecast-icon .sun-rays .ray:nth-child(5) { transform: translate(-50%, -50%) rotate(180deg) translateX(22px); }
+            .forecast-icon .sun-rays .ray:nth-child(6) { transform: translate(-50%, -50%) rotate(225deg) translateX(22px); }
+            .forecast-icon .sun-rays .ray:nth-child(7) { transform: translate(-50%, -50%) rotate(270deg) translateX(22px); }
+            .forecast-icon .sun-rays .ray:nth-child(8) { transform: translate(-50%, -50%) rotate(315deg) translateX(22px); }
+
+            .high-temp {
+                font-size: 18px;
+            }
+
+            .low-temp {
+                font-size: 14px;
+            }
+
+            .carousel-nav {
+                display: none;
+            }
+
+            .forecast-container {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .forecast-carousel {
+                transform: none !important;
+            }
+        }
+    </style>
 </head>
 <body>
+<div class="container">
+    <!-- Пошук -->
+    <div class="search-section">
+        <input type="text" class="search-input" placeholder="Enter city name" id="cityInput">
+        <button class="search-button" onclick="searchCity()">Search</button>
+    </div>
 
+    <!-- Основна погода -->
+    <div class="main-weather">
+        <div class="weather-info">
+            <h1 class="city-name" id="cityName">Kyiv</h1>
+            <p class="country" id="country">Ukraine</p>
+            <div class="temperature" id="temperature">23°C</div>
+            <div class="weather-description" id="description">Clear</div>
+        </div>
+
+        <div class="weather-visual">
+            <div class="main-weather-icon">
+                <div class="sun-rays">
+                    <div class="ray"></div>
+                    <div class="ray"></div>
+                    <div class="ray"></div>
+                    <div class="ray"></div>
+                    <div class="ray"></div>
+                    <div class="ray"></div>
+                    <div class="ray"></div>
+                    <div class="ray"></div>
+                </div>
+                <div class="sun-icon"></div>
+            </div>
+
+            <div class="weather-details">
+                <div class="detail-item">
+                    <span class="detail-label">Wind:</span>
+                    <span class="detail-value" id="wind">13 km/h</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Humidity:</span>
+                    <span class="detail-value" id="humidity">56%</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Прогноз на 7 днів -->
+    <div class="forecast-section">
+        <div class="forecast-container">
+            <button class="carousel-nav prev" onclick="moveCarousel(-1)">‹</button>
+            <button class="carousel-nav next" onclick="moveCarousel(1)">›</button>
+
+            <div class="forecast-carousel" id="forecastCarousel">
+                <div class="forecast-card">
+                    <div class="forecast-day">Today</div>
+                    <div class="forecast-icon">
+                        <div class="sun-rays">
+                            <div class="ray"></div>
+                            <div class="ray"></div>
+                            <div class="ray"></div>
+                            <div class="ray"></div>
+                            <div class="ray"></div>
+                            <div class="ray"></div>
+                            <div class="ray"></div>
+                            <div class="ray"></div>
+                        </div>
+                        <div class="sun-icon"></div>
+                    </div>
+                    <div class="forecast-temps">
+                        <span class="high-temp">23°C</span>
+                        <span class="low-temp">14°C</span>
+                    </div>
+                </div>
+
+                <div class="forecast-card">
+                    <div class="forecast-day">Tue</div>
+                    <div class="forecast-icon">
+                        <div class="sun-rays">
+                            <div class="ray"></div>
+                            <div class="ray"></div>
+                            <div class="ray"></div>
+                            <div class="ray"></div>
+                            <div class="ray"></div>
+                            <div class="ray"></div>
+                            <div class="ray"></div>
+                            <div class="ray"></div>
+                        </div>
+                        <div class="sun-icon"></div>
+                    </div>
+                    <div class="forecast-temps">
+                        <span class="high-temp">23°C</span>
+                        <span class="low-temp">14°C</span>
+                    </div>
+                </div>
+
+                <div class="forecast-card">
+                    <div class="forecast-day">Wed</div>
+                    <div class="forecast-icon">
+                        <div class="cloud-icon"></div>
+                        <div class="rain-drops">
+                            <div class="drop"></div>
+                            <div class="drop"></div>
+                            <div class="drop"></div>
+                        </div>
+                    </div>
+                    <div class="forecast-temps">
+                        <span class="high-temp">20°C</span>
+                        <span class="low-temp">13°C</span>
+                    </div>
+                </div>
+
+                <div class="forecast-card">
+                    <div class="forecast-day">Thu</div>
+                    <div class="forecast-icon">
+                        <div class="sun-rays">
+                            <div class="ray"></div>
+                            <div class="ray"></div>
+                            <div class="ray"></div>
+                            <div class="ray"></div>
+                            <div class="ray"></div>
+                            <div class="ray"></div>
+                            <div class="ray"></div>
+                            <div class="ray"></div>
+                        </div>
+                        <div class="sun-icon"></div>
+                    </div>
+                    <div class="forecast-temps">
+                        <span class="high-temp">22°C</span>
+                        <span class="low-temp">13°C</span>
+                    </div>
+                </div>
+
+                <div class="forecast-card">
+                    <div class="forecast-day">Fri</div>
+                    <div class="forecast-icon">
+                        <div class="sun-rays">
+                            <div class="ray"></div>
+                            <div class="ray"></div>
+                            <div class="ray"></div>
+                            <div class="ray"></div>
+                            <div class="ray"></div>
+                            <div class="ray"></div>
+                            <div class="ray"></div>
+                            <div class="ray"></div>
+                        </div>
+                        <div class="sun-icon"></div>
+                    </div>
+                    <div class="forecast-temps">
+                        <span class="high-temp">24°C</span>
+                        <span class="low-temp">15°C</span>
+                    </div>
+                </div>
+
+                <div class="forecast-card">
+                    <div class="forecast-day">Sat</div>
+                    <div class="forecast-icon">
+                        <div class="cloud-icon"></div>
+                        <div class="rain-drops">
+                            <div class="drop"></div>
+                            <div class="drop"></div>
+                            <div class="drop"></div>
+                        </div>
+                    </div>
+                    <div class="forecast-temps">
+                        <span class="high-temp">19°C</span>
+                        <span class="low-temp">12°C</span>
+                    </div>
+                </div>
+
+                <div class="forecast-card">
+                    <div class="forecast-day">Sun</div>
+                    <div class="forecast-icon">
+                        <div class="sun-rays">
+                            <div class="ray"></div>
+                            <div class="ray"></div>
+                            <div class="ray"></div>
+                            <div class="ray"></div>
+                            <div class="ray"></div>
+                            <div class="ray"></div>
+                            <div class="ray"></div>
+                            <div class="ray"></div>
+                        </div>
+                        <div class="sun-icon"></div>
+                    </div>
+                    <div class="forecast-temps">
+                        <span class="high-temp">26°C</span>
+                        <span class="low-temp">16°C</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

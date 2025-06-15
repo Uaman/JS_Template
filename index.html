@@ -198,18 +198,20 @@
         }
 
         .forecast-container {
-            position: relative;
-            overflow: hidden;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
         }
 
         .forecast-carousel {
             display: flex;
-            transition: transform 0.3s ease;
             gap: 20px;
+            width: 100%;
         }
 
         .forecast-card {
-            min-width: calc(25% - 15px); /* 4 картки в ряд для ПК версії */
+            flex: 0 0 25%; /* 4 картки на ПК */
+            min-width: 220px;
+            max-width: 250px;
             background: #f8f9fa;
             border-radius: 16px;
             padding: 20px;
@@ -438,15 +440,15 @@
                 margin-top: 30px;
             }
             .forecast-container {
-                padding: 0;
+                overflow-x: auto;
             }
             .forecast-carousel {
                 gap: 10px;
             }
             .forecast-card {
-                min-width: 32%;
-                padding: 12px 6px;
-                margin: 0;
+                flex: 0 0 80vw; /* 3 картки на екрані, swipe */
+                min-width: 70vw;
+                max-width: 90vw;
             }
             .forecast-day {
                 font-size: 15px;
@@ -474,6 +476,14 @@
             .forecast-icon .sun-rays .ray:nth-child(7) { transform: translate(-50%, -50%) rotate(270deg) translateX(7px); }
             .forecast-icon .sun-rays .ray:nth-child(8) { transform: translate(-50%, -50%) rotate(315deg) translateX(7px); }
         }
+
+        /* Додати стилі для мобільної та десктопної видимості */
+        .mobile-only { display: none; }
+        .desktop-only { display: flex; }
+        @media (max-width: 768px) {
+            .mobile-only { display: flex !important; }
+            .desktop-only { display: none !important; }
+        }
     </style>
 </head>
 <body>
@@ -491,7 +501,7 @@
             <p class="country" id="country">Ukraine</p>
             <div class="temperature" id="temperature">23°C</div>
             <div class="weather-description" id="description">Clear</div>
-            <div class="weather-details">
+            <div class="weather-details mobile-only">
                 <div class="detail-item">
                     <span class="detail-label">Wind:</span>
                     <span class="detail-value" id="wind">13 km/h</span>
@@ -517,15 +527,22 @@
                 </div>
                 <div class="sun-icon"></div>
             </div>
+            <div class="weather-details desktop-only">
+                <div class="detail-item">
+                    <span class="detail-label">Wind:</span>
+                    <span class="detail-value" id="wind-desktop">13 km/h</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Humidity:</span>
+                    <span class="detail-value" id="humidity-desktop">56%</span>
+                </div>
+            </div>
         </div>
     </div>
 
     <!-- Прогноз на 7 днів -->
     <div class="forecast-section">
         <div class="forecast-container">
-            <button class="carousel-nav prev" onclick="moveCarousel(-1)">‹</button>
-            <button class="carousel-nav next" onclick="moveCarousel(1)">›</button>
-
             <div class="forecast-carousel" id="forecastCarousel">
                 <div class="forecast-card">
                     <div class="forecast-day">Today</div>
@@ -668,61 +685,5 @@
     </div>
 </div>
 
-<script>
-    let currentSlide = 0;
-    let cardsPerView = 4;
-    const totalCards = 7;
-
-    function updateCardsPerView() {
-        if (window.innerWidth <= 768) {
-            cardsPerView = 3; // На мобільних показуємо 3 картки
-        } else {
-            cardsPerView = 4; // На ПК показуємо 4 картки
-        }
-    }
-
-    function moveCarousel(direction) {
-        // На мобільних пристроях не використовуємо карусель
-        if (window.innerWidth <= 768) {
-            return;
-        }
-
-        const maxSlide = totalCards - cardsPerView;
-        currentSlide += direction;
-
-        if (currentSlide < 0) {
-            currentSlide = 0;
-        } else if (currentSlide > maxSlide) {
-            currentSlide = maxSlide;
-        }
-
-        const carousel = document.getElementById('forecastCarousel');
-        const cardWidth = 220; // 200px + 20px gap
-        carousel.style.transform = `translateX(-${currentSlide * cardWidth}px)`;
-    }
-
-    function searchCity() {
-        const cityInput = document.getElementById('cityInput');
-        const city = cityInput.value.trim();
-
-        if (city) {
-            // Тут буде логіка для отримання погоди з API
-            console.log('Searching for weather in:', city);
-            // Поки що просто очищуємо поле вводу
-            cityInput.value = '';
-        }
-    }
-
-    // Додаємо можливість пошуку по Enter
-    document.getElementById('cityInput').addEventListener('keypress', function(e) {
-        if (e.key === 'Enter') {
-            searchCity();
-        }
-    });
-
-    // Оновлюємо кількість карток при зміні розміру екрану
-    window.addEventListener('resize', updateCardsPerView);
-    updateCardsPerView();
-</script>
 </body>
 </html>

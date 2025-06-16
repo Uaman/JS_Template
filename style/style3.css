@@ -1,6 +1,6 @@
 :root {
     --blue--: #4378d8;
-    --blue--hover: #275cbe;
+    --blue_hover--: #275cbe;
     --border_color_white--: #e0e0e0;
 }
 
@@ -78,7 +78,7 @@ h1 {
 
 .option input[type="radio"]:checked + label {
     background-color: #e3f2fd;
-    border-color: var(--blue--hover);
+    border-color: var(--blue_hover--);
     color: var(--blue--);
 }
 
@@ -93,8 +93,8 @@ h1 {
 }
 
 .option input[type="radio"]:checked + label .radio-button {
-    border-color: var(--blue--hover);
-    background-color: var(--blue--hover);
+    border-color: var(--blue_hover--);
+    background-color: var(--blue_hover--);
 }
 
 .option input[type="radio"]:checked + label .radio-button::after {
@@ -123,7 +123,7 @@ h1 {
 }
 
 .vote-button:hover {
-    background-color: var(--blue--hover);
+    background-color: var(--blue_hover--);
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(33, 150, 243, 0.3);
 }

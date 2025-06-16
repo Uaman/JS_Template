@@ -10,8 +10,7 @@
 <body>
 <div class="container">
     <div class="create-poll-header">
-        <h1>Create Poll</h1>
-        <button class="create-poll-btn">Create Poll</button>
+        <a href="#createPopup" class="create-poll-btn">Create Poll</a>
     </div>
 
     <div class="search-bar">
@@ -25,70 +24,187 @@
         </select>
     </div>
 
-    <div class="poll-card">
-        <div class="poll-title">What is your favorite programming language?</div>
-        <div class="poll-option">
-            <span class="option-label">JavaScript</span>
-            <div class="progress-container">
-                <div class="progress-bar" style="width: 45%"></div>
+    <div class="polls-grid">
+        <a href="#votePopup1" class="poll-card">
+            <div class="poll-title">What is your favorite programming language?</div>
+            <div class="poll-option">
+                <span class="option-label">JavaScript</span>
+                <div class="progress-container">
+                    <div class="progress-bar" style="width: 45%"></div>
+                </div>
+                <span class="percentage">45%</span>
             </div>
-            <span class="percentage">45%</span>
-        </div>
-        <div class="poll-option">
-            <span class="option-label">Python</span>
-            <div class="progress-container">
-                <div class="progress-bar" style="width: 45%"></div>
+            <div class="poll-option">
+                <span class="option-label">Python</span>
+                <div class="progress-container">
+                    <div class="progress-bar" style="width: 45%"></div>
+                </div>
+                <span class="percentage">45%</span>
             </div>
-            <span class="percentage">45%</span>
-        </div>
-        <div class="poll-option">
-            <span class="option-label">Java</span>
-            <div class="progress-container">
-                <div class="progress-bar" style="width: 35%"></div>
+            <div class="poll-option">
+                <span class="option-label">Java</span>
+                <div class="progress-container">
+                    <div class="progress-bar" style="width: 35%"></div>
+                </div>
+                <span class="percentage">35%</span>
             </div>
-            <span class="percentage">35%</span>
-        </div>
-        <div class="poll-option">
-            <span class="option-label">C++</span>
-            <div class="progress-container">
-                <div class="progress-bar" style="width: 3%"></div>
+            <div class="poll-option">
+                <span class="option-label">C++</span>
+                <div class="progress-container">
+                    <div class="progress-bar" style="width: 3%"></div>
+                </div>
+                <span class="percentage">3%</span>
             </div>
-            <span class="percentage">3%</span>
-        </div>
-        <div class="vote-count">150 votes</div>
-    </div>
+            <div class="vote-count">150 votes</div>
+        </a>
 
-    <div class="poll-card">
-        <div class="poll-title">Which social media platform do you use the most?</div>
-        <div class="poll-option">
-            <span class="option-label">Facebook</span>
-            <div class="progress-container">
-                <div class="progress-bar" style="width: 35%"></div>
+        <a href="#votePopup2" class="poll-card">
+            <div class="poll-title">Which social media platform do you use the most?</div>
+            <div class="poll-option">
+                <span class="option-label">Facebook</span>
+                <div class="progress-container">
+                    <div class="progress-bar" style="width: 35%"></div>
+                </div>
+                <span class="percentage">35%</span>
             </div>
-            <span class="percentage">35%</span>
-        </div>
-        <div class="poll-option">
-            <span class="option-label">Twitter</span>
-            <div class="progress-container">
-                <div class="progress-bar" style="width: 25%"></div>
+            <div class="poll-option">
+                <span class="option-label">Twitter</span>
+                <div class="progress-container">
+                    <div class="progress-bar" style="width: 25%"></div>
+                </div>
+                <span class="percentage">25%</span>
             </div>
-            <span class="percentage">25%</span>
-        </div>
-        <div class="poll-option">
-            <span class="option-label">Instagram</span>
-            <div class="progress-container">
-                <div class="progress-bar" style="width: 30%"></div>
+            <div class="poll-option">
+                <span class="option-label">Instagram</span>
+                <div class="progress-container">
+                    <div class="progress-bar" style="width: 30%"></div>
+                </div>
+                <span class="percentage">30%</span>
             </div>
-            <span class="percentage">30%</span>
-        </div>
-        <div class="poll-option">
-            <span class="option-label">LinkedIn</span>
-            <div class="progress-container">
-                <div class="progress-bar" style="width: 10%"></div>
+            <div class="poll-option">
+                <span class="option-label">LinkedIn</span>
+                <div class="progress-container">
+                    <div class="progress-bar" style="width: 10%"></div>
+                </div>
+                <span class="percentage">10%</span>
             </div>
-            <span class="percentage">10%</span>
-        </div>
-        <div class="vote-count">180 votes</div>
+            <div class="vote-count">180 votes</div>
+        </a>
+    </div>
+</div>
+
+<!-- Vote Popup 1 -->
+<div id="votePopup1" class="popup-overlay">
+    <div class="popup-content vote-popup">
+        <a href="#" class="popup-close">&times;</a>
+        <form id="poll-form1">
+            <h1>Poll Question</h1>
+            <div class="question">What is your favorite programming language?</div>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" id="js1" name="language" value="javascript" required>
+                    <label for="js1">
+                        <div class="radio-button"></div>
+                        JavaScript
+                    </label>
+                </div>
+                <div class="option">
+                    <input type="radio" id="python1" name="language" value="python">
+                    <label for="python1">
+                        <div class="radio-button"></div>
+                        Python
+                    </label>
+                </div>
+                <div class="option">
+                    <input type="radio" id="java1" name="language" value="java">
+                    <label for="java1">
+                        <div class="radio-button"></div>
+                        Java
+                    </label>
+                </div>
+                <div class="option">
+                    <input type="radio" id="cpp1" name="language" value="cpp">
+                    <label for="cpp1">
+                        <div class="radio-button"></div>
+                        C++
+                    </label>
+                </div>
+            </div>
+            <button type="submit" class="vote-button">Vote</button>
+        </form>
+    </div>
+</div>
+
+<!-- Vote Popup 2 -->
+<div id="votePopup2" class="popup-overlay">
+    <div class="popup-content vote-popup">
+        <a href="#" class="popup-close">&times;</a>
+        <form id="poll-form2">
+            <h1>Poll Question</h1>
+            <div class="question">Which social media platform do you use the most?</div>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" id="facebook2" name="social" value="facebook" required>
+                    <label for="facebook2">
+                        <div class="radio-button"></div>
+                        Facebook
+                    </label>
+                </div>
+                <div class="option">
+                    <input type="radio" id="twitter2" name="social" value="twitter">
+                    <label for="twitter2">
+                        <div class="radio-button"></div>
+                        Twitter
+                    </label>
+                </div>
+                <div class="option">
+                    <input type="radio" id="instagram2" name="social" value="instagram">
+                    <label for="instagram2">
+                        <div class="radio-button"></div>
+                        Instagram
+                    </label>
+                </div>
+                <div class="option">
+                    <input type="radio" id="linkedin2" name="social" value="linkedin">
+                    <label for="linkedin2">
+                        <div class="radio-button"></div>
+                        LinkedIn
+                    </label>
+                </div>
+            </div>
+            <button type="submit" class="vote-button">Vote</button>
+        </form>
+    </div>
+</div>
+
+<!-- Create Poll Popup -->
+<div id="createPopup" class="popup-overlay">
+    <div class="popup-content create-popup">
+        <a href="#" class="popup-close">&times;</a>
+        <h1>Create Poll</h1>
+        <form action="#" method="post">
+            <div class="form-group">
+                <label for="question">Question</label>
+                <input type="text" id="question" name="question" placeholder="Enter your question" required>
+            </div>
+
+            <div class="form-group">
+                <label for="category">Category</label>
+                <input type="text" id="category" name="category" placeholder="Enter the category" required>
+            </div>
+
+            <div class="form-group">
+                <label>Options</label>
+                <div class="options-container">
+                    <input type="text" class="option-input" name="option1" placeholder="Option 1" required>
+                    <input type="text" class="option-input" name="option2" placeholder="Option 2" required>
+                    <input type="text" class="option-input" name="option3" placeholder="Option 3">
+                    <input type="text" class="option-input" name="option4" placeholder="Option 4">
+                </div>
+            </div>
+
+            <button type="submit" class="create-btn">Create</button>
+        </form>
     </div>
 </div>
 </body>

@@ -26,7 +26,8 @@ body {
     padding: 40px;
     width: 100%;
     max-width: 500px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+
 }
 
 h1 {
@@ -109,4 +110,5 @@ input[type="text"]:focus {
 
 .create-btn:hover {
     background-color: var(--blue--hover);
+    text-decoration-line: none;
 }

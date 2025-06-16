@@ -21,167 +21,18 @@
             <option value="social">Social Media</option>
             <option value="lifestyle">Lifestyle</option>
             <option value="business">Business</option>
+            <option value="education">Education</option>
+            <option value="entertainment">Entertainment</option>
+            <option value="sports">Sports</option>
         </select>
     </div>
 
-    <div class="polls-grid">
-        <a href="#votePopup1" class="poll-card">
-            <div class="poll-title">What is your favorite programming language?</div>
-            <div class="poll-option">
-                <span class="option-label">JavaScript</span>
-                <div class="progress-container">
-                    <div class="progress-bar" style="width: 45%"></div>
-                </div>
-                <span class="percentage">45%</span>
-            </div>
-            <div class="poll-option">
-                <span class="option-label">Python</span>
-                <div class="progress-container">
-                    <div class="progress-bar" style="width: 45%"></div>
-                </div>
-                <span class="percentage">45%</span>
-            </div>
-            <div class="poll-option">
-                <span class="option-label">Java</span>
-                <div class="progress-container">
-                    <div class="progress-bar" style="width: 35%"></div>
-                </div>
-                <span class="percentage">35%</span>
-            </div>
-            <div class="poll-option">
-                <span class="option-label">C++</span>
-                <div class="progress-container">
-                    <div class="progress-bar" style="width: 3%"></div>
-                </div>
-                <span class="percentage">3%</span>
-            </div>
-            <div class="info">
-                <div class="category">Business</div>
-                <div class="vote-count">150 votes</div>
-            </div>
-        </a>
 
-        <a href="#votePopup2" class="poll-card">
-            <div class="poll-title">Which social media platform do you use the most?</div>
-            <div class="poll-option">
-                <span class="option-label">Facebook</span>
-                <div class="progress-container">
-                    <div class="progress-bar" style="width: 35%"></div>
-                </div>
-                <span class="percentage">35%</span>
-            </div>
-            <div class="poll-option">
-                <span class="option-label">Twitter</span>
-                <div class="progress-container">
-                    <div class="progress-bar" style="width: 25%"></div>
-                </div>
-                <span class="percentage">25%</span>
-            </div>
-            <div class="poll-option">
-                <span class="option-label">Instagram</span>
-                <div class="progress-container">
-                    <div class="progress-bar" style="width: 30%"></div>
-                </div>
-                <span class="percentage">30%</span>
-            </div>
-            <div class="poll-option">
-                <span class="option-label">LinkedIn</span>
-                <div class="progress-container">
-                    <div class="progress-bar" style="width: 10%"></div>
-                </div>
-                <span class="percentage">10%</span>
-            </div>
-            <div class="info">
-                <div class="category">Business</div>
-                <div class="vote-count">180 votes</div>
-            </div>
-        </a>
+    <div class="polls-grid" id="pollsGrid">
     </div>
 </div>
 
-<!-- Vote Popup 1 -->
-<div id="votePopup1" class="popup-overlay">
-    <div class="popup-content vote-popup">
-        <a href="#" class="popup-close">&times;</a>
-        <form id="poll-form1">
-            <h1>Poll Question</h1>
-            <div class="question">What is your favorite programming language?</div>
-            <div class="options">
-                <div class="option">
-                    <input type="radio" id="js1" name="language" value="javascript" required>
-                    <label for="js1">
-                        <div class="radio-button"></div>
-                        JavaScript
-                    </label>
-                </div>
-                <div class="option">
-                    <input type="radio" id="python1" name="language" value="python">
-                    <label for="python1">
-                        <div class="radio-button"></div>
-                        Python
-                    </label>
-                </div>
-                <div class="option">
-                    <input type="radio" id="java1" name="language" value="java">
-                    <label for="java1">
-                        <div class="radio-button"></div>
-                        Java
-                    </label>
-                </div>
-                <div class="option">
-                    <input type="radio" id="cpp1" name="language" value="cpp">
-                    <label for="cpp1">
-                        <div class="radio-button"></div>
-                        C++
-                    </label>
-                </div>
-            </div>
-            <button type="submit" class="vote-button">Vote</button>
-        </form>
-    </div>
-</div>
-
-<!-- Vote Popup 2 -->
-<div id="votePopup2" class="popup-overlay">
-    <div class="popup-content vote-popup">
-        <a href="#" class="popup-close">&times;</a>
-        <form id="poll-form2">
-            <h1>Poll Question</h1>
-            <div class="question">Which social media platform do you use the most?</div>
-            <div class="options">
-                <div class="option">
-                    <input type="radio" id="facebook2" name="social" value="facebook" required>
-                    <label for="facebook2">
-                        <div class="radio-button"></div>
-                        Facebook
-                    </label>
-                </div>
-                <div class="option">
-                    <input type="radio" id="twitter2" name="social" value="twitter">
-                    <label for="twitter2">
-                        <div class="radio-button"></div>
-                        Twitter
-                    </label>
-                </div>
-                <div class="option">
-                    <input type="radio" id="instagram2" name="social" value="instagram">
-                    <label for="instagram2">
-                        <div class="radio-button"></div>
-                        Instagram
-                    </label>
-                </div>
-                <div class="option">
-                    <input type="radio" id="linkedin2" name="social" value="linkedin">
-                    <label for="linkedin2">
-                        <div class="radio-button"></div>
-                        LinkedIn
-                    </label>
-                </div>
-            </div>
-            <button type="submit" class="vote-button">Vote</button>
-        </form>
-    </div>
-</div>
+<div id="dynamicPopups"></div>
 
 <!-- Create Poll Popup -->
 <div id="createPopup" class="popup-overlay">
@@ -196,7 +47,16 @@
 
             <div class="form-group">
                 <label for="category">Category</label>
-                <input type="text" id="category" name="category" placeholder="Enter the category" required>
+                <select class="category-select" id="category" name="category" required>
+                    <option value="">Select a category</option>
+                    <option value="Technology">Technology</option>
+                    <option value="Social Media">Social Media</option>
+                    <option value="Lifestyle">Lifestyle</option>
+                    <option value="Business">Business</option>
+                    <option value="Education">Education</option>
+                    <option value="Entertainment">Entertainment</option>
+                    <option value="Sports">Sports</option>
+                </select>
             </div>
 
             <div class="form-group">

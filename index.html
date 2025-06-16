@@ -5,6 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Погода - Пошук по містах</title>
     <style>
+        :root {
+            --main-icon-size: 200px;
+            --main-sun-size: 100px;
+            --main-ray-offset: 70px;
+            --main-ray-width: 30px;
+            --main-ray-height: 4px;
+
+            --card-icon-size: 60px;
+            --card-sun-size: 40px;
+            --card-ray-offset: 30px;
+            --card-ray-width: 15px;
+            --card-ray-height: 2px;
+        }
+
+        @media (max-width: 768px) {
+            :root {
+                --main-icon-size: 140px;
+                --main-sun-size: 70px;
+                --main-ray-offset: 55px;
+                --main-ray-width: 25px;
+            }
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -119,15 +142,15 @@
         }
 
         .main-weather-icon {
-            width: 200px;
-            height: 200px;
+            width: var(--main-icon-size);
+            height: var(--main-icon-size);
             margin-bottom: 30px;
             position: relative;
         }
 
         .sun-icon {
-            width: 100px;
-            height: 100px;
+            width: var(--main-sun-size);
+            height: var(--main-sun-size);
             background: #ffd700;
             border-radius: 50%;
             position: absolute;
@@ -150,8 +173,8 @@
 
         .ray {
             position: absolute;
-            width: 30px;
-            height: 4px;
+            width: var(--main-ray-width);
+            height: var(--main-ray-height);
             background: #ffd700;
             border-radius: 2px;
             top: 50%;
@@ -159,14 +182,14 @@
             transform-origin: 50% 50%;
         }
 
-        .ray:nth-child(1) { transform: translate(-50%, -50%) rotate(0deg) translateX(70px); }
-        .ray:nth-child(2) { transform: translate(-50%, -50%) rotate(45deg) translateX(70px); }
-        .ray:nth-child(3) { transform: translate(-50%, -50%) rotate(90deg) translateX(70px); }
-        .ray:nth-child(4) { transform: translate(-50%, -50%) rotate(135deg) translateX(70px); }
-        .ray:nth-child(5) { transform: translate(-50%, -50%) rotate(180deg) translateX(70px); }
-        .ray:nth-child(6) { transform: translate(-50%, -50%) rotate(225deg) translateX(70px); }
-        .ray:nth-child(7) { transform: translate(-50%, -50%) rotate(270deg) translateX(70px); }
-        .ray:nth-child(8) { transform: translate(-50%, -50%) rotate(315deg) translateX(70px); }
+        .ray:nth-child(1) { transform: translate(-50%, -50%) rotate(0deg) translateX(var(--main-ray-offset)); }
+        .ray:nth-child(2) { transform: translate(-50%, -50%) rotate(45deg) translateX(var(--main-ray-offset)); }
+        .ray:nth-child(3) { transform: translate(-50%, -50%) rotate(90deg) translateX(var(--main-ray-offset)); }
+        .ray:nth-child(4) { transform: translate(-50%, -50%) rotate(135deg) translateX(var(--main-ray-offset)); }
+        .ray:nth-child(5) { transform: translate(-50%, -50%) rotate(180deg) translateX(var(--main-ray-offset)); }
+        .ray:nth-child(6) { transform: translate(-50%, -50%) rotate(225deg) translateX(var(--main-ray-offset)); }
+        .ray:nth-child(7) { transform: translate(-50%, -50%) rotate(270deg) translateX(var(--main-ray-offset)); }
+        .ray:nth-child(8) { transform: translate(-50%, -50%) rotate(315deg) translateX(var(--main-ray-offset)); }
 
         .weather-details {
             flex-direction: column;
@@ -206,7 +229,7 @@
         .forecast-carousel {
             display: grid;
             grid-auto-flow: column;
-            grid-auto-columns: calc(25% - 15px); /* 4 cards, accounting for gap */
+            grid-auto-columns: calc(25% - 15px); 
             gap: 20px;
             scroll-snap-type: x mandatory;
             min-width: 100%;
@@ -235,15 +258,15 @@
         }
 
         .forecast-icon {
-            width: 60px;
-            height: 60px;
+            width: var(--card-icon-size);
+            height: var(--card-icon-size);
             margin: 0 auto 15px;
             position: relative;
         }
 
         .forecast-icon .sun-icon {
-            width: 40px;
-            height: 40px;
+            width: var(--card-sun-size);
+            height: var(--card-sun-size);
             position: absolute;
             top: 50%;
             left: 50%;
@@ -262,22 +285,22 @@
         }
 
         .forecast-icon .sun-rays .ray {
-            width: 15px;
-            height: 2px;
+            width: var(--card-ray-width);
+            height: var(--card-ray-height);
             position: absolute;
             top: 50%;
             left: 50%;
             transform-origin: 50% 50%;
         }
 
-        .forecast-icon .sun-rays .ray:nth-child(1) { transform: translate(-50%, -50%) rotate(0deg) translateX(30px); }
-        .forecast-icon .sun-rays .ray:nth-child(2) { transform: translate(-50%, -50%) rotate(45deg) translateX(30px); }
-        .forecast-icon .sun-rays .ray:nth-child(3) { transform: translate(-50%, -50%) rotate(90deg) translateX(30px); }
-        .forecast-icon .sun-rays .ray:nth-child(4) { transform: translate(-50%, -50%) rotate(135deg) translateX(30px); }
-        .forecast-icon .sun-rays .ray:nth-child(5) { transform: translate(-50%, -50%) rotate(180deg) translateX(30px); }
-        .forecast-icon .sun-rays .ray:nth-child(6) { transform: translate(-50%, -50%) rotate(225deg) translateX(30px); }
-        .forecast-icon .sun-rays .ray:nth-child(7) { transform: translate(-50%, -50%) rotate(270deg) translateX(30px); }
-        .forecast-icon .sun-rays .ray:nth-child(8) { transform: translate(-50%, -50%) rotate(315deg) translateX(30px); }
+        .forecast-icon .sun-rays .ray:nth-child(1) { transform: translate(-50%, -50%) rotate(0deg) translateX(var(--card-ray-offset)); }
+        .forecast-icon .sun-rays .ray:nth-child(2) { transform: translate(-50%, -50%) rotate(45deg) translateX(var(--card-ray-offset)); }
+        .forecast-icon .sun-rays .ray:nth-child(3) { transform: translate(-50%, -50%) rotate(90deg) translateX(var(--card-ray-offset)); }
+        .forecast-icon .sun-rays .ray:nth-child(4) { transform: translate(-50%, -50%) rotate(135deg) translateX(var(--card-ray-offset)); }
+        .forecast-icon .sun-rays .ray:nth-child(5) { transform: translate(-50%, -50%) rotate(180deg) translateX(var(--card-ray-offset)); }
+        .forecast-icon .sun-rays .ray:nth-child(6) { transform: translate(-50%, -50%) rotate(225deg) translateX(var(--card-ray-offset)); }
+        .forecast-icon .sun-rays .ray:nth-child(7) { transform: translate(-50%, -50%) rotate(270deg) translateX(var(--card-ray-offset)); }
+        .forecast-icon .sun-rays .ray:nth-child(8) { transform: translate(-50%, -50%) rotate(315deg) translateX(var(--card-ray-offset)); }
 
         .cloud-icon {
             width: 50px;
@@ -457,10 +480,7 @@
             }
 
             .main-weather-icon {
-                flex: 0 0 110px;
-                width: 110px;
-                height: 110px;
-                margin: 0 auto; /* Adaptive horizontal margins */
+                margin: 0 auto;
             }
 
             .weather-details {
@@ -475,14 +495,12 @@
             }
 
             .forecast-carousel {
-                grid-auto-columns: calc(33.33% - 7px); /* 3 cards, accounting for gap */
+                grid-auto-columns: calc(33.33% - 7px);
                 gap: 10px;
             }
 
             .forecast-card {
-                flex: 0 0 33.33%; /* 3 картки на мобільних */
-                min-width: 120px;
-                max-width: 300px;
+                flex: 0 0 33.33%;
                 padding: 12px 6px;
             }
 
@@ -507,14 +525,14 @@
                 height: 1.5px;
             }
 
-            .forecast-icon .sun-rays .ray:nth-child(1) { transform: translate(-50%, -50%) rotate(0deg) translateX(18px); }
-            .forecast-icon .sun-rays .ray:nth-child(2) { transform: translate(-50%, -50%) rotate(45deg) translateX(18px); }
-            .forecast-icon .sun-rays .ray:nth-child(3) { transform: translate(-50%, -50%) rotate(90deg) translateX(18px); }
-            .forecast-icon .sun-rays .ray:nth-child(4) { transform: translate(-50%, -50%) rotate(135deg) translateX(18px); }
-            .forecast-icon .sun-rays .ray:nth-child(5) { transform: translate(-50%, -50%) rotate(180deg) translateX(18px); }
-            .forecast-icon .sun-rays .ray:nth-child(6) { transform: translate(-50%, -50%) rotate(225deg) translateX(18px); }
-            .forecast-icon .sun-rays .ray:nth-child(7) { transform: translate(-50%, -50%) rotate(270deg) translateX(18px); }
-            .forecast-icon .sun-rays .ray:nth-child(8) { transform: translate(-50%, -50%) rotate(315deg) translateX(18px); }
+            .forecast-icon .sun-rays .ray:nth-child(1) { transform: translate(-50%, -50%) rotate(0deg) translateX(20px); }
+            .forecast-icon .sun-rays .ray:nth-child(2) { transform: translate(-50%, -50%) rotate(45deg) translateX(20px); }
+            .forecast-icon .sun-rays .ray:nth-child(3) { transform: translate(-50%, -50%) rotate(90deg) translateX(20px); }
+            .forecast-icon .sun-rays .ray:nth-child(4) { transform: translate(-50%, -50%) rotate(135deg) translateX(20px); }
+            .forecast-icon .sun-rays .ray:nth-child(5) { transform: translate(-50%, -50%) rotate(180deg) translateX(20px); }
+            .forecast-icon .sun-rays .ray:nth-child(6) { transform: translate(-50%, -50%) rotate(225deg) translateX(20px); }
+            .forecast-icon .sun-rays .ray:nth-child(7) { transform: translate(-50%, -50%) rotate(270deg) translateX(20px); }
+            .forecast-icon .sun-rays .ray:nth-child(8) { transform: translate(-50%, -50%) rotate(315deg) translateX(20px); }
 
             .forecast-temps {
                 gap: 5px;
@@ -550,7 +568,6 @@
             }
         }
 
-        /* Додати стилі для мобільної та десктопної видимості */
         .mobile-only { display: none; }
         .desktop-only { display: flex; }
 

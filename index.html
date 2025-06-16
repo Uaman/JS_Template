@@ -3,11 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple HTML Page</title>
+    <title>Epic Weather lolololololol</title>
     <link rel="stylesheet" href="./style/style.css">
     <script src="./src/main.js" defer></script>
 </head>
 <body>
-
+    <main>
+        <form id="search">
+            <input type="search" name="city" placeholder="Enter city name">
+            <button type="submit">Search</button>
+        </form>
+        <div id="today">
+            <div id="primary">
+                <section id="temperature">
+                    <h3 id="city">Kyiv</h3>
+                    <p id="country">Ukraine</p>
+                    <h2 id="temperature">23°C</h2>
+                    <p id="status">Clear</p>
+                </section>
+                <picture class="icon"><img src="img/sunny_big.png" alt="Sunny"></picture>
+            </div>
+            <div id="secondary">
+                <picture class="icon"><img src="img/sunny_big.png" alt="Sunny"></picture>
+                <p id="wind">Wind: 13km/h</p>
+                <p id="humidity">Humidity: 56%</p>
+            </div>
+        </div>
+        <ul id="week">
+            <li>
+                <h4>Today</h4>
+                <picture class="icon"><img src="img/sunny_small.png" alt="Sunny"></picture>
+                <p class="temperature">23°C</p>
+                <p class="lowest-temperature">14°C</p>
+            </li>
+            <li>
+                <h4>Tue</h4>
+                <picture class="icon"><img src="img/sunny_small.png" alt="Sunny"></picture>
+                <p class="temperature">23°C</p>
+                <p class="lowest-temperature">14°C</p>
+            </li>
+            <li>
+                <h4>Wed</h4>
+                <picture class="icon"><img src="img/rainy_small.png" alt="Rainy"></picture>
+                <p class="temperature">20°C</p>
+                <p class="lowest-temperature">14°C</p>
+            </li>
+            <li>
+                <h4>Thu</h4>
+                <picture class="icon"><img src="img/sunny_small.png" alt="Sunny"></picture>
+                <p class="temperature">23°C</p>
+                <p class="lowest-temperature">14°C</p>
+            </li>
+            <li>
+                <h4>Fri</h4>
+                <picture class="icon"><img src="img/sunny_small.png" alt="Sunny"></picture>
+                <p class="temperature">23°C</p>
+                <p class="lowest-temperature">14°C</p>
+            </li>
+            <li>
+                <h4>Sat</h4>
+                <picture class="icon"><img src="img/sunny_small.png" alt="Sunny"></picture>
+                <p class="temperature">23°C</p>
+                <p class="lowest-temperature">14°C</p>
+            </li>
+            <li>
+                <h4>Sun</h4>
+                <picture class="icon"><img src="img/sunny_small.png" alt="Sunny"></picture>
+                <p class="temperature">23°C</p>
+                <p class="lowest-temperature">14°C</p>
+            </li>
+        </ul>
+    </main>
 </body>
 </html>

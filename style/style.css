@@ -184,8 +184,21 @@ body {
     text-align: right;
 }
 
+.info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.category {
+    color: gray;
+    font-size: 20px;
+    margin-top: 15px;
+    font-weight: 500;
+}
+
 .vote-count {
-    text-align: right;
     color: gray;
     font-size: 20px;
     margin-top: 15px;

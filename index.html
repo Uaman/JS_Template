@@ -3,11 +3,137 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple HTML Page</title>
+    <title>Online Book Library</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./style/style.css">
     <script src="./src/main.js" defer></script>
 </head>
 <body>
+    <div class="container">
+        <header class="header mobile-or-normal-display">
+            <h1 class="header-title mobile-display">Online Library</h1>
+            <h1 class="header-title normal-display">ONLINE LIBRARY</h1>
+            <div class="header-actions">
+                <button class="filter-button">Filter</button>
+                <button class="sort-button">Sort</button>
+            </div>
+        </header>
+
+        <header class="header desktop-display">
+            <h1 class="header-title">Online Book Library</h1>
+            <button class="sign-in-button">Sign In</button>
+        </header>
+
+    
+        <main class="main-layout">
+            <aside class="filter-panel desktop-display">
+                <h2>Filter</h2>
+                <section class="filter-group">
+                    <h3>Genre</h3>
+                    <label><input class="checkbox" type="checkbox" name="genre" value="novel"> Novel</label>
+                    <label><input class="checkbox" type="checkbox" name="genre" value="non-fiction"> Non-fiction</label>
+                </section>
+                <section class="filter-group">
+                    <h3>Author</h3>
+                    <input class="author-field" type="text" name="author" placeholder="Enter author">
+                </section>
+                <section class="filter-group">
+                    <h3>Year</h3>
+                    <label><input class="checkbox" type="checkbox" name="year" value="1900"> 1900</label>
+                    <label><input class="checkbox" type="checkbox" name="year" value="2024"> 2024</label>
+                </section>
+                <section class="filter-group">
+                    <h3>Language</h3>
+                    <label><input class="checkbox" type="checkbox" name="language" value="english"> English</label>
+                    <label><input class="checkbox" type="checkbox" name="language" value="ukrainian"> Українська</label>
+                </section>
+            </aside>
+            <section class="featured-books">
+                <h2 class="featured-heading mobile-display">Featured Books</h2>
+                <h2 class="featured-heading normal-display">Featured</h2>
+                <div class="featured-header desktop-display">
+                    <h2 class="featured-heading">Featured</h2>
+
+                    <select class="dropdown" name="sort-options" id="sort-options">
+                        <option value="default">Sort by:</option>
+                        <option value="date">Date</option>
+                        <option value="genre">Genre</option>
+                    </select>
+                </div>
+                
+                <div class="books">
+                    <div class="book-card">
+                            <img class="cover" src="\images\gatsby.png" alt="The Great Gatsby">
+                        <span class="book-info">
+                            <h3 class="title">The Great Gatsby</h3>
+                            <p class="author">F. Scott Fitzgerald</p>
+                        </span>
+                    </div>
+                    <div class="book-card">
+                            <img class="cover" src="\images\to-kill-a-mockingbird.png" alt="To Kill a Mockingbird">
+                        
+                        <span class="book-info">
+                            <h3 class="title">To Kill a Mockingbird</h3>
+                            <p class="author">Harper Lee</p>
+                        </span>
+
+                    </div>
+                    <div class="book-card">
+                        <img class="cover" src="\images\1984.png" alt="1984">
+                        <span class="book-info">
+                            <h3 class="title">1984</h3>
+                            <p class="author">George Orwell</p>
+                        </span>
+                        
+                    </div>
+                    <div class="book-card">
+                        <img class="cover" src="\images\moby-dick.png" alt="Moby Dick">
+                        <span class="book-info">
+                            <h3 class="title">Moby Dick</h3>
+                            <p class="author">Herman Melville</p>
+                        </span>
+                    </div>
+                    <div class="book-card">
+                        <img class="cover" src="\images\catcher.png" alt="The Catcher in the Rye">
+                        <span class="book-info">
+                            <h3 class="title">The Catcher in the Rye</h3>
+                            <p class="author">J.D. Salinger</p>     
+                        </span>
+                    </div>
+                    <div class="book-card">
+                        <img class="cover" src="\images\pride-and-prejudice.png" alt="Pride and Prejudice">
+                        <span class="book-info">
+                            <h3 class="title">Pride and Prejudice</h3>
+                            <p class="author">Jane Austen</p>
+                        </span>
+                    </div>
+                    <div class="book-card">
+                        <img class="cover" src="\images\sapiens.png" alt="Sapiens">
+                        <span class="book-info">
+                            <h3 class="title">Sapiens</h3>
+                            <p class="author">Yuval Noah Harari</p>
+                        </span>
+                    </div>
+                    <div class="book-card">
+                        <img class="cover" src="\images\hobbit.png" alt="The Hobbit">
+                        <span class="book-info">
+                            <h3 class="title">The Hobbit</h3>
+                            <p class="author">J.R.R. Tolkien</p>
+                        </span>
+                    </div>
+                    <div class="book-card">
+                        <img class="cover" src="\images\fahrenheit.png" alt="Fahrenheit 451">
+                        <span class="book-info">
+                            <h3 class="title">Fahrenheit 451</h3>
+                            <p class="author">Ray Bradbury</p>
+                        </span>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>    
 
 </body>
 </html>

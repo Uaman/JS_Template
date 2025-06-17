@@ -1,0 +1,202 @@
+[
+  {
+    "id": "impreza",
+    "name": "Імпреза",
+    "type": "М'ясна піца",
+    "description": "Балик, салямі, курка, сир моцарелла, сир рокфор, ананаси, томатна паста, петрушка",
+    "image": "images/pizza_7.jpg",
+    "badges": ["Нова"],
+    "prices": [
+      {
+        "size": 30,
+        "weight": 370,
+        "price": 99
+      },
+      {
+        "size": 40,
+        "weight": 660,
+        "price": 169
+      }
+    ]
+  },
+{
+    "id": "сheesepear",
+    "name": "Груша дорблю",
+    "type": "Вега",
+    "description": "Вершкова основа, сир моцарелла, дорблю, груша, трюфельний мед",
+    "image": "images/gr.png",
+    "badges": ["Нова"],
+    "prices": [
+      {
+        "size": 30,
+        "weight": 290,
+        "price": 175
+      },
+      {
+        "size": 40,
+        "weight": 710,
+        "price": 299
+      }
+    ]
+  },
+  {
+    "id": "bbq",
+    "name": "BBQ",
+    "type": "М'ясна піца",
+    "description": "Мисливські ковбаски, ковбаски папероні, шинка, сир домашній, шампіньйони, петрушка, оливки",
+    "image": "images/pizza_2.jpg",
+    "badges": ["Популярна"],
+    "prices": [
+      {
+        "size": 30,
+        "weight": 460,
+        "price": 139
+      },
+      {
+        "size": 40,
+        "weight": 840,
+        "price": 199
+      }
+    ]
+  },
+  {
+    "id": "mix-polo",
+    "name": "Міксовий поло",
+    "type": "М'ясна піца",
+    "description": "Шинка, курка копчена, сир моцарелла, ананаси, кукурудза, петрушка, соус томатний",
+    "image": "images/pizza_1.jpg",
+    "badges": [],
+    "prices": [
+      {
+        "size": 30,
+        "weight": 430,
+        "price": 115
+      },
+      {
+        "size": 40,
+        "weight": 780,
+        "price": 179
+      }
+    ]
+  },
+  {
+    "id": "rosso-gusto",
+    "name": "Россо Густо",
+    "type": "Вега",
+    "description": "Моцарелла, пармезан, дор блю, чеддер, вершковий соус",
+    "image": "images/pizza_4.jpg",
+    "badges": ["Нова"],
+    "prices": [
+      {
+        "size": 30,
+        "weight": 400,
+        "price": 189
+      },
+      {
+        "size": 40,
+        "weight": 700,
+        "price": 250
+      }
+    ]
+  },
+  {
+    "id": "diablo",
+    "name": "Діабло",
+    "type": "М'ясна піца",
+    "description": "Гостра салямі, перець халапеньо, цибуля, сир моцарелла, томатний соус",
+    "image": "images/pizza_5.jpg",
+    "badges": [],
+    "prices": [
+      {
+        "size": 30,
+        "weight": 410,
+        "price": 145
+      },
+      {
+        "size": 40,
+        "weight": 760,
+        "price": 210
+      }
+    ]
+  },
+  {
+    "id": "margarita",
+    "name": "Маргарита",
+    "type": "Вега",
+    "description": "Сир моцарелла, помідори, базилік, томатний соус",
+    "image": "images/pizza_3.jpg",
+    "badges": ["Популярна"],
+    "prices": [
+      {
+        "size": 30,
+        "weight": 350,
+        "price": 85
+      },
+      {
+        "size": 40,
+        "weight": 620,
+        "price": 150
+      }
+    ]
+  },
+  {
+    "id": "hawaiian",
+    "name": "Гавайська",
+    "type": "Піца з ананасами",
+    "description": "Шинка, ананаси, сир моцарелла, томатний соус",
+    "image": "images/pizza_9.jpg",
+    "badges": [],
+    "prices": [
+      {
+        "size": 30,
+        "weight": 380,
+        "price": 105
+      },
+      {
+        "size": 40,
+        "weight": 690,
+        "price": 175
+      }
+    ]
+  },
+  {
+    "id": "vegetable",
+    "name": "Овочева",
+    "type": "З грибами",
+    "description": "Болгарський перець, помідори, оливки, гриби, цибуля, моцарелла",
+    "image": "images/pizza_6.jpg",
+    "badges": ["Нова"],
+    "prices": [
+      {
+        "size": 30,
+        "weight": 420,
+        "price": 95
+      },
+      {
+        "size": 40,
+        "weight": 770,
+        "price": 165
+      }
+    ]
+  },
+  {
+    "id": "sea-pizza",
+    "name": "Морська",
+    "type": "З морепродуктами",
+    "description": "Креветки, мідії, кальмари, моцарелла, вершковий соус, лимон",
+    "image": "images/pizza_8.jpg",
+    "badges": [],
+    "prices": [
+      {
+        "size": 30,
+        "weight": 450,
+        "price": 155
+      },
+      {
+        "size": 40,
+        "weight": 810,
+        "price": 230
+      }
+    ]
+  }
+]

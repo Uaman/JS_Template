@@ -1,13 +1,78 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uk">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple HTML Page</title>
-    <link rel="stylesheet" href="./style/style.css">
-    <script src="./src/main.js" defer></script>
+    <title>PIZZA KMA - Доставка піци</title>
+    <link rel="stylesheet" href="main.css">
 </head>
 <body>
-
+    <header class="main-header">
+        <div class="header-top">
+            <div class="container">
+                <div class="logo-wrapper">
+                    <div class="logo">PIZZA<br>KMA</div>
+                </div>
+                <div class="header-info-group">
+                    <div class="header-contact">
+                        <span class="phone-icon">&#9742;</span>
+                        <span class="phone-number">(044) 222 5 222</span>
+                        <span class="working-hours">24 години! 7 днів на тиждень</span>
+                    </div>
+                    <div class="delivery-info">Безкоштовна доставка піци</div>
+                </div>
+                <button class="exit-button" data-tooltip="Вийти з акаунта">Вийти</button>
+            </div>
+        </div>
+        <div class="header-bottom">
+            <div class="container">
+                <nav class="main-nav">
+                    <ul>
+                       <li>
+                            <a href="#pizza-section" class="active header-pizzas-link" data-tooltip="Переглянути всі піци">
+                            <img src="images/map-icon.png" class="nav-pizza-icon">Піца
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <main class="main-content container">
+        <div class="pizza-menu" id="pizza-section">
+            <div class="section-header-wrapper">
+                <h1 class="section-title">
+                    Усі піци
+                    <span class="pizza-count-badge">0</span>
+                </h1>
+                <nav class="pizza-categories category-buttons">
+                    </nav>
+            </div>
+            <div class="pizza-grid pizza-list">
+                </div>
+        </div>
+        <aside class="order-sidebar">
+            <div class="order-header">
+                <h2>Замовлення</h2>
+                <span class="order-count-badge">0</span>
+                <button class="clear-order-button" data-tooltip="Очистити замовлення">Очистити замовлення</button>
+            </div>
+            <div class="order-items">
+                <p style="text-align:center; color:#777;">Ваше замовлення порожнє</p>
+            </div>
+            <div class="order-footer">
+                <div class="total-sum">
+                    <span>Сума замовлення</span>
+                    <span class="total-price">0 <span class="currency">грн</span></span>
+                </div>
+                <button class="checkout-button" data-tooltip="Оформити замовлення">Замовити</button>
+            </div>
+        </aside>
+    </main>
+    <div class="promo-banner">
+        <p>ЦЬОГО ТИЖНЯ НА ВСЕ</p>
+        <p class="discount-value">-20%</p>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>

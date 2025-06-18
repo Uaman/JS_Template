@@ -1,0 +1,26 @@
+[
+  {
+    "title": "Завершити проект",
+    "date": "2024-05-01",
+    "priority": "medium",
+    "completed": false
+  },
+  {
+    "title": "Піти в зал",
+    "date": "2024-04-01",
+    "priority": "high",
+    "completed": false
+  },
+  {
+    "title": "Записатись до лікаря",
+    "date": "2024-04-01",
+    "priority": "medium",
+    "completed": false
+  },
+  {
+    "title": "Прочитати книгу",
+    "date": "2024-04-01",
+    "priority": "low",
+    "completed": true
+  }
+]

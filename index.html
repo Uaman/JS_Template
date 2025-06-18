@@ -2,12 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple HTML Page</title>
+    <title>Polls</title>
     <link rel="stylesheet" href="./style/style.css">
-    <script src="./src/main.js" defer></script>
 </head>
 <body>
+<div class="upper-panel">
 <div class="search-bar">
     <input type="text" placeholder="Search polls...">
     <select>
@@ -18,71 +17,34 @@
 </div>
 
 <button class="create-btn">Create Poll</button>
-
-<div class="poll-card">
-    <div class="poll-question">What is your favorite programming language?</div>
-    <div class="poll-option">
-        <span>JavaScript</span>
-        <div class="poll-bar-container">
-            <div class="poll-bar" style="width: 35%"></div>
-        </div>
-        <span>35%</span>
-    </div>
-    <div class="poll-option">
-        <span>Python</span>
-        <div class="poll-bar-container">
-            <div class="poll-bar" style="width: 35%"></div>
-        </div>
-        <span>35%</span>
-    </div>
-    <div class="poll-option">
-        <span>Java</span>
-        <div class="poll-bar-container">
-            <div class="poll-bar" style="width: 27%"></div>
-        </div>
-        <span>27%</span>
-    </div>
-    <div class="poll-option">
-        <span>C++</span>
-        <div class="poll-bar-container">
-            <div class="poll-bar" style="width: 3%"></div>
-        </div>
-        <span>3%</span>
-    </div>
-    <div class="poll-votes">150 votes</div>
 </div>
 
-<div class="poll-card">
-    <div class="poll-question">Which social media platform do you use the most?</div>
-    <div class="poll-option">
-        <span>Facebook</span>
-        <div class="poll-bar-container">
-            <div class="poll-bar" style="width: 35%"></div>
-        </div>
-        <span>35%</span>
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Poll Question</h2>
+        <p id="poll-question-text"></p>
+        <form id="vote-form"></form>
     </div>
-    <div class="poll-option">
-        <span>Twitter</span>
-        <div class="poll-bar-container">
-            <div class="poll-bar" style="width: 25%"></div>
-        </div>
-        <span>25%</span>
-    </div>
-    <div class="poll-option">
-        <span>Instagram</span>
-        <div class="poll-bar-container">
-            <div class="poll-bar" style="width: 30%"></div>
-        </div>
-        <span>30%</span>
-    </div>
-    <div class="poll-option">
-        <span>LinkedIn</span>
-        <div class="poll-bar-container">
-            <div class="poll-bar" style="width: 10%"></div>
-        </div>
-        <span>10%</span>
-    </div>
-    <div class="poll-votes">180 votes</div>
 </div>
+<div id="create-modal" class="modal">
+    <div class="modal-content">
+        <span class="close-create">&times;</span>
+        <h2>Create Poll</h2>
+        <label>Question</label>
+        <input type="text" id="poll-question" placeholder="Enter your question">
+        <label>Options</label>
+        <div id="options-container">
+            <input type="text" placeholder="Option 1">
+            <input type="text" placeholder="Option 2">
+            <input type="text" placeholder="Option 3">
+            <input type="text" placeholder="Option 4">
+        </div>
+        <a href="#" id="add-option" style="color:#2563eb; display:block; margin-top:10px;">Add option</a>
+        <button id="create-poll-btn">Create</button>
+    </div>
+</div>
+
+<script src="./src/main.js"></script>
 </body>
 </html>

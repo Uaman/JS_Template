@@ -3,11 +3,155 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple HTML Page</title>
+    <title>Poll</title>
     <link rel="stylesheet" href="./style/style.css">
     <script src="./src/main.js" defer></script>
 </head>
 <body>
 
+    <div class="main">
+    <button class="create">Create Poll</button>
+
+    <div class="filter">
+        <div class="searching">
+            <input class="search-input" type="text" placeholder="Search polls..."/>
+            <button class="search">Search</button>
+        </div>
+
+        <select name="category">
+            <option disabled selected>Category</option>
+            <option>Programming</option>
+            <option>Social media</option>
+        </select>
+
+    </div>
+
+    <div class="polls">
+    <div class="poll">
+        <h4>What is your favorite programming language?</h4>
+        <div class="poll-row">
+           <span class="name">JavaScript</span>
+           <div class="whole-line">
+                <div class="filled" style="width: 45%;"></div>
+           </div>
+           <span>45%</span> 
+        </div>
+
+        <div class="poll-row">
+           <span class="name">Python</span>
+           <div class="whole-line">
+                <div class="filled" style="width: 45%;"></div>
+           </div>
+           <span class="percent">45%</span> 
+        </div>
+
+        <div class="poll-row">
+           <span class="name">Java</span>
+           <div class="whole-line">
+                <div class="filled" style="width: 45%;"></div>
+           </div>
+           <span class="percent">45%</span> 
+        </div>
+
+        <div class="poll-row">
+           <span class="name">C++</span>
+           <div class="whole-line">
+                <div class="filled" style="width: 3%;"></div>
+           </div>
+           <span class="percent">3%</span> 
+        </div>
+
+        <span class="votes">150 votes</span>
+    </div>
+
+    <div class="poll">
+        <h4>Which social media platform do you use the most?</h4>
+        <div class="poll-row">
+           <span class="name">Facebook</span>
+           <div class="whole-line">
+                <div class="filled" style="width: 35%;"></div>
+           </div>
+           <span class="percent">35%</span> 
+        </div>
+
+        <div class="poll-row">
+           <span class="name">Twitter</span>
+           <div class="whole-line">
+                <div class="filled" style="width: 25%;"></div>
+           </div>
+           <span>25%</span> 
+        </div>
+
+        <div class="poll-row">
+           <span class="name">Instagram</span>
+           <div class="whole-line">
+                <div class="filled" style="width: 30%;"></div>
+           </div>
+           <span class="percent">30%</span> 
+        </div>
+
+        <div class="poll-row">
+           <span class="name">LinkedIn</span>
+           <div class="whole-line">
+                <div class="filled" style="width: 10%;"></div>
+           </div>
+           <span class="percent">10%</span> 
+        </div>
+
+        <span class="votes">180 votes</span>
+    </div>
+    </div>
+    </div>
+
+    <form class="create-poll">
+        <h3>Create Poll</h3>
+
+        <span class="span-c">Question</span>
+
+        <input class="input-c" type="text" placeholder="Enter your question"/>
+
+        <span class="span-c">Category</span>
+
+        <input class="input-c" type="text" placeholder="Category"/>
+
+        <span class="span-c">Options</span>
+
+        <div class="options">
+            <input class="input-c" type="text" placeholder="Option 1"/>
+            <input class="input-c" type="text" placeholder="Option 2"/>
+            <input class="input-c" type="text" placeholder="Option 3"/>
+            <input class="input-c" type="text" placeholder="Option 4"/>
+        </div>
+            <a>Add option</a>
+        <button class="create-f">Create</button>
+    </form>
+
+     <form class="poll-question">
+            <h3>Poll Question</h3>
+
+            <span>What is your favorite color?</span>
+
+            <label>
+            <input type="radio" />
+            Blue
+            </label>
+
+            <label>
+            <input type="radio" />
+            Green
+            </label>
+
+            <label>
+            <input type="radio" />
+            Red
+            </label>
+
+            <label>
+            <input type="radio" />
+            Yellow
+            </label>
+
+            <button class="vote">Vote</button>
+    </form>
 </body>
 </html>

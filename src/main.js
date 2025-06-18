@@ -55,6 +55,7 @@ function renderPolls(filterText = "", filterCategory = "") {
       optionDiv.appendChild(barContainer);
 
       const spanPercent = document.createElement("span");
+      spanPercent.className = "percentage";
       spanPercent.textContent = Math.round(widthPercent) + "%";
       optionDiv.appendChild(spanPercent);
 
@@ -75,6 +76,10 @@ function openVoteModal(pollId) {
   voteModal.style.display = "flex";
 
   const poll = polls.find(p => p.id === pollId);
+
+  document.getElementById("poll-question-text").textContent = poll.question;
+
+
   const form = voteModal.querySelector("form");
   form.innerHTML = "";
 
@@ -136,6 +141,7 @@ document.getElementById("add-option").addEventListener("click", (e) => {
 });
 
 document.getElementById("create-poll-btn").addEventListener("click", () => {
+  const category = document.getElementById("poll-category").value;
   const question = document.getElementById("poll-question").value.trim();
   const inputs = document.querySelectorAll("#options-container input");
   const options = Array.from(inputs)
@@ -147,11 +153,10 @@ document.getElementById("create-poll-btn").addEventListener("click", () => {
     alert("Enter a question and at least 2 options.");
     return;
   }
-
   polls.push({
     id: Date.now(),
     question,
-    category: "custom",
+    category,
     options
   });
 

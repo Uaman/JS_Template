@@ -12,7 +12,6 @@ flex-direction: row;
 gap: 10px;
 margin-bottom: 20px;
 flex: 2;
-
 }
 .search-bar input, .search-bar select {
 padding: 10px;
@@ -22,10 +21,8 @@ border-radius: 4px;
 margin-right: 10px;
 flex: 1;
 }
-
 .upper-panel{
  display: flex;
-
 }
 .poll-card {
 background-color: #fff;
@@ -34,7 +31,6 @@ border-radius: 8px;
 box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 margin-bottom: 20px;
 cursor: pointer;
-
 }
 .option-name{
  justify-content: flex-start;
@@ -53,26 +49,50 @@ display: flex;
 
 }
 .poll-option {
-display: flex;
-align-items: center;
-margin: 8px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
 }
+
+.poll-option span:first-child {
+  width: 150px; /* фіксована ширина для назв */
+  flex-shrink: 0;
+}
+
 .poll-bar-container {
-flex: 3;
-background: #e0e0e0;
-height: 8px;
-border-radius: 4px;
-margin: 0 10px;
-overflow: hidden;
+  flex: 1;
+  height: 20px;
+  background: #eee;
+  border-radius: 5px;
+  overflow: hidden;
 }
+
 .poll-bar {
-height: 100%;
-background: #3b82f6;
+  height: 100%;
+  background: #4caf50;
+  transition: width 0.3s;
 }
+
+.percentage {
+  width: 40px;
+  text-align: right;
+}
+
+.poll-bar-container {
+  width: 100%;
+  background: #e0e0e0;
+  height: 8px;
+  border-radius: 4px;
+  margin: auto 10px;
+  overflow: hidden;
+}
+
 .poll-votes {
 text-align: right;
 font-size: 12px;
 color: gray;
+
 }
 .create-btn {
 padding: 10px 20px;

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <!-- Встановлення кодування для коректного відображення української мови -->
+    <meta charset="UTF-8">
+
+    <!-- Налаштування для адаптивного дизайну на мобільних пристроях -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Заголовок сторінки, який відображається у вкладці браузера -->
+    <title>To-Do List</title>
+
+    <!-- Підключення CSS файлу для стилізації -->
+    <link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+<body>
+<!-- Головний контейнер всього додатку -->
+<div class="container">
+    <!-- Заголовок додатку -->
+    <h1>To-Do List</h1>
+
+    <!-- СЕКЦІЯ ДОДАВАННЯ НОВОГО ЗАВДАННЯ -->
+    <!-- Верхня панель для швидкого додавання завдань -->
+    <div class="add-task-section">
+        <!-- Поле вводу для швидкого додавання завдання -->
+        <input type="text"
+               class="task-input"
+               placeholder="Add a new task"
+               id="quick-task-input">
+
+        <!-- Кнопка відкриття детального popup для додавання завдання -->
+        <!-- onclick="openPopup()" - викликає JavaScript функцію для відкриття модального вікна -->
+        <button class="add-btn" onclick="openPopup()">Add</button>
+    </div>
+
+    <!-- ПАНЕЛЬ УПРАВЛІННЯ (сортування та фільтрування) -->
+    <div class="controls">
+        <!-- Група управління сортуванням -->
+        <div class="control-group">
+            <!-- Dropdown для вибору критерію сортування -->
+            <select id="sort-select" class="select">
+                <option value="date">Sort by: Date</option>       <!-- Сортування за датою -->
+                <option value="priority">Priority</option>        <!-- За пріоритетом -->
+                <option value="name">Name</option>                <!-- За назвою -->
+            </select>
+        </div>
+
+        <!-- Група управління фільтруванням -->
+        <div class="control-group">
+            <!-- Dropdown для вибору фільтра -->
+            <select id="filter-select" class="select">
+                <option value="all">Filter: All</option>          <!-- Показати всі -->
+                <option value="overdue">Overdue</option>          <!-- Прострочені -->
+                <option value="today">Today</option>              <!-- На сьогодні -->
+                <option value="upcoming">Upcoming</option>        <!-- Майбутні -->
+            </select>
+        </div>
+    </div>
+
+    <!-- КОНТЕЙНЕР ДЛЯ СПИСКУ ЗАВДАНЬ -->
+    <div class="tasks-container">
+
+        <!-- ПРИКЛАД ЗАВДАННЯ 1: Активне завдання середнього пріоритету -->
+        <div class="task-item">
+            <!-- Чекбокс для позначення завдання як виконаного -->
+            <div class="task-checkbox"></div>
+
+            <!-- Основний вміст завдання -->
+            <div class="task-content">
+                <!-- Назва/заголовок завдання -->
+                <div class="task-title">Complete the project</div>
+                <!-- Індикатор пріоритету з відповідним CSS класом -->
+                <div class="task-priority priority-medium">Medium</div>
+            </div>
+
+            <!-- Метадані та дії над завданням -->
+            <div class="task-meta">
+                <!-- Дата виконання завдання -->
+                <div class="task-date">May 1, 2024</div>
+                <!-- Кнопки дій -->
+                <div class="task-actions">
+                    <!-- Кнопка редагування - відкриває popup в режимі редагування -->
+                    <button class="action-btn edit-btn" onclick="openPopup('edit')"></button>
+                    <!-- Кнопка видалення завдання -->
+                    <button class="action-btn delete-btn"></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ПРИКЛАД ЗАВДАННЯ 2: Виконане завдання -->
+        <div class="task-item">
+            <!-- Чекбокс у стані "виконано" -->
+            <div class="task-checkbox completed"></div>
+
+            <div class="task-content">
+                <!-- Заголовок з класом "completed" для стилізації -->
+                <div class="task-title completed">Read the book</div>
+                <!-- Низький пріоритет -->
+                <div class="task-priority priority-low">Low</div>
+            </div>
+
+            <div class="task-meta">
+                <div class="task-date">April 25, 2024</div>
+                <div class="task-actions">
+                    <button class="action-btn edit-btn" onclick="openPopup('edit')"></button>
+                    <button class="action-btn delete-btn"></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ПРИКЛАД ЗАВДАННЯ 3: Високий пріоритет -->
+        <div class="task-item">
+            <div class="task-checkbox"></div>
+
+            <div class="task-content">
+                <div class="task-title">Go to the gym</div>
+                <!-- Високий пріоритет - червоний колір -->
+                <div class="task-priority priority-high">High</div>
+            </div>
+
+            <div class="task-meta">
+                <div class="task-date">April 23, 2024</div>
+                <div class="task-actions">
+                    <button class="action-btn edit-btn" onclick="openPopup('edit')"></button>
+                    <button class="action-btn delete-btn"></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ПРИКЛАД ЗАВДАННЯ 4: Середній пріоритет -->
+        <div class="task-item">
+            <div class="task-checkbox"></div>
+
+            <div class="task-content">
+                <div class="task-title">Make a doctor's appointment</div>
+                <div class="task-priority priority-medium">Medium</div>
+            </div>
+
+            <div class="task-meta">
+                <div class="task-date">April 20, 2024</div>
+                <div class="task-actions">
+                    <button class="action-btn edit-btn" onclick="openPopup('edit')"></button>
+                    <button class="action-btn delete-btn"></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- МОДАЛЬНЕ ВІКНО (POPUP) ДЛЯ ДОДАВАННЯ/РЕДАГУВАННЯ ЗАВДАНЬ -->
+<!-- Overlay - затемнений фон за popup -->
+<div class="popup-overlay" id="popup">
+    <!-- Саме модальне вікно -->
+    <div class="popup">
+
+        <!-- Заголовок popup з кнопкою закриття -->
+        <div class="popup-header">
+            <!-- Заголовок форми -->
+            <h2 class="popup-title">Додати завдання</h2>
+            <!-- Кнопка закриття (хрестик) -->
+            <button class="close-btn" onclick="closePopup()">×</button>
+        </div>
+
+        <!-- ФОРМА ДОДАВАННЯ/РЕДАГУВАННЯ ЗАВДАННЯ -->
+        <form>
+            <!-- ПОЛЕ НАЗВИ ЗАВДАННЯ -->
+            <div class="form-group">
+                <label class="form-label">Назва завдання</label>
+                <!-- Текстове поле для вводу назви -->
+                <input type="text"
+                       class="form-input"
+                       placeholder="Наприклад: Завдання 1"
+                       id="task-name-input">
+            </div>
+
+            <!-- ПОЛЕ ДАТИ ВИКОНАННЯ -->
+            <div class="form-group">
+                <label class="form-label">Дата виконання</label>
+                <!-- Поле дати з трюком: text по замовчуванню, date при фокусі -->
+                <input type="text"
+                       class="form-input"
+                       placeholder="Оберіть дату"
+                       id="task-date-input"
+                       onfocus="this.type='date'"
+                       onblur="if(!this.value) this.type='text'">
+            </div>
+
+            <!-- ВИБІР ПРІОРИТЕТУ -->
+            <div class="form-group">
+                <label class="form-label">Пріоритет</label>
+
+                <!-- Група radio кнопок для вибору пріоритету -->
+                <div class="priority-options">
+                    <!-- Високий пріоритет -->
+                    <div class="priority-option">
+                        <div class="priority-radio" id="priority-high"></div>
+                        <span class="priority-label">Високий</span>
+                    </div>
+
+                    <!-- Середній пріоритет (обраний за замовчуванням) -->
+                    <div class="priority-option">
+                        <div class="priority-radio selected" id="priority-medium"></div>
+                        <span class="priority-label">Середній</span>
+                    </div>
+
+                    <!-- Низький пріоритет -->
+                    <div class="priority-option">
+                        <div class="priority-radio" id="priority-low"></div>
+                        <span class="priority-label">Низький</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- КНОПКИ ДІЙ POPUP -->
+            <div class="popup-actions">
+                <!-- Кнопка скасування - закриває popup без збереження -->
+                <button type="button" class="btn btn-secondary" onclick="closePopup()">Скасувати</button>
+
+                <!-- Кнопка збереження - викликає функцію saveTask() -->
+                <button type="button" class="btn btn-primary" onclick="saveTask()">Додати завдання</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="main.js"></script>
+</body>
+</html>

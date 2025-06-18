@@ -1,28 +1,12 @@
+let polls = [];
 
-let polls = [
-  {
-    id: 1,
-    question: "What is your favorite programming language?",
-    category: "tech",
-    options: [
-      { text: "JavaScript", votes: 45 },
-      { text: "Python", votes: 45 },
-      { text: "Java", votes: 45 },
-      { text: "C++", votes: 3 },
-    ],
-  },
-  {
-    id: 2,
-    question: "Which social media platform do you use the most?",
-    category: "social",
-    options: [
-      { text: "Facebook", votes: 35 },
-      { text: "Twitter", votes: 25 },
-      { text: "Instagram", votes: 30 },
-      { text: "LinkedIn", votes: 10 },
-    ],
-  },
-];
+fetch("./src/polls.json")
+  .then(response => response.json())
+  .then(data => {
+    polls = data;
+    renderPolls();
+  })
+  .catch(error => console.error("Error loading JSON:", error));
 
 function totalVotes(poll) {
   return poll.options.reduce((acc, option) => acc + option.votes, 0);

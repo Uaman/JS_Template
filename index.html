@@ -1,13 +1,184 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple HTML Page</title>
-    <link rel="stylesheet" href="./style/style.css">
-    <script src="./src/main.js" defer></script>
+    <title>weather app</title>
+    <link rel="stylesheet" href="/Users/macbookpro/Desktop/UKMA/Веб/WeatherAppKrasno/WeatherAppKrasno/style/style.css">
+    <script src="/Users/macbookpro/Desktop/UKMA/Веб/WeatherAppKrasno/WeatherAppKrasno/src/main.js"></script>
 </head>
 <body>
+    <div class="weather-container">
+        <div class="search-bar">
+            <input type="text" placeholder="Enter city name" />
+            <button>Search</button>
+        </div>
 
+        <div class="carousel">
+            <div class="day-card">
+                <div class="main-info">
+                    <div class="main-text">
+                        <h2>Kyiv</h2>
+                        <h3>Ukraine</h3>
+                        <div class="temp">23°C</div>
+                        <div>Clear</div>
+                    </div>
+                </div>
+                <div class="main-details">
+                    <div class="icon"><img src="sun.png" alt="sunny image"></div>
+                    <div class="main-details text">
+                        Wind: 13 km/h
+                    </div>
+                    <div class="main-details text">
+                        Humidity: 56%
+                    </div>
+                </div>
+            </div>
+            <div class="day-card">
+                <div class="main-info">
+                    <div class="main-text">
+                        <h2>Kyiv</h2>
+                        <h3>Ukraine</h3>
+                        <div class="temp">23°C</div>
+                        <div>Clear</div>
+                    </div>
+                </div>
+                <div class="main-details">
+                    <div class="icon"><img src="sun.png" alt="sunny image"></div>
+                    <div class="main-details text">
+                        Wind: 13 km/h
+                    </div>
+                    <div class="main-details text">
+                        Humidity: 56%
+                    </div>
+                </div>
+            </div>
+            <div class="day-card">
+                <div class="main-info">
+                    <div class="main-text">
+                        <h2>Kyiv</h2>
+                        <h3>Ukraine</h3>
+                        <div class="temp">22°C</div>
+                        <div>Rainy</div>
+                    </div>
+                </div>
+                <div class="main-details">
+                    <div class="icon"><img src="rain.png" alt="rainy image"></div>
+                    <div class="main-details text">Wind: 13 km/h</div>
+                    <div class="main-details text">Humidity: 56%</div>
+                </div>
+            </div>
+            <div class="day-card">
+                <div class="main-info">
+                <div class="main-text">
+                    <h2>Kyiv</h2>
+                    <h3>Ukraine</h3>
+                    <div class="temp">22°C</div>
+                    <div>Sunny</div>
+                </div>
+                </div>
+                <div class="main-details">
+                <div class="icon"><img src="sun.png" alt="sunny image"></div>
+                <div class="main-details text">Wind: 10 km/h</div>
+                <div class="main-details text">Humidity: 52%</div>
+                </div>
+            </div>
+
+            <div class="day-card">
+                <div class="main-info">
+                <div class="main-text">
+                    <h2>Kyiv</h2>
+                    <h3>Ukraine</h3>
+                    <div class="temp">22°C</div>
+                    <div>Sunny</div>
+                </div>
+                </div>
+                <div class="main-details">
+                <div class="icon"><img src="sun.png" alt="sunny image"></div>
+                <div class="main-details text">Wind: 12 km/h</div>
+                <div class="main-details text">Humidity: 50%</div>
+                </div>
+            </div>
+
+            <div class="day-card">
+                <div class="main-info">
+                <div class="main-text">
+                    <h2>Kyiv</h2>
+                    <h3>Ukraine</h3>
+                    <div class="temp">22°C</div>
+                    <div>Rainy</div>
+                </div>
+                </div>
+                <div class="main-details">
+                <div class="icon"><img src="rain.png" alt="rainy image"></div>
+                <div class="main-details text">Wind: 9 km/h</div>
+                <div class="main-details text">Humidity: 61%</div>
+                </div>
+            </div>
+
+            <div class="day-card">
+                <div class="main-info">
+                <div class="main-text">
+                    <h2>Kyiv</h2>
+                    <h3>Ukraine</h3>
+                    <div class="temp">22°C</div>
+                    <div>Sunny</div>
+                </div>
+                </div>
+                    <div class="main-details">
+                    <div class="icon"><img src="sun.png" alt="sunny image"></div>
+                    <div class="main-details text">Wind: 11 km/h</div>
+                    <div class="main-details text">Humidity: 58%</div>
+                </div>
+            </div>  
+            
+        </div>
+
+        <div class="marker-bar">
+            <div class="marker-card">
+                <div class="day">Today</div>
+                <img src="sun.png" alt="sunny image">
+                <div class="temp high">22°C</div>
+                <div class="temp low">13°C</div>
+            </div>
+            <div class="marker-card">
+                <div class="day">Tue</div>
+                <img src="sun.png" alt="sunny image">
+                <div class="temp high">22°C</div>
+                <div class="temp low">13°C</div>
+            </div>
+            <div class="marker-card">
+                <div class="day">Wed</div>
+                <img src="rain.png" alt="sunny image">
+                <div class="temp high">22°C</div>
+                <div class="temp low">13°C</div>
+            </div>
+            <div class="marker-card">
+                <div class="day">Thu</div>
+                <img src="sun.png" alt="sunny image">
+                <div class="temp high">22°C</div>
+                <div class="temp low">13°C</div>
+            </div>
+            <div class="marker-card">
+                <div class="day">Fr</div>
+                <img src="sun.png" alt="sunny image">
+                <div class="temp high">22°C</div>
+                <div class="temp low">13°C</div>
+            </div>
+            <div class="marker-card">
+                <div class="day">Sat</div>
+                <img src="rain.png" alt="sunny image">
+                <div class="temp high">22°C</div>
+                <div class="temp low">13°C</div>
+            </div>
+            <div class="marker-card">
+                <div class="day">Sun</div>
+                <img src="sun.png" alt="sunny image">
+                <div class="temp high">22°C</div>
+                <div class="temp low">13°C</div>
+            </div>
+        </div>
+    </div>
+    
 </body>
 </html>

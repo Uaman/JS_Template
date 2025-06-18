@@ -1,13 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple HTML Page</title>
-    <link rel="stylesheet" href="./style/style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To-Do List</title>
+    <link rel="stylesheet" href="./style/style.css" />
     <script src="./src/main.js" defer></script>
-</head>
-<body>
+  </head>
 
-</body>
+  <body>
+    <div class="main">
+      <div class="header">
+        <h1 class="header__label">To-Do List</h1>
+      </div>
+
+      <div class="adder">
+        <input type="text" class="adder__input" placeholder="Add a new task" />
+        <button class="adder__button">Add</button>
+      </div>
+
+      <div class="sorter">
+        <div class="sort">
+          <label class="sort__label" for="sort__select">Sort by:</label>
+          <select class="sort__select">
+            <option value="date">Date</option>
+            <option value="filter">Filter</option>
+          </select>
+        </div>
+
+        <div class="filter">
+          <label class="filter__label" for="filter__select">Filter:</label>
+          <select class="filter__select">
+            <option value="all">All</option>
+            <option value="completed">Completed</option>
+            <option value="active">Active</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="list">
+        <div class="task">
+          <div class="task__left">
+            <input class="task__checkbox" type="checkbox" />
+            <div class="task__info">
+              <span class="task__label">Sample Task</span>
+              <span class="task__priority task__priority--medium">Medium</span>
+            </div>
+          </div>
+          <div class="task__right">
+            <label class="task__date">2023-10-01</label>
+            <button class="task__delete"><img src="" /></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <div class=""></div>
 </html>

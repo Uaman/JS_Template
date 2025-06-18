@@ -1,21 +1,70 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
 body {
-    font-family: "Segoe UI";
+    font-family: sans-serif;
+    display: flex;
     justify-content: center;
-    align-items: center;   
+    align-items: center;
     background-color: #e3e3e3;
+    padding: 20px;
 }
 
 .weather-card {
     width: 100%;
-    max-width: 400px; /* Set a max-width for larger screens */
+    max-width: 500px; 
     background: #ffffff;
     border-radius: 20px;
     padding: 25px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
 }
 
 .search-bar {
     display: flex;
-    gap: 10px; /* Space between input and button */
+    gap: 10px;
     margin-bottom: 25px;
+}
+
+.search-bar input 
+{
+    flex-grow: 1;
+    border-radius: 10px;
+    font-size: 16px;
+    padding: 10px;
+    border: 1px solid #dcdcdc;
+}
+
+.search-bar button {
+    background-color: #007bff;
+    color: white;
+    border-radius: 10px;
+    font-size: 16px;
+    padding: 10px;
+    border: 1px solid #1b2a74;
+    cursor: pointer;
+}
+
+.current-weather {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 10px;
+}
+
+.weather-info .city { font-size: 28px; font-weight: 600; }
+.weather-info .country { font-size: 16px; color: #555; }
+.weather-info .temperature { font-size: 62px; font-weight: 500; margin-top: 15px; }
+.weather-info .description { font-size: 20px; color: #555; margin-top: 100px; }
+
+.weather-icon .icon-main { font-size: 75px; margin-right: 25px; }
+
+.weather-details {
+    /* This is now a separate block, so we just add margin */
+    margin-top: 30px; /* Space above */
+    margin-bottom: 30px; /* Space below */
+    color: #333; /* Darker text for readability */
+    font-size: 16px;
 }

@@ -1,13 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple HTML Page</title>
+    <title>Опитування</title>
     <link rel="stylesheet" href="./style/style.css">
     <script src="./src/main.js" defer></script>
 </head>
-<body>
 
+<body>
+    <div class="content-container">
+        <!-- CREATE POLL AND FIND POLL -->
+        <div class="create-poll-container">
+            <button aria-label="Створити опитування" id="open-poll-creator">Створити опитування</button>
+            <div class="category-container">
+                <input type="text" placeholder="Пошук опитувань">
+                <select>
+                    <option>Категорія</option>
+                    <option>Тварини</option>
+                    <option>Програмування</option>
+                    <option>Література</option>
+                </select>
+            </div>
+        </div>
+        
+        <!-- POLL LIST -->
+        <div class="poll-list">
+            <ul>
+                <li class="poll-container stats-view" data-original-content="">
+                    <header class="poll-title">Яка ваша улюблена мова програмування?</header>
+                    <section class="options-results">
+                        <ul class="options-results-list">
+                            <li class="options-results-row">
+                                <label>Python</label>
+                                <div class="slidecontainer">
+                                    <input type="range" min="1" max="100" value="30" class="slider" disabled>
+                                </div>
+                                <span class="percent">30%</span>
+                            </li>
+                            <li class="options-results-row">
+                                <label>Java</label>
+                                <div class="slidecontainer">
+                                    <input type="range" min="1" max="100" value="50" class="slider" disabled>
+                                </div>
+                                <span class="percent">50%</span>
+                            </li>
+                            <li class="options-results-row">
+                                <label>Javascript</label>
+                                <div class="slidecontainer">
+                                    <input type="range" min="1" max="100" value="15" class="slider" disabled>
+                                </div>
+                                <span class="percent">15%</span>
+                            </li>
+                            <li class="options-results-row">
+                                <label>Swift</label>
+                                <div class="slidecontainer">
+                                    <input type="range" min="1" max="100" value="5" class="slider" disabled>
+                                </div>
+                                <span class="percent">5%</span>
+                            </li>
+                        </ul>
+                    </section>
+                    <span class="votes-quantity">150 votes</span>
+                </li>
+                
+                <li class="poll-container stats-view" data-original-content="">
+                    <header class="poll-title">Якою соціальною мережею ви користуєтесь частіше над усе?</header>
+                    <section class="options-results">
+                        <ul class="options-results-list">
+                            <li class="options-results-row">
+                                <label>Instagram</label>
+                                <div class="slidecontainer">
+                                    <input type="range" min="1" max="100" value="30" class="slider" disabled>
+                                </div>
+                                <span class="percent">30%</span>
+                            </li>
+                            <li class="options-results-row">
+                                <label>Tiktok</label>
+                                <div class="slidecontainer">
+                                    <input type="range" min="1" max="100" value="50" class="slider" disabled>
+                                </div>
+                                <span class="percent">50%</span>
+                            </li>
+                            <li class="options-results-row">
+                                <label>Facebook</label>
+                                <div class="slidecontainer">
+                                    <input type="range" min="1" max="100" value="15" class="slider" disabled>
+                                </div>
+                                <span class="percent">15%</span>
+                            </li>
+                            <li class="options-results-row">
+                                <label>LinkedIn</label>
+                                <div class="slidecontainer">
+                                    <input type="range" min="1" max="100" value="5" class="slider" disabled>
+                                </div>
+                                <span class="percent">5%</span>
+                            </li>
+                        </ul>
+                    </section>
+                    <span class="votes-quantity">180 votes</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- HIDDEN POLL CREATOR -->
+    <div class="poll-creator">
+        <div class="close-btn"></div>
+        <div class="poll-creator-container">
+            <div class="question-input-container">
+                <label for="question" class="text">Питання</label>
+                <input id="question" placeholder="Введіть ваше питання">
+            </div>
+            <div class="category-selector-container">
+                <label for="category" class="text">Оберіть категорію</label>
+                <select>
+                    <option>Категорія</option>
+                    <option>Тварини</option>
+                    <option>Програмування</option>
+                    <option>Література</option>
+                </select>
+            </div>
+        </div>
+        <div class="options-input-container">
+            <div class="enter-options">
+                <label for="option" class="text">Варіанти відповіді</label>
+                <ul>
+                    <li class="option">
+                        <input id="option" placeholder="Варіант 1">
+                    </li>
+                    <li class="option">
+                        <input id="option" placeholder="Варіант 2">
+                    </li>
+                    <li class="option">
+                        <input id="option" placeholder="Варіант 3">
+                    </li>
+                    <li class="option">
+                        <input id="option" placeholder="Варіант 4">
+                    </li>
+                </ul>
+                <button id="add-new-option">Додати варіант</button>
+            </div>
+        </div>
+        <button id="create-new-poll">Створити</button>
+    </div>
 </body>
+
 </html>

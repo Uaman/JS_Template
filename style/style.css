@@ -1,0 +1,189 @@
+:root {
+    font-size: 16px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.carousel-scroll-markers::scroll-marker-group {
+    position: fixed;
+    position-anchor: --carousel;
+    position-area: block-end;
+    margin: 10px;
+    display: grid;
+    grid-auto-columns: 20px;
+    grid-auto-flow: column;
+    gap: 20px;
+}
+
+body {
+    font-family: sans-serif;
+    background: #f2f2f2;
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+}
+
+.search-bar {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.search-bar input {
+    flex: 1;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.search-bar button {
+    background: #3b82f6;
+    color: white;
+    padding: 0 1rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.weather-container {
+    background: white;
+    border-radius: 16px;
+    padding: 1.5rem;
+    max-width: 620px;
+    width: 100%;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.carousel {
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    display: flex;
+    scroll-behavior: smooth;
+    gap: 1rem;
+    anchor-name: --carousel;
+}
+
+.carousel::-webkit-scrollbar {
+    display: none;
+}
+
+.day-card {
+    flex: 0 0 100%;
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+
+    background: #fff;
+    border-radius: 16px;
+    padding: 1rem;
+    height: 300px;
+    margin: 1rem;
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items:flex-start;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+img {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto;
+}
+
+.main-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.3rem;
+}
+
+.main-text {
+    text-align: left;
+}
+
+.main-text h2 {
+    font-size: 2rem;
+}
+
+.main-text h3 {
+    font-weight: lighter;
+    color: #555;
+    margin-bottom: 1.6rem;
+}
+
+.main-text .temp {
+    font-size: 4rem;
+    font-weight: normal;
+}
+
+.main-details .text {
+    font-size: 1.3rem;
+    margin-top: 1rem;
+    color: #555;
+    text-wrap:none;
+}
+
+.marker-bar {
+    display: flex;
+    overflow-x: auto;
+    gap: 1rem;
+
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    flex-direction: row;
+}
+
+.marker-bar::-webkit-scrollbar {
+    display: none;
+}
+
+.marker-card {
+    font-size: 1.4rem;
+    flex: 0 0 100px;
+    background: #fff;
+
+    border-style: solid;
+    border-width: 1px;
+    border-color: #555;
+    border-radius: 10px;
+
+    text-align: center;
+    padding: 0.5rem;
+
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+}
+
+.marker-card.selected {
+  border-color:#3b82f6;
+  border-width: 4px;
+}
+
+.day {
+    font-weight:600;
+}
+
+.temp.high {
+    font-size: 1.8rem;
+    margin-bottom: 0.4rem;
+}
+
+.temp.low {
+    font-weight: lighter;
+    color: #555;
+}
+
+.marker-card img {
+    width: 60px;
+    height: 60px;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}

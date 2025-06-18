@@ -3,11 +3,142 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple HTML Page</title>
+    <title>To do list</title>
     <link rel="stylesheet" href="./style/style.css">
     <script src="./src/main.js" defer></script>
 </head>
 <body>
+<div class="container">
+    <h1 class="title">To-Do List</h1>
 
+    <div class="input-section">
+      <input type="text" placeholder="Add a new task" class="task-input">
+      <button id="add-button" class="add-button">Add</button>
+    </div>
+
+    <div class="controls">
+      <div class="sort">
+         <span class="label">Sort by:</span>
+        <select class="select">
+          <option> <span class="option">Filter</option>span></option>
+                <option> <span class="option">Data</option>span></option>
+        </select>
+      </div>
+      <div class="sort">
+        Filter:
+        <select class="select" id="sortSelect">
+          <option>All</option>
+          <option  id="dateSort">Date</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="task-list">
+      <div class="task">
+        <button class="checkbox-btn" > </button>
+        <div class="task-info">
+          <span class="task-title">Купити файні льоди</span>
+          <span class="priority medium">Medium</span>
+        </div>
+         <div class="right-side"> 
+            <span class="date">June 26, 2025</span>
+          <div class ="task-actions">
+          <button class="edit-btn" >🖉</button>
+           <button class="delete-btn" >🗑️</button>
+         </div>
+        </div>
+      </div>
+
+      <div class="task completed">
+              <button class="checkbox-btn checked"  > </button>
+        <div class="task-info">
+          <span class="task-title">Зробити веб</span>
+          <span class="priority high">High</span>
+        </div>
+        <div class="right-side"> 
+            <span class="date">June 18, 2025</span>
+          <div class ="task-actions">
+          <button class="edit-btn" >🖉</button>
+           <button class="delete-btn" >🗑️</button>
+         </div>
+        </div>
+
+      </div>
+
+      <div class="task">
+              <button class="checkbox-btn"  > </button>
+        <div class="task-info">
+          <span class="task-title">Спекти хліб</span>
+          <span class="priority low">Low</span>
+        </div>
+       <div class="right-side"> 
+            <span class="date">June 21, 2025</span>
+          <div class ="task-actions">
+          <button class="edit-btn" >🖉</button>
+           <button class="delete-btn" >🗑️</button>
+         </div>
+        </div>
+      </div>
+
+      <div class="task">
+             <button class="checkbox-btn"  > </button>
+        <div class="task-info">
+          <span class="task-title">Купити наповнювач Мілашці</span>
+          <span class="priority high">High</span>
+        </div>
+         <div class="right-side"> 
+            <span class="date">June 18, 2025</span>
+          <div class ="task-actions">
+          <button class="edit-btn" >🖉</button>
+           <button class="delete-btn" >🗑️</button>
+         </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="taskPopUp" class="taskPopUp hidden"> 
+  <div class="popUp-content">
+    <span class="close-btn" id="closePopUpBtn"></span>
+    <h2>Додати завдання</h2>
+
+    <label class="name-edit">Назва завдання</label>
+    <input type="text" placeholder="Наприклад: Завдання 1" />
+
+    <label class="date-edit">Дата виконання</label>
+    <input type="date" />
+
+    <label>Пріоритет</label>
+    <div class="priority-options">
+      <label><input type="radio" name="priority" /> Високий</label>
+      <label><input type="radio" name="priority" checked /> Середній</label>
+      <label><input type="radio" name="priority" /> Низький</label>
+    </div>
+
+    <div class="popUp-buttons">
+      <button class="add-task-btn">Додати завдання</button>
+      <button class="cancel-btn" id="cancelPopUpBtn">Скасувати</button>
+    </div>
+  </div>
+  </div>
+</div>
+
+<div class="filterByDate hidden" id="filterByDate">
+  <div class="filterByDate-content">
+    <h2 class="filterByDate-title">Filter by date</h2>
+
+    <label>
+      <select class="filterByDate-select">
+        <option>Current</option>
+        <option>Past</option>
+        <option>Upcoming</option>
+      </select>
+    </label>
+   <input type="date" class="filterByDate-date" value="2024-03-15">
+ <div class="button-wrapper">
+   <button class="apply-button" id="apply-button">Apply</button>
+   </div>
+  </div>
+</div>
 </body>
 </html>

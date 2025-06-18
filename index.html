@@ -3,11 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple HTML Page</title>
+    <title>Simple weather</title>
     <link rel="stylesheet" href="./style/style.css">
     <script src="./src/main.js" defer></script>
 </head>
 <body>
+    <span>
+        <header>
+            <input type="text" placeholder="Enter city name">
+            <button>Search</button>
+        </header>
+    </span>
 
+    <main class="current-weather">
+        <div class="weather-info">
+            <h1 class="city">Kyiv</h1>
+            <p class="country">Ukraine</p>
+            <p class="temperature">23°C</p>
+            <p class="description">Clear</p>
+        </div>
+        <div class="weather-icon">
+            <div class="icon-main">☀️</div>
+        </div>
+    </main>
+
+    <section class="weather-details">
+        <p>Wind: 13 km/h</p>
+        <p>Humidity: 56%</p>
+    </section>
 </body>
 </html>

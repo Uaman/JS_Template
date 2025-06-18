@@ -1,0 +1,21 @@
+body {
+    font-family: "Segoe UI";
+    justify-content: center;
+    align-items: center;   
+    background-color: #e3e3e3;
+}
+
+.weather-card {
+    width: 100%;
+    max-width: 400px; /* Set a max-width for larger screens */
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.search-bar {
+    display: flex;
+    gap: 10px; /* Space between input and button */
+    margin-bottom: 25px;
+}

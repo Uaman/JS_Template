@@ -8,6 +8,138 @@
     <script src="./src/main.js" defer></script>
 </head>
 <body>
+    <header class="header">
+        <h1 class="header-title">Online Book Library</h1>
+        <div class="filter-sort-controls">
+            <button class="filter-btn">Filter</button>
+            <button class="sort-btn-mobile">Sort</button>
+        </div>
+        <button class="sign-in-button">Sign In</button>
+    </header>
 
+    <main class="container">
+        <aside class="sidebar">
+            <div class="filter-section">
+                <h2>Filter</h2>
+                <div class="filter-group">
+                    <h3>Genre</h3>
+                    <label class="checkbox-container">
+                        <input type="checkbox" checked> Roman
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="checkbox-container">
+                        <input type="checkbox" checked> Non-Fiction
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+                <div class="filter-group">
+                    <h3>Author</h3>
+                    <input type="text" placeholder="Enter author" class="author-input">
+                </div>
+                <div class="filter-group">
+                    <h3>Year</h3>
+                    <label class="checkbox-container">
+                        <input type="checkbox"> 1900
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="checkbox-container">
+                        <input type="checkbox"> 2024
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+                <div class="filter-group">
+                    <h3>Language</h3>
+                    <label class="checkbox-container">
+                        <input type="radio" name="language" value="English" checked> English
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="checkbox-container">
+                        <input type="radio" name="language" value="Ukrainian"> Українська
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+            </div>
+        </aside>
+
+        <section class="book-list-section">
+            <div class="book-list-header">
+                <h2>Pillar</h2>
+                <div class="sort-by">
+                    <select>
+                        <option value="" disabled selected>Sort by:</option>
+                        <option value="relevance">Relevance</option>
+                        <option value="title">Title</option>
+                        <option value="author">Author</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="book-grid">
+                <div class="book-card">
+                    <img src="assets/getsby.png" alt="The Great Gatsby Cover">
+                    <div class="book-details">
+                        <p class="book-title">The Great Gatsby</p>
+                        <p class="book-author">E. Scott Fitzgerald</p>
+                    </div>
+                </div>
+                <div class="book-card">
+                    <img src="assets/toKill.png" alt="To Kill a Mockingbird Cover">
+                    <div class="book-details">
+                        <p class="book-title">To Kill a Mockingbird</p>
+                        <p class="book-author">Harper Lee</p>
+                    </div>
+                </div>
+                <div class="book-card">
+                    <img src="assets/1984.png" alt="1984 Cover">
+                    <div class="book-details">
+                        <p class="book-title">1984</p>
+                        <p class="book-author">George Orwell</p>
+                    </div>
+                </div>
+                <div class="book-card">
+                    <img src="assets/catcher.png" alt="The Catcher in the Rye Cover">
+                    <div class="book-details">
+                        <p class="book-title">The Catcher in the Rye</p>
+                        <p class="book-author">J.D. Salinger</p>
+                    </div>
+                </div>
+                <div class="book-card">
+                    <img src="assets/hobbit.png" alt="The Hobbit Cover">
+                    <div class="book-details">
+                        <p class="book-title">The Hobbit</p>
+                        <p class="book-author">J.R.R. Tolkien</p>
+                    </div>
+                </div>
+                <div class="book-card">
+                    <img src="assets/sapiens.png" alt="Sapiens Cover">
+                    <div class="book-details">
+                        <p class="book-title">Sapiens</p>
+                        <p class="book-author">Yuval Noah Harari</p>
+                    </div>
+                </div>
+                <div class="book-card">
+                    <img src="assets/zarathustra.png" alt="Thus spoke Zarathustra">
+                    <div class="book-details">
+                        <p class="book-title">Thus spoke Zarathustra</p>
+                        <p class="book-author">Friedrich Nietzsche</p>
+                    </div>
+                </div>
+                <div class="book-card">
+                    <img src="assets/graf.png" alt="Graf Monte-Cristo">
+                    <div class="book-details">
+                        <p class="book-title">Graf Monte-Cristo</p>
+                        <p class="book-author">Alex Duma</p>
+                    </div>
+                </div>
+                <div class="book-card">
+                    <img src="assets/method.png" alt="Discourse on Method">
+                    <div class="book-details">
+                        <p class="book-title">Discourse on Method</p>
+                        <p class="book-author">Rene Descartes</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 </body>
 </html>

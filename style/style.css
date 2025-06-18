@@ -47,24 +47,75 @@ body {
     cursor: pointer;
 }
 
-.current-weather {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 10px;
+.weather-info {
+    grid-area: info;
+}
+.weather-icon {
+    grid-area: icon;
+    justify-self: end;
+}
+.weather-details {
+    grid-area: details;
+}
+
+.weather-display-grid {
+    display: grid;
+    grid-template-areas:
+        "info   icon"
+        "details details";
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 10px;
+}
+
+@media (min-width: 600px) {
+    .weather-display-grid {
+
+        grid-template-areas:
+            "info icon"
+            "info details";
+        
+        grid-template-columns: 1fr 1fr;
+        align-items: start; 
+        gap: 0 100px;
+    }
 }
 
 .weather-info .city { font-size: 28px; font-weight: 600; }
 .weather-info .country { font-size: 16px; color: #555; }
 .weather-info .temperature { font-size: 62px; font-weight: 500; margin-top: 15px; }
-.weather-info .description { font-size: 20px; color: #555; margin-top: 100px; }
+.weather-info .description { font-size: 20px; color: #555; margin-top: 15px; }
 
 .weather-icon .icon-main { font-size: 75px; margin-right: 25px; }
 
 .weather-details {
-    /* This is now a separate block, so we just add margin */
-    margin-top: 30px; /* Space above */
-    margin-bottom: 30px; /* Space below */
-    color: #333; /* Darker text for readability */
+    margin-top: 30px;
+    margin-bottom: 30px; 
+    color: #555; 
     font-size: 16px;
 }
+
+.forecast-carousel {
+    overflow-x: auto;
+    padding-bottom: 10px;
+}
+
+.forecast-track {
+    display: flex;
+    gap: 12px;
+}
+
+.forecast-day {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #f0f0f0;
+    border-radius: 15px;
+    padding: 15px;
+    min-width: 85px;
+}
+
+.forecast-day .day-name { font-weight: 600; margin-bottom: 10px; }
+.forecast-day .icon-small { font-size: 32px; margin-bottom: 10px; }
+.forecast-day .day-temp-high { font-weight: 500; }
+.forecast-day .day-temp-low { color: #888; }

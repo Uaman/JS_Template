@@ -252,7 +252,7 @@ body {
     appearance: none;
     background-color: white;
 
-    background-image: url("/images/arrow.svg");
+    background-image: url("images/arrow.svg");
     background-repeat: no-repeat;
     background-position: right 0.2rem center;
     background-size: 2rem;

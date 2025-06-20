@@ -1,0 +1,88 @@
+[
+  {
+    "id": 1,
+    "question": "What is your favorite programming language?",
+    "category": "tech",
+    "options": [
+      { "text": "JavaScript", "votes": 45 },
+      { "text": "Python", "votes": 30 },
+      { "text": "C++", "votes": 25 },
+      { "text": "Java", "votes": 20 }
+    ]
+  },
+  {
+    "id": 2,
+    "question": "Which social media platform do you use the most?",
+    "category": "media",
+    "options": [
+      { "text": "Instagram", "votes": 40 },
+      { "text": "Facebook", "votes": 30 },
+      { "text": "Twitter", "votes": 20 },
+      { "text": "LinkedIn", "votes": 10 }
+    ]
+  },
+  {
+    "id": 3,
+    "question": "What is your favorite food?",
+    "category": "food",
+    "options": [
+      { "text": "Pizza", "votes": 25 },
+      { "text": "Pasta", "votes": 35 },
+      { "text": "Sushi", "votes": 30 },
+      { "text": "Salad", "votes": 10 }
+    ]
+  },
+  {
+    "id": 4,
+    "question": "Which mobile OS do you prefer?",
+    "category": "tech",
+    "options": [
+      { "text": "Android", "votes": 60 },
+      { "text": "iOS", "votes": 40 }
+    ]
+  },
+  {
+    "id": 5,
+    "question": "Where do you read/watch news?",
+    "category": "media",
+    "options": [
+      { "text": "Websites", "votes": 50 },
+      { "text": "TV", "votes": 20 },
+      { "text": "Newspapers", "votes": 12 },
+      { "text": "Don't watch/read news", "votes": 32 }
+    ]
+  },
+  {
+    "id": 6,
+    "question": "How often do you exercise per week?",
+    "category": "social",
+    "options": [
+      { "text": "Every day", "votes": 20 },
+      { "text": "3-4 times", "votes": 40 },
+      { "text": "1-2 times", "votes": 30 },
+      { "text": "Never", "votes": 10 }
+    ]
+  },
+  {
+    "id": 7,
+    "question": "What's your favorite fruit?",
+    "category": "food",
+    "options": [
+      { "text": "Banana", "votes": 30 },
+      { "text": "Apple", "votes": 25 },
+      { "text": "Kiwi", "votes": 25 },
+      { "text": "Orange", "votes": 20 }
+    ]
+  },
+  {
+  "id": 8,
+  "question": "How often you meet with your family?",
+  "category": "social",
+  "options": [
+  { "text": "Every day/almost every day", "votes": 30 },
+  { "text": "Once a week", "votes": 25 },
+  { "text": "Once a month", "votes": 25 },
+  { "text": "Once a year or rarely", "votes": 20 }
+]
+  }
+]

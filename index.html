@@ -5,30 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Погода - Пошук по містах</title>
     <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/popup.css">
 </head>
 <body>
 <div class="container">
-    <!-- Пошук -->
     <div class="search-section">
         <input type="text" class="search-input" placeholder="Enter city name" id="cityInput">
-        <button class="search-button">Search</button>
+        <button class="search-button" onclick="searchCity()">Search</button>
     </div>
 
-    <!-- Основна погода -->
     <div class="main-weather">
         <div class="weather-info">
-            <h1 class="city-name">Kyiv</h1>
-            <p class="country">Ukraine</p>
-            <div class="temperature">23°C</div>
-            <div class="weather-description">Clear</div>
+            <h1 class="city-name" id="cityName">Kyiv</h1>
+            <p class="country" id="country">Ukraine</p>
+            <div class="temperature" id="temperature">23°C</div>
+            <div class="weather-description" id="description">Clear</div>
             <div class="weather-details mobile-only">
                 <div class="detail-item">
                     <span class="detail-label">Wind:</span>
-                    <span class="detail-value">13 km/h</span>
+                    <span class="detail-value" id="wind">13 km/h</span>
                 </div>
                 <div class="detail-item">
                     <span class="detail-label">Humidity:</span>
-                    <span class="detail-value">56%</span>
+                    <span class="detail-value" id="humidity">56%</span>
                 </div>
             </div>
         </div>
@@ -50,160 +49,24 @@
             <div class="weather-details desktop-only">
                 <div class="detail-item">
                     <span class="detail-label">Wind:</span>
-                    <span class="detail-value">13 km/h</span>
+                    <span class="detail-value" id="wind-desktop">13 km/h</span>
                 </div>
                 <div class="detail-item">
                     <span class="detail-label">Humidity:</span>
-                    <span class="detail-value">56%</span>
+                    <span class="detail-value" id="humidity-desktop">56%</span>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Прогноз на 7 днів -->
     <div class="forecast-section">
         <div class="forecast-container" id="forecastContainer">
-            <div class="forecast-carousel">
-                <div class="forecast-card">
-                    <div class="forecast-day">Today</div>
-                    <div class="forecast-icon">
-                        <div class="sun-rays">
-                            <div class="ray"></div>
-                            <div class="ray"></div>
-                            <div class="ray"></div>
-                            <div class="ray"></div>
-                            <div class="ray"></div>
-                            <div class="ray"></div>
-                            <div class="ray"></div>
-                            <div class="ray"></div>
-                        </div>
-                        <div class="sun-icon"></div>
-                    </div>
-                    <div class="forecast-temps">
-                        <span class="high-temp">23°C</span>
-                        <span class="low-temp">14°C</span>
-                    </div>
-                </div>
-
-                <div class="forecast-card">
-                    <div class="forecast-day">Tue</div>
-                    <div class="forecast-icon">
-                        <div class="sun-rays">
-                            <div class="ray"></div>
-                            <div class="ray"></div>
-                            <div class="ray"></div>
-                            <div class="ray"></div>
-                            <div class="ray"></div>
-                            <div class="ray"></div>
-                            <div class="ray"></div>
-                            <div class="ray"></div>
-                        </div>
-                        <div class="sun-icon"></div>
-                    </div>
-                    <div class="forecast-temps">
-                        <span class="high-temp">23°C</span>
-                        <span class="low-temp">14°C</span>
-                    </div>
-                </div>
-
-                <div class="forecast-card">
-                    <div class="forecast-day">Wed</div>
-                    <div class="forecast-icon">
-                        <div class="cloud-icon"></div>
-                        <div class="rain-drops">
-                            <div class="drop"></div>
-                            <div class="drop"></div>
-                            <div class="drop"></div>
-                        </div>
-                    </div>
-                    <div class="forecast-temps">
-                        <span class="high-temp">20°C</span>
-                        <span class="low-temp">13°C</span>
-                    </div>
-                </div>
-
-                <div class="forecast-card">
-                    <div class="forecast-day">Thu</div>
-                    <div class="forecast-icon">
-                        <div class="sun-rays">
-                            <div class="ray"></div>
-                            <div class="ray"></div>
-                            <div class="ray"></div>
-                            <div class="ray"></div>
-                            <div class="ray"></div>
-                            <div class="ray"></div>
-                            <div class="ray"></div>
-                            <div class="ray"></div>
-                        </div>
-                        <div class="sun-icon"></div>
-                    </div>
-                    <div class="forecast-temps">
-                        <span class="high-temp">22°C</span>
-                        <span class="low-temp">13°C</span>
-                    </div>
-                </div>
-
-                <div class="forecast-card">
-                    <div class="forecast-day">Fri</div>
-                    <div class="forecast-icon">
-                        <div class="sun-rays">
-                            <div class="ray"></div>
-                            <div class="ray"></div>
-                            <div class="ray"></div>
-                            <div class="ray"></div>
-                            <div class="ray"></div>
-                            <div class="ray"></div>
-                            <div class="ray"></div>
-                            <div class="ray"></div>
-                        </div>
-                        <div class="sun-icon"></div>
-                    </div>
-                    <div class="forecast-temps">
-                        <span class="high-temp">24°C</span>
-                        <span class="low-temp">15°C</span>
-                    </div>
-                </div>
-
-                <div class="forecast-card">
-                    <div class="forecast-day">Sat</div>
-                    <div class="forecast-icon">
-                        <div class="cloud-icon"></div>
-                        <div class="rain-drops">
-                            <div class="drop"></div>
-                            <div class="drop"></div>
-                            <div class="drop"></div>
-                        </div>
-                    </div>
-                    <div class="forecast-temps">
-                        <span class="high-temp">19°C</span>
-                        <span class="low-temp">12°C</span>
-                    </div>
-                </div>
-
-                <div class="forecast-card">
-                    <div class="forecast-day">Sun</div>
-                    <div class="forecast-icon">
-                        <div class="sun-rays">
-                            <div class="ray"></div>
-                            <div class="ray"></div>
-                            <div class="ray"></div>
-                            <div class="ray"></div>
-                            <div class="ray"></div>
-                            <div class="ray"></div>
-                            <div class="ray"></div>
-                            <div class="ray"></div>
-                        </div>
-                        <div class="sun-icon"></div>
-                    </div>
-                    <div class="forecast-temps">
-                        <span class="high-temp">26°C</span>
-                        <span class="low-temp">16°C</span>
-                    </div>
-                </div>
+            <div class="forecast-carousel" id="forecastCarousel">
             </div>
         </div>
     </div>
 </div>
 
+<script src="script/script.js"></script>
 </body>
 </html>

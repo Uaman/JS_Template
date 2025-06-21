@@ -21,7 +21,7 @@ body {
     margin: 0 auto;
 }
 
-.create-poll-header {
+.create-poll-header, header {
     background: var(--blue--);
     color: white;
     padding: 20px;
@@ -33,7 +33,7 @@ body {
     box-shadow: 0 4px 12px rgba(0,0,0,0.25);
 }
 
-.create-poll-btn {
+.create-poll-btn, .back-to-home-btn, .to-report-btn {
     background: var(--blue--);
     border: var(--blue--);
     color: white;
@@ -46,7 +46,7 @@ body {
     text-decoration: none;
 }
 
-.create-poll-btn:hover {
+.create-poll-btn:hover,.back-to-home-btn:hover , .to-report-btn:hover {
     background: var(--blue--hover);
     border: var(--blue--hover);
     transform: translateY(-2px);

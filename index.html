@@ -1,13 +1,92 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html>
+
+<head lang="uk">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple HTML Page</title>
-    <link rel="stylesheet" href="./style/style.css">
+    <title>Weather app</title>
+
+    <link rel="stylesheet" type="text/css" href="./style/style.css" />
     <script src="./src/main.js" defer></script>
 </head>
-<body>
 
+<body>
+    <main class="container">
+        <div class="weather-panel">
+            <section class="search">
+                <input type="text" placeholder="Enter city name" class="search-input" />
+                <button class="search-button" data-tooltip="Search for weather">Search</button>
+            </section>
+            <section>
+                <div class="detailed-panel">
+                    <div class="detailed-info">
+                        <h3 class="detailed-city"></h3>
+                        <span class="detailed-country"></span>
+                    </div>
+                    <picture class="detailed-icon">
+                    </picture>
+                </div>
+                <div class="detailed-panel">
+                    <div class="detailed-info">
+                        <h2 class="detailed-temp"></h2>
+                        <span class="detailed-desc"></span>
+                    </div>
+                    <div class="detailed-info extra">
+                        <div class="detailed-extra">Wind:
+                            <span class="detailed-extra wind"></span>
+                        </div>
+                        <div class="detailed-extra">Humidity: 
+                            <span class="detailed-extra humidity"></span>
+                        </div>       
+                    </div>
+                </div>
+            </section>
+            <section>
+                <ul class="carousel">
+                </ul>
+            </section>
+            <div class="popup">
+                <div class="popup-content">
+                    <button class="popup-close"></button>
+                    <div class="popup-information">
+                        <h5 class="popup-city"></h5>
+                        <h6 class="popup-date"></h6>
+                        <span class="popup-description"></span>
+                        <div class="popup-temp">
+                            <div class="popup-temp-item">
+                                <div class="popup-real">Max temperature °C:
+                                    <span class="popup-real max-real"></span>
+                                </div>
+                                <div class="popup-feels-like">Feels like °C:
+                                    <span class="popup-feels-like max-feels"></span>
+                                </div>
+                            </div>
+                            <div class="popup-temp-item">
+                                <div class="popup-real">Min temperature °C:
+                                    <span class="popup-real min-real"></span>
+                                </div>
+                                <div class="popup-feels-like">Feels like °C:
+                                    <span class="popup-feels-like min-feels"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="popup-extra">Sunrise:
+                            <span class="popup-extra sunrise"></span>
+                        </div>
+                        <div class="popup-extra">Sunset:
+                            <span class="popup-extra sunset"></span>
+                        </div>
+                        <div class="popup-extra">Visibility:
+                            <span class="popup-extra visibility"></span>
+                        </div>
+                        <div class="popup-extra">Pressure:
+                            <span class="popup-extra pressure"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
 </body>
+
 </html>

@@ -224,7 +224,7 @@ function renderPolls(polls = pollsData.polls) {
                     renderPolls();
 
                     alert(`Дякуємо за ваш голос за: ${selectedOptionName}!`);
-                    window.location.hash = '#'; // Закриваємо попап
+                    window.location.hash = '#';
                 }
             } else {
                 alert('Будь ласка, оберіть варіант, щоб проголосувати.');

@@ -1,0 +1,486 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style-type: none;
+}
+
+.container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    background-color: rgba(238, 239, 238, 255);
+    padding: 20px;
+}
+
+.weather-panel {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.search {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px;
+}
+
+.search-input {
+    width: 80%;
+    height: 50px;
+    border-radius: 7px;
+    padding: 0 10px;
+    border: 2px solid rgba(245, 245, 246, 255);
+    color: rgba(173, 173, 173, 255);
+    font-size: 18px;
+}
+
+.search-input::placeholder {
+    color: rgba(173, 173, 173, 255);
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: rgba(66, 131, 202, 255);
+}
+
+.search-button {
+    width: 15%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    background-color: rgba(47, 108, 220, 255);
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    padding: 20px 0;
+    position: relative;
+}
+
+.search-button::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    top: -30px;
+    left: 9%;
+    transform: translateY(10px) scale(0.5);
+    background-color: rgba(78, 164, 250, 255);
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 5px 15px;
+    border-radius: 8px;
+    white-space: nowrap;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.search-button:hover::after {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.search-button:hover {
+    background-color: rgba(30, 90, 170, 255);
+}
+
+.detailed-panel {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 30px;   
+}
+
+.detailed-info {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 10px;
+}
+
+.detailed-temp{
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.detailed-temp:hover {
+    color: rgba(78, 164, 250, 255);
+    transition: color 0.3s ease;
+}
+
+.detailed-city {
+    font-size: 32px;
+}
+
+.detailed-country {
+    font-size: 22px;
+    color: rgba(92, 103, 106, 255);
+}
+
+.detailed-desc{
+    font-size: 20px;
+}
+
+.detailed-extra {
+    font-size: 20px;
+}
+
+.extra{
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    min-width: 211px;
+}
+
+.carousel {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px;
+    >li {
+        scroll-snap-align: center;
+    }
+}
+.carousel::-webkit-scrollbar {
+    height: 8px;
+}
+
+.carousel::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.carousel::-webkit-scrollbar-thumb {
+    background-color: #dcdfe6;
+    border-radius: 8px;
+}
+
+.carousel::-webkit-scrollbar-thumb:hover {
+    background-color: #c0c4cc;
+}
+
+.carousel-item {
+    flex: 1, 1;
+    min-width: 150px;
+    border-radius: 10px;
+    margin-right: 20px;
+    padding: 20px 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid rgba(221, 221, 223, 255);
+    cursor: pointer;
+}
+
+.carousel-item:hover {
+    background-color: rgba(245, 245, 246, 255);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(201, 201, 203, 255);
+}
+
+.current {
+    background-color: rgba(245, 245, 246, 255);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(201, 201, 203, 255);
+}
+
+.carousel-item:last-child {
+    margin-right: 0;
+}
+
+.carousel-title {
+    font-size: 26px;
+    font-weight: bold;
+}
+
+.carousel-subtitle {
+    font-size: 22px;
+    color: rgba(92, 103, 106, 255);
+}
+
+.max-temp {
+    font-size: 20px;
+}
+
+.min-temp {
+    font-size: 18px;
+    color: rgba(92, 103, 106, 255);
+}
+
+.popup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    visibility: hidden;
+    opacity: 0;
+    transition: all 1s 0s;
+}
+
+.popup-active {
+    visibility: visible;
+    opacity: 1;
+}
+
+.popup-content {
+    background: #FFFFFF;
+    width: 50%;
+    height: 90%;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    padding: 30px;
+    position: relative;
+    transition: all 1s 0s;
+    opacity: 0;
+    transform: translate(0px, -100%)
+}
+
+.popup-content-active {
+    opacity: 1;
+    transform: translate(0px, 0px)
+}
+
+.popup-close {
+    background-color: white;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    width: 30px;
+    height: 30px;
+    background-image: url('../img/close.png');
+    fill: black;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    cursor: pointer;
+}
+
+.popup-close:hover {
+    background-image: url('../img/close1.png');
+}
+
+.popup-close:active {
+    transform: scale(1.1);
+}
+
+.popup-information {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+.popup-city{
+    font-size: 26px;
+    font-weight: bold;
+}
+
+.popup-date {
+    font-size: 24px;
+    color: rgba(92, 103, 106, 255);
+}
+
+.popup-description {
+    font-size: 16px;
+    font-style: italic;
+}
+
+.popup-temp {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.popup-temp-item {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.popup-real {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.popup-feels-like {
+    font-size: 16px;
+    font-weight: bold;
+    font-style: italic;
+    color: rgba(92, 103, 106, 255);
+}
+
+.popup-extra {
+    font-size: 20px;
+}
+
+@media (max-width: 1024px) {
+    .popup-city {
+        font-size: 22px;
+    }
+}
+
+@media (max-width: 900px) {
+    .popup-city {
+        font-size: 18px;
+    }
+
+    .popup-real {
+        font-size: 16px;
+    }
+    
+    .popup-feels-like {
+        font-size: 14px;
+    }
+
+    .popup-extra {
+        font-size: 16px;
+    }
+    
+    .popup-description {
+        font-size: 14px;
+    }
+    
+    .popup-date {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 768px) {
+    .popup-city {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 600px) {
+    .search-button {
+        width: 20%;
+    }
+
+    .search-input {
+        width: 75%;
+    }
+
+    .carousel-item {
+        min-width: 100px;
+    }
+
+    .weather-panel .detailed-panel:first-child {
+        margin-bottom: 20px;
+    }
+
+    .popup-real {
+        font-size: 14px;
+    }
+    
+    .popup-feels-like {
+        font-size: 12px;
+    }
+
+    .popup-description {
+        font-size: 12px;
+    }
+
+    .popup-date {
+        font-size: 16px;
+    }
+
+    .popup-extra {
+        font-size: 16px;
+    }
+
+    .popup-information {
+        gap: 20px;
+    }
+}
+
+@media (max-width: 500px) {
+    .search-button {
+        font-size: 18px;
+    }
+
+    .extra {
+        margin-top: 20px;
+        align-items: start;
+    }
+}
+
+@media (max-width: 425px) {
+    .search-button {
+        width: 25%;
+    }
+
+    .search-input {
+        width: 70%;
+    }
+
+    .popup-extra {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 400px) {
+    .detailed-info {
+        align-items: start;
+    }
+
+    .popup-extra {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 375px) {
+    .search-button {
+        width: 30%;
+    }
+
+    .search-input {
+        width: 65%;
+    }
+
+    .popup-city {
+        font-size: 14px;
+    }
+
+    .popup-date {
+        font-size: 14px;
+    }
+    .popup-real {
+        font-size: 12px;
+    }
+
+    .popup-feels-like {
+        font-size: 10px;
+    }
+}

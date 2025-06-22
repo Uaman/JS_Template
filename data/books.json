@@ -1,0 +1,101 @@
+[
+  {
+    "title": "The DevOps handbook",
+    "author": "Gene Kim",
+    "genre": "Scientific",
+    "year": 2016,
+    "language": "English",
+    "image": "assets/devops.png",
+    "description": "Increase profitability, elevate work culture, and exceed productivity goals through DevOps practices."
+  },
+  {
+    "title": "Graf Monte-Cristo",
+    "author": "Alexandre Dumas",
+    "genre": "Adventure",
+    "year": 1844,
+    "language": "French",
+    "image": "assets/graf.png",
+    "description": "Revenge and redemption tale."
+  },
+  {
+    "title": "Discourse on Method",
+    "author": "Rene Descartes",
+    "genre": "Philosophy",
+    "year": 1637,
+    "language": "French",
+    "image": "assets/method.png",
+    "description": "Foundation of modern philosophy."
+  },
+  {
+    "title": "Thus Spoke Zarathustra",
+    "author": "Friedrich Nietzsche",
+    "genre": "Philosophy",
+    "year": 1883,
+    "language": "German",
+    "image": "assets/zarathustra.png",
+    "description": "Philosophical novel by Nietzsche."
+  },
+  {
+    "title": "Сонячна Машина",
+    "author": "Володимир Винниченко",
+    "genre": "Novel",
+    "year": 1928,
+    "language": "Українська",
+    "image": "assets/sunMachine.png",
+    "description": "Сонячна машина» Володимира Винниченка — це утопічно-фантастичний роман про побудову нового суспільства."
+  },
+  {
+    "title": "Загальний курс фізики",
+    "author": "Іван Кучерук",
+    "genre": "Scientific",
+    "year": 1999,
+    "language": "Українська",
+    "image": "assets/physics.png",
+    "description": "Перший том про молекулярну фізику."
+  },
+  {
+    "title": "Amelie",
+    "author": "Jean-Pierre Jeunet",
+    "genre": "Romance",
+    "year": 2001,
+    "language": "French",
+    "image": "assets/amelie.png",
+    "description": "Film about a shy, imaginative young woman in Paris who finds joy in secretly improving the lives of others while quietly longing for love herself.."
+  },
+  {
+    "title": "The Great Gatsby",
+    "author": "F. Scott Fitzgerald",
+    "genre": "Novel",
+    "year": 1925,
+    "language": "English",
+    "image": "assets/getsby.png",
+    "description": "A novel about the American dream."
+  },
+  {
+    "title": "To Kill a Mockingbird",
+    "author": "Harper Lee",
+    "genre": "Drama",
+    "year": 1960,
+    "language": "English",
+    "image": "assets/toKill.png",
+    "description": "A story about racial injustice."
+  },
+  {
+    "title": "1984",
+    "author": "George Orwell",
+    "genre": "Dystopian",
+    "year": 1949,
+    "language": "English",
+    "image": "assets/1984.png",
+    "description": "A vision of totalitarian future."
+  },
+  {
+    "title": "The Hobbit",
+    "author": "J.R.R. Tolkien",
+    "genre": "Fantasy",
+    "year": 1937,
+    "language": "English",
+    "image": "assets/hobbit.png",
+    "description": "A journey through Middle-earth."
+  }
+]

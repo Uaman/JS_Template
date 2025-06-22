@@ -12,8 +12,14 @@
         <h1 class="header-title">Online Book Library</h1>
         <div class="filter-sort-controls">
             <button class="filter-btn">Filter</button>
-            <button class="sort-btn-mobile">Sort</button>
+            <select class="sort-btn-mobile">
+                <option value="" disabled selected>Sort by:</option>
+                <option value="year">Year</option>
+                <option value="genre">Genre</option>
+            </select>
         </div>
+        <button class="favorites-button">Улюблені</button>
+        <button class="back-button hidden">Назад</button>
         <button class="sign-in-button">Sign In</button>
     </header>
 
@@ -21,42 +27,18 @@
         <aside class="sidebar">
             <div class="filter-section">
                 <h2>Filter</h2>
-                <div class="filter-group">
+                <div class="filter-group" id="genre">
                     <h3>Genre</h3>
-                    <label class="checkbox-container">
-                        <input type="checkbox" checked> Roman
-                        <span class="checkmark"></span>
-                    </label>
-                    <label class="checkbox-container">
-                        <input type="checkbox" checked> Non-Fiction
-                        <span class="checkmark"></span>
-                    </label>
                 </div>
                 <div class="filter-group">
                     <h3>Author</h3>
                     <input type="text" placeholder="Enter author" class="author-input">
                 </div>
-                <div class="filter-group">
+                <div class="filter-group" id="year">
                     <h3>Year</h3>
-                    <label class="checkbox-container">
-                        <input type="checkbox"> 1900
-                        <span class="checkmark"></span>
-                    </label>
-                    <label class="checkbox-container">
-                        <input type="checkbox"> 2024
-                        <span class="checkmark"></span>
-                    </label>
                 </div>
-                <div class="filter-group">
+                <div class="filter-group" id="language">
                     <h3>Language</h3>
-                    <label class="checkbox-container">
-                        <input type="radio" name="language" value="English" checked> English
-                        <span class="checkmark"></span>
-                    </label>
-                    <label class="checkbox-container">
-                        <input type="radio" name="language" value="Ukrainian"> Українська
-                        <span class="checkmark"></span>
-                    </label>
                 </div>
             </div>
         </aside>
@@ -67,79 +49,29 @@
                 <div class="sort-by">
                     <select>
                         <option value="" disabled selected>Sort by:</option>
-                        <option value="relevance">Relevance</option>
-                        <option value="title">Title</option>
-                        <option value="author">Author</option>
+                        <option value="year">Year</option>
+                        <option value="genre">Genre</option>
                     </select>
                 </div>
             </div>
 
             <div class="book-grid">
-                <div class="book-card">
-                    <img src="assets/getsby.png" alt="The Great Gatsby Cover">
-                    <div class="book-details">
-                        <p class="book-title">The Great Gatsby</p>
-                        <p class="book-author">E. Scott Fitzgerald</p>
-                    </div>
-                </div>
-                <div class="book-card">
-                    <img src="assets/toKill.png" alt="To Kill a Mockingbird Cover">
-                    <div class="book-details">
-                        <p class="book-title">To Kill a Mockingbird</p>
-                        <p class="book-author">Harper Lee</p>
-                    </div>
-                </div>
-                <div class="book-card">
-                    <img src="assets/1984.png" alt="1984 Cover">
-                    <div class="book-details">
-                        <p class="book-title">1984</p>
-                        <p class="book-author">George Orwell</p>
-                    </div>
-                </div>
-                <div class="book-card">
-                    <img src="assets/catcher.png" alt="The Catcher in the Rye Cover">
-                    <div class="book-details">
-                        <p class="book-title">The Catcher in the Rye</p>
-                        <p class="book-author">J.D. Salinger</p>
-                    </div>
-                </div>
-                <div class="book-card">
-                    <img src="assets/hobbit.png" alt="The Hobbit Cover">
-                    <div class="book-details">
-                        <p class="book-title">The Hobbit</p>
-                        <p class="book-author">J.R.R. Tolkien</p>
-                    </div>
-                </div>
-                <div class="book-card">
-                    <img src="assets/sapiens.png" alt="Sapiens Cover">
-                    <div class="book-details">
-                        <p class="book-title">Sapiens</p>
-                        <p class="book-author">Yuval Noah Harari</p>
-                    </div>
-                </div>
-                <div class="book-card">
-                    <img src="assets/zarathustra.png" alt="Thus spoke Zarathustra">
-                    <div class="book-details">
-                        <p class="book-title">Thus spoke Zarathustra</p>
-                        <p class="book-author">Friedrich Nietzsche</p>
-                    </div>
-                </div>
-                <div class="book-card">
-                    <img src="assets/graf.png" alt="Graf Monte-Cristo">
-                    <div class="book-details">
-                        <p class="book-title">Graf Monte-Cristo</p>
-                        <p class="book-author">Alex Duma</p>
-                    </div>
-                </div>
-                <div class="book-card">
-                    <img src="assets/method.png" alt="Discourse on Method">
-                    <div class="book-details">
-                        <p class="book-title">Discourse on Method</p>
-                        <p class="book-author">Rene Descartes</p>
-                    </div>
-                </div>
+
             </div>
         </section>
     </main>
+
+    <div id="book-popup" class="popup hidden">
+        <div class="popup-content">
+            <span class="close-button">&times;</span>
+            <img id="popup-image" src="" alt="Book Cover">
+            <h3 id="popup-title"></h3>
+            <p id="popup-author"></p>
+            <p id="popup-year"></p>
+            <p id="popup-language"></p>
+            <p id="popup-genre"></p>
+            <button id="add-favorite-button">Add to Favorites</button>
+        </div>
+    </div>
 </body>
 </html>

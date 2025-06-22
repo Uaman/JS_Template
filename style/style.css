@@ -290,6 +290,13 @@ body {
     z-index: 2;
 }
 
+.forecast-card .rain-drops {
+    position: absolute;
+    top: 70%; 
+    left: 50%;
+    transform: translateX(-50%);
+}
+
 .forecast-icon .sun-rays {
     position: absolute;
     top: 50%;
@@ -353,7 +360,7 @@ body {
 
 .rain-drops {
     position: absolute;
-    top: 70%;
+    top: 57%;
     left: 50%;
     transform: translateX(-50%);
 }

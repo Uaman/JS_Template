@@ -73,50 +73,39 @@ function searchCity() {
 // Отримання даних про погоду з API
 async function getWeatherData(city) {
     try {
-        console.log('Отримання даних про погоду для міста:', city);
-        
         const url = `${BASE_URL}/${encodeURIComponent(city)}?unitGroup=metric&include=days&key=${API_KEY}&contentType=json`;
-        console.log('URL запиту:', url);
-        
         const response = await fetch(url);
-        console.log('Статус відповіді:', response.status);
-        
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
-        
         const data = await response.json();
-        console.log('Отримані дані:', data);
-        
         currentWeatherData = data;
-        
-        // Оновити інтерфейс
         updateWeatherUI(data);
-        
-        // Оновити прогноз на 10 днів
         updateForecast(data);
-        
         return data;
     } catch (error) {
         console.error('Помилка при отриманні даних про погоду:', error);
-        alert(`Помилка при отриманні даних про погоду: ${error.message}`);
+        if (error.message.includes('status: 400')) {
+            alert('Такого міста не знайдено!');
+        } else {
+            alert(`Помилка при отриманні даних про погоду: ${error.message}`);
+        }
     }
+}
+
+// Додати функцію для великої літери першого символу
+function capitalizeFirstLetter(str) {
+    if (!str) return '';
+    return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
 // Оновлення інтерфейсу з даними про погоду
 function updateWeatherUI(data) {
-    console.log('Оновлення UI з даними:', data);
-    
     if (!data || !data.days || !data.days[0]) {
-        console.error('Неправильні дані про погоду');
         return;
     }
-    
     const day = data.days[0];
-    console.log('Дані про день:', day);
-    
-    // Оновити основну інформацію
-    if (cityName) cityName.textContent = data.address;
+    if (cityName) cityName.textContent = capitalizeFirstLetter(data.address);
     if (country) country.textContent = data.resolvedAddress || '';
     if (temperature) temperature.textContent = `${Math.round(day.temp)}°C`;
     if (description) description.textContent = day.conditions;
@@ -124,44 +113,26 @@ function updateWeatherUI(data) {
     if (humidity) humidity.textContent = `${day.humidity}%`;
     if (windDesktop) windDesktop.textContent = `${day.windspeed} km/h`;
     if (humidityDesktop) humidityDesktop.textContent = `${day.humidity}%`;
-    
-    console.log('UI оновлено');
-    
-    // Оновити іконку погоди
     updateWeatherIcon(day.icon);
 }
 
 // Оновлення прогнозу на 10 днів
 function updateForecast(data) {
-    console.log('Оновлення прогнозу з даними:', data);
-    
     if (!forecastCarousel) {
-        console.error('Елемент forecastCarousel не знайдено');
         return;
     }
-    
     if (!data || !data.days) {
-        console.error('Неправильні дані про прогноз');
         return;
     }
-    
-    console.log('Кількість днів для прогнозу:', data.days.length);
-    
-    // Очистити поточний прогноз
     forecastCarousel.innerHTML = '';
-    
-    // Додати картки для кожного дня (до 10 днів)
     const daysToShow = Math.min(data.days.length, 10);
-    
     for (let i = 0; i < daysToShow; i++) {
         const day = data.days[i];
         const date = new Date(day.datetime);
         const dayName = i === 0 ? 'Today' : getDayName(date);
-        
         const card = document.createElement('div');
         card.className = 'forecast-card';
         card.dataset.index = i;
-        
         card.innerHTML = `
             <div class="forecast-day">${dayName}</div>
             <div class="forecast-icon">
@@ -172,21 +143,13 @@ function updateForecast(data) {
                 <span class="low-temp">${Math.round(day.tempmin)}°C</span>
             </div>
         `;
-        
-        // Додати обробник подій для зміни поточної інформації
         card.addEventListener('click', () => {
             showDayDetails(i);
         });
-        
         forecastCarousel.appendChild(card);
     }
-    
-    console.log('Створено карток прогнозу:', forecastCarousel.children.length);
-    
-    // Виділити перший день як активний
     if (forecastCarousel.children.length > 0) {
         forecastCarousel.children[0].classList.add('active');
-        console.log('Перший день позначено як активний');
     }
 }
 

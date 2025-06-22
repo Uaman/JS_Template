@@ -19,10 +19,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 addListeners();
             }
             if (isFavoritesPage) {
-                document.querySelector(".filter-panel")?.classList.add("removed");
-                document.querySelector(".filter-button")?.classList.add("removed");
-                document.querySelector(".sort-button")?.classList.add("removed");
-                document.querySelector(".dropdown")?.classList.add("removed");
+                document.querySelector(".filter-panel")?.classList.add("hidden");
+                document.querySelector(".filter-button")?.classList.add("hidden");
+                document.querySelector(".sort-button")?.classList.add("hidden");
+                document.querySelector(".dropdown")?.classList.add("hidden");
             }
         })
         .catch(error => console.error("Error loading books:", error));
@@ -31,9 +31,9 @@ document.addEventListener("DOMContentLoaded", () => {
 function renderBooks(books) {
     const bookList = document.getElementById("book-list");
     bookList.innerHTML = "";
-    
 
-    books.forEach(book => {
+    // Render ALL books (so modals etc. work)
+    const cards = books.map(book => {
         const bookCard = document.createElement("div");
         bookCard.className = "book-card";
         bookCard.dataset.title = book.title;
@@ -41,10 +41,6 @@ function renderBooks(books) {
         bookCard.dataset.year = book.year;
         bookCard.dataset.language = book.language;
         bookCard.dataset.author = book.author;
-
-        if (isFavoritesPage && !book.favorited) {
-            bookCard.classList.add("hidden");
-        }
 
         const img = document.createElement("img");
         img.className = "cover";
@@ -66,8 +62,28 @@ function renderBooks(books) {
         info.appendChild(author);
         bookCard.appendChild(img);
         bookCard.appendChild(info);
-        bookList.appendChild(bookCard);
-        originalBookOrder.push(bookCard);
+
+        if (!isFavoritesPage) {
+            originalBookOrder.push(bookCard);
+        }
+
+        if (isFavoritesPage && !book.favorited) {
+            bookCard.classList.add("invisible");
+        }
+
+        return { book, card: bookCard };
+    });
+
+    // Sort: favorites first, others follow (order among them is preserved)
+    const sortedCards = isFavoritesPage
+        ? cards
+            .filter(c => c.book.favorited)
+            .concat(cards.filter(c => !c.book.favorited)) // for completeness, though hidden
+        : cards;
+
+    // Append all cards (visible or invisible)
+    sortedCards.forEach(({ card }) => {
+        bookList.appendChild(card);
     });
 }
 
@@ -170,7 +186,7 @@ function applyFilters() {
         const sortedCards = sortCards(originalBookOrder, currentSort);
         sortedCards.forEach(card => {
             bookList.appendChild(card);
-            card.classList.remove("hidden");
+            card.classList.remove("invisible");
         });
         return;
     }
@@ -194,8 +210,8 @@ function applyFilters() {
     
     const reordered = [...sortedMatchedCards, ...unmatchedCards];
     reordered.forEach(card => bookList.appendChild(card));
-    sortedMatchedCards.forEach(card => card.classList.remove("hidden"));
-    unmatchedCards.forEach(card => card.classList.add("hidden"));
+    sortedMatchedCards.forEach(card => card.classList.remove("invisible"));
+    unmatchedCards.forEach(card => card.classList.add("invisible"));
 }
 
 function applySort() {
@@ -256,9 +272,10 @@ function showModal(book, index) {
         if (isFavoritesPage && !book.favorited) {
 
     const card = [...document.querySelectorAll(".book-card")].find(c => c.dataset.title === book.title);
-    if (card) card.classList.add("hidden");
+    if (card) card.classList.add("invisible");
     modalOverlay.classList.add("hidden");
     document.body.classList.remove("modal-open");
+    location.reload();
     }
     });
 

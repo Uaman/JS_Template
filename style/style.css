@@ -44,8 +44,9 @@ body {
 .book-card {
   display: flex;
   align-items: center;
+  padding-bottom: 1rem;
 }
-.book-card.hidden {
+.book-card.invisible {
   visibility: hidden; 
   pointer-events: none;
   opacity: 0;
@@ -300,7 +301,7 @@ body.modal-open {
     font-weight: 600;
     font-size: 0.85rem;
   }
-  .favorites-page-button {
+  .favorites-page-button, .back-to-main-button {
     font-family: 'Inter', sans-serif;
     color: black;
     background-color: #dbdbdb;
@@ -422,7 +423,7 @@ body.modal-open {
   body.modal-open {
   padding-right: 16px;
   }
-  .removed {
+  .hidden {
   display: none;
 }
   

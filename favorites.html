@@ -24,7 +24,10 @@
 
         <header class="header desktop-display">
             <h1 class="header-title">Online Book Library</h1>
-            <button class="sign-in-button">Sign In</button>
+            <div class="desktop-button-container">
+                <button class="back-to-main-button" onclick="window.location.href='index.html'">Back to main</button>
+                <button class="sign-in-button">Sign In</button>
+            </div>
         </header>
 
     
@@ -49,7 +52,7 @@
                 <h2 class="featured-heading mobile-display">Favorite Books</h2>
                 <h2 class="featured-heading normal-display">Favorites</h2>
                 <div class="featured-header desktop-display">
-                    <h2 class="featured-heading">Favorite</h2>
+                    <h2 class="featured-heading">Favorites</h2>
 
                     <select class="dropdown" name="sort-options" id="sort-options">
                         <option value="default">Sort by:</option>

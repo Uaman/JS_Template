@@ -1,25 +1,17 @@
-// API ключ для VisualCrossing Weather API
-const API_KEY = 'QHY9C2NBDLL3W9QNTQE8FKK9L'; // Ваш API ключ
+const API_KEY = 'QHY9C2NBDLL3W9QNTQE8FKK9L';
 const BASE_URL = 'https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline';
 
-// DOM елементи
 let cityName, country, temperature, description, wind, humidity, windDesktop, humidityDesktop, forecastCarousel;
 
-// Поточне місто
 let currentCity = 'Kyiv';
 
-// Поточні дані про погоду
 let currentWeatherData = null;
 
-// Ініціалізація додатку
 document.addEventListener('DOMContentLoaded', () => {
-    // Ініціалізувати DOM елементи
     initializeDOMElements();
-    
-    // Завантажити погоду для Києва при запуску
+
     getWeatherData(currentCity);
-    
-    // Обробник для форми пошуку
+
     const cityInput = document.getElementById('cityInput');
     if (cityInput) {
         cityInput.addEventListener('keypress', function(e) {
@@ -28,20 +20,17 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
-    
-    // Додати обробник подій для температури
+
     if (temperature) {
         temperature.addEventListener('click', () => {
-            // Знайти індекс поточно вибраного дня
             const activeCard = document.querySelector('.forecast-card.active');
             const dayIndex = activeCard ? parseInt(activeCard.dataset.index) : 0;
-            
+
             showDetailedPopup(dayIndex);
         });
     }
 });
 
-// Ініціалізація DOM елементів
 function initializeDOMElements() {
     cityName = document.getElementById('cityName');
     country = document.getElementById('country');
@@ -52,25 +41,22 @@ function initializeDOMElements() {
     windDesktop = document.getElementById('wind-desktop');
     humidityDesktop = document.getElementById('humidity-desktop');
     forecastCarousel = document.getElementById('forecastCarousel');
-    
-    // Перевірити, чи всі елементи існують
+
     if (!cityName || !country || !temperature || !description || !wind || !humidity || !windDesktop || !humidityDesktop || !forecastCarousel) {
         console.error('Не всі DOM елементи знайдено');
     }
 }
 
-// Функція пошуку міста
 function searchCity() {
     const cityInput = document.getElementById('cityInput');
     const city = cityInput.value.trim();
-    
+
     if (city) {
         getWeatherData(city);
         cityInput.value = '';
     }
 }
 
-// Отримання даних про погоду з API
 async function getWeatherData(city) {
     try {
         const url = `${BASE_URL}/${encodeURIComponent(city)}?unitGroup=metric&include=days&key=${API_KEY}&contentType=json`;
@@ -82,6 +68,7 @@ async function getWeatherData(city) {
         currentWeatherData = data;
         updateWeatherUI(data);
         updateForecast(data);
+        saveWeatherDataToLocalStorage(data);
         return data;
     } catch (error) {
         console.error('Помилка при отриманні даних про погоду:', error);
@@ -93,13 +80,39 @@ async function getWeatherData(city) {
     }
 }
 
-// Додати функцію для великої літери першого символу
+function saveWeatherDataToLocalStorage(data) {
+    if (!data || !data.days || !data.days[0]) return;
+
+    let history = JSON.parse(localStorage.getItem('weatherHistory')) || [];
+    const todayData = data.days[0];
+    const city = capitalizeFirstLetter(data.address);
+
+    const reportData = {
+        "Місто": city,
+        "Дата": todayData.datetime,
+        "Температура": todayData.temp,
+        "Мін. темп.": todayData.tempmin,
+        "Макс. темп.": todayData.tempmax,
+        "Відчувається як": todayData.feelslike,
+        "Вітер (km/h)": todayData.windspeed,
+        "Вологість (%)": todayData.humidity,
+        "Тиск (mb)": todayData.pressure
+    };
+
+    const cityIndex = history.findIndex(item => item["Місто"] === city);
+    if (cityIndex > -1) {
+        history[cityIndex] = reportData;
+    } else {
+        history.push(reportData);
+    }
+    localStorage.setItem('weatherHistory', JSON.stringify(history));
+}
+
 function capitalizeFirstLetter(str) {
     if (!str) return '';
     return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
-// Оновлення інтерфейсу з даними про погоду
 function updateWeatherUI(data) {
     if (!data || !data.days || !data.days[0]) {
         return;
@@ -116,7 +129,6 @@ function updateWeatherUI(data) {
     updateWeatherIcon(day.icon);
 }
 
-// Оновлення прогнозу на 10 днів
 function updateForecast(data) {
     if (!forecastCarousel) {
         return;
@@ -153,13 +165,11 @@ function updateForecast(data) {
     }
 }
 
-// Отримати назву дня тижня
 function getDayName(date) {
     const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
     return days[date.getDay()];
 }
 
-// Оновити іконку погоди в залежності від умов
 function updateWeatherIcon(iconCode) {
     const mainWeatherIcon = document.querySelector('.main-weather-icon');
     if (mainWeatherIcon) {
@@ -167,9 +177,7 @@ function updateWeatherIcon(iconCode) {
     }
 }
 
-// Отримати HTML для іконки погоди
 function getWeatherIconHTML(iconCode) {
-    // Визначити, яку іконку показувати в залежності від коду
     if (iconCode === 'clear-day' || iconCode === 'clear-night') {
         return `
             <div class="sun-rays">
@@ -196,7 +204,6 @@ function getWeatherIconHTML(iconCode) {
     } else if (iconCode === 'partly-cloudy-day' || iconCode === 'partly-cloudy-night' || iconCode === 'cloudy') {
         return `<div class="cloud-icon"></div>`;
     } else {
-        // За замовчуванням показуємо сонце
         return `
             <div class="sun-rays">
                 <div class="ray"></div>
@@ -213,24 +220,20 @@ function getWeatherIconHTML(iconCode) {
     }
 }
 
-// Показати детальну інформацію про день
 function showDayDetails(dayIndex) {
     if (!currentWeatherData || !currentWeatherData.days[dayIndex]) return;
-    
+
     const day = currentWeatherData.days[dayIndex];
-    
-    // Оновити основну інформацію
+
     if (temperature) temperature.textContent = `${Math.round(day.temp)}°C`;
     if (description) description.textContent = day.conditions;
     if (wind) wind.textContent = `${day.windspeed} km/h`;
     if (humidity) humidity.textContent = `${day.humidity}%`;
     if (windDesktop) windDesktop.textContent = `${day.windspeed} km/h`;
     if (humidityDesktop) humidityDesktop.textContent = `${day.humidity}%`;
-    
-    // Оновити іконку погоди
+
     updateWeatherIcon(day.icon);
-    
-    // Виділити вибраний день
+
     const cards = document.querySelectorAll('.forecast-card');
     cards.forEach(card => card.classList.remove('active'));
     if (cards[dayIndex]) {
@@ -238,24 +241,22 @@ function showDayDetails(dayIndex) {
     }
 }
 
-// Показати попап з детальною інформацією
 function showDetailedPopup(dayIndex) {
     if (!currentWeatherData || !currentWeatherData.days[dayIndex]) return;
-    
+
     const day = currentWeatherData.days[dayIndex];
     const date = new Date(day.datetime);
     const dayName = dayIndex === 0 ? 'Today' : getDayName(date);
-    const fullDate = date.toLocaleDateString('uk-UA', { 
-        weekday: 'long', 
-        year: 'numeric', 
-        month: 'long', 
-        day: 'numeric' 
+    const fullDate = date.toLocaleDateString('uk-UA', {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
     });
-    
-    // Створити попап
+
     const popup = document.createElement('div');
     popup.className = 'weather-popup';
-    
+
     popup.innerHTML = `
         <div class="popup-content">
             <span class="close-popup">&times;</span>
@@ -308,19 +309,17 @@ function showDetailedPopup(dayIndex) {
             </div>
         </div>
     `;
-    
+
     document.body.appendChild(popup);
-    
-    // Закриття попапу
+
     const closeBtn = popup.querySelector('.close-popup');
     closeBtn.addEventListener('click', () => {
         document.body.removeChild(popup);
     });
-    
-    // Закриття попапу при кліку поза ним
+
     popup.addEventListener('click', (e) => {
         if (e.target === popup) {
             document.body.removeChild(popup);
         }
     });
-} 
+}

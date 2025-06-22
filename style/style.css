@@ -234,9 +234,9 @@ body {
 }
 
 .forecast-container {
-    overflow-x: visible;
+    overflow-x: auto;
     -webkit-overflow-scrolling: touch;
-    padding-bottom: 10px;
+    padding: 20px 0 10px;
 }
 
 .forecast-carousel {
@@ -247,7 +247,7 @@ body {
     scroll-snap-type: x mandatory;
     min-width: 100%;
     min-height: 100%;
-    padding: 20px 0 0 0;
+    padding: 0;
 }
 
 .forecast-card {

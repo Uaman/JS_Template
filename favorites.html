@@ -49,8 +49,12 @@
                 </section>
             </aside>
             <section class="featured-books">
-                <h2 class="featured-heading mobile-display">Favorite Books</h2>
-                <h2 class="featured-heading normal-display">Favorites</h2>
+                <div class="mobile-normal-featured-header mobile-or-normal-display">
+                    <h2 class="featured-heading mobile-display">Favorite Books</h2>
+                    <h2 class="featured-heading normal-display">Favorites</h2>
+                    <button class="back-to-main-button" onclick="window.location.href='index.html'">Back to main</button>
+                </div>
+                
                 <div class="featured-header desktop-display">
                     <h2 class="featured-heading">Favorites</h2>
 
@@ -66,11 +70,11 @@
             </section>
         </main>
     </div>    
-<div class="modal-overlay hidden" id="modal-overlay">
-  <div class="modal" id="book-modal">
-    <button class="modal-close" id="modal-close">✖</button>
-    <div class="modal-content" id="modal-content"></div>
-  </div>
-</div>
+    <div class="modal-overlay hidden" id="modal-overlay">
+    <div class="modal" id="book-modal">
+        <button class="modal-close" id="modal-close">✖</button>
+        <div class="modal-content" id="modal-content"></div>
+    </div>
+    </div>
 </body>
 </html>

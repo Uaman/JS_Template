@@ -18,7 +18,12 @@
             <h1 class="header-title normal-display">ONLINE LIBRARY</h1>
             <div class="header-actions">
                 <button class="filter-button">Filter</button>
-                <button class="sort-button">Sort</button>
+                <select class="sort-button dropdown">
+                    <option value="default">Sort</option>
+                    <option value="date-newest">Newest</option>
+                    <option value="date-oldest">Oldest</option>
+                    <option value="genre">Genre</option>
+                </select>
             </div>
         </header>
 
@@ -50,8 +55,11 @@
                 </section>
             </aside>
             <section class="featured-books">
-                <h2 class="featured-heading mobile-display">Featured Books</h2>
-                <h2 class="featured-heading normal-display">Featured</h2>
+                <div class="mobile-normal-featured-header mobile-or-normal-display">
+                    <h2 class="featured-heading mobile-display">Featured Books</h2>
+                    <h2 class="featured-heading normal-display">Featured</h2>
+                    <button class="favorites-page-button" onclick="window.location.href='favorites.html'">Favorites</button>
+                </div>
                 <div class="featured-header desktop-display">
                     <h2 class="featured-heading">Featured</h2>
 
@@ -67,11 +75,11 @@
             </section>
         </main>
     </div>    
-<div class="modal-overlay hidden" id="modal-overlay">
-  <div class="modal" id="book-modal">
-    <button class="modal-close" id="modal-close">✖</button>
-    <div class="modal-content" id="modal-content"></div>
-  </div>
+    <div class="modal-overlay hidden" id="modal-overlay">
+        <div class="modal" id="book-modal">
+        <button class="modal-close" id="modal-close">✖</button>
+        <div class="modal-content" id="modal-content"></div>
+    </div>
 </div>
 </body>
 </html>

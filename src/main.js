@@ -17,6 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (!isFavoritesPage) {
                 generateFilters(allBooks);
                 addListeners();
+                addMobileListener();
             }
             if (isFavoritesPage) {
                 document.querySelector(".filter-panel")?.classList.add("hidden");
@@ -24,6 +25,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 document.querySelector(".sort-button")?.classList.add("hidden");
                 document.querySelector(".dropdown")?.classList.add("hidden");
             }
+
+            
         })
         .catch(error => console.error("Error loading books:", error));
 });
@@ -32,7 +35,6 @@ function renderBooks(books) {
     const bookList = document.getElementById("book-list");
     bookList.innerHTML = "";
 
-    // Render ALL books (so modals etc. work)
     const cards = books.map(book => {
         const bookCard = document.createElement("div");
         bookCard.className = "book-card";
@@ -71,18 +73,13 @@ function renderBooks(books) {
             bookCard.classList.add("invisible");
         }
 
-        return { book, card: bookCard };
+        return {book, card: bookCard};
     });
 
-    // Sort: favorites first, others follow (order among them is preserved)
-    const sortedCards = isFavoritesPage
-        ? cards
-            .filter(c => c.book.favorited)
-            .concat(cards.filter(c => !c.book.favorited)) // for completeness, though hidden
-        : cards;
+    const sortedCards = isFavoritesPage ? cards.filter(c => c.book.favorited).concat(cards.filter(c => !c.book.favorited)) : cards;
 
-    // Append all cards (visible or invisible)
-    sortedCards.forEach(({ card }) => {
+    sortedCards.forEach(obj => {
+        const card = obj.card;
         bookList.appendChild(card);
     });
 }
@@ -142,8 +139,17 @@ function addListeners() {
     const authorField = document.querySelector(".author-field");
     authorField.addEventListener("input", applyFilters);
 
-    const sortingDropdown = document.querySelector(".dropdown");
-    sortingDropdown.addEventListener("change", applySort);
+    const sortingDropdowns = document.querySelectorAll(".dropdown");
+    sortingDropdowns.forEach(dropdown => {
+        dropdown.addEventListener("change", (e) => {
+            currentSort = e.target.value;
+            sortingDropdowns.forEach(dropdown => {
+                if (dropdown !== e.target) dropdown.value = currentSort;
+            });
+
+            applyFilters();
+        });
+    });
 }
 
 function sortCards(cards, sortType) {
@@ -161,7 +167,6 @@ function sortCards(cards, sortType) {
         else if (sortType === "genre") {
             return a.dataset.genre.localeCompare(b.dataset.genre);
         }
-        return 0;
     });
 }
 
@@ -177,10 +182,7 @@ function applyFilters() {
     const unmatchedCards = [];
 
     const noFilters =
-        selectedGenres.length === 0 &&
-        selectedYears.length === 0 &&
-        selectedLanguages.length === 0 &&
-        selectedAuthor.length === 0;
+        selectedGenres.length === 0 && selectedYears.length === 0 && selectedLanguages.length === 0 && selectedAuthor.length === 0;
 
     if (noFilters) {
         const sortedCards = sortCards(originalBookOrder, currentSort);
@@ -214,12 +216,6 @@ function applyFilters() {
     unmatchedCards.forEach(card => card.classList.add("invisible"));
 }
 
-function applySort() {
-    const sortingDropdown = document.querySelector(".dropdown");
-    currentSort = sortingDropdown.value;
-    
-    applyFilters();
-}
 function setupModal() {
     const modalOverlay = document.getElementById("modal-overlay");
     const modalContent = document.getElementById("modal-content");
@@ -228,7 +224,7 @@ function setupModal() {
     document.querySelectorAll(".book-card").forEach((card) => {
         card.addEventListener("click", () => {
             const title = card.dataset.title;
-            const book = allBooks.find(b => b.title === title);
+            const book = allBooks.find(book => book.title === title);
             if (book) {
                 showModal(book);
             }
@@ -247,7 +243,7 @@ function setupModal() {
         }
     });
 }
-function showModal(book, index) {
+function showModal(book) {
     const modalOverlay = document.getElementById("modal-overlay");
     const modalContent = document.getElementById("modal-content");
 
@@ -270,13 +266,12 @@ function showModal(book, index) {
 
         localStorage.setItem("books", JSON.stringify(allBooks));
         if (isFavoritesPage && !book.favorited) {
-
-    const card = [...document.querySelectorAll(".book-card")].find(c => c.dataset.title === book.title);
-    if (card) card.classList.add("invisible");
-    modalOverlay.classList.add("hidden");
-    document.body.classList.remove("modal-open");
-    location.reload();
-    }
+            const card = [...document.querySelectorAll(".book-card")].find(c => c.dataset.title === book.title);
+            if (card) card.classList.add("invisible");
+            modalOverlay.classList.add("hidden");
+            document.body.classList.remove("modal-open");
+            location.reload();
+        }   
     });
 
     modalOverlay.classList.remove("hidden");
@@ -286,4 +281,12 @@ function showModal(book, index) {
 function updateFavoriteBtnStyle(btn, isFavorited) {
     btn.style.backgroundColor = isFavorited ? "#f9f9f9" : "#395081";
     btn.style.color =isFavorited ? "black" : "white"
+}
+function addMobileListener() {
+    const filterPanel = document.querySelector(".filter-panel");
+    const filterButton = document.querySelector(".filter-button");
+    filterButton.addEventListener("click", () => {
+        filterPanel.classList.toggle("desktop-display");
+    })
+    
 }

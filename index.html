@@ -4,34 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To-Do List</title>
+    <link rel="icon" href="data:,">
     <link rel="stylesheet" href="./style/style.css">
     <script src="./src/main.js" defer></script>
 </head>
 <body>
     <div class="to-do-container">
-        <h1>To-Do List</h1>
-        <div class="input-task-container">
-            <input type="text" placeholder="Add a new task" class="task-input">
-            <button class="add-task-button">Add</button>
+        <div class="add-form-container">
+            <h1>To-Do List</h1>
+            <button class="add-form-button">Add a new task</button>
         </div>
 
-        <div class="sorting-and-filtering">
+        <div class="sort-and-filter-container">
             <div class="sort">
                 <label for="sort-by" class="sort-label">Sort by:</label>
                 <select id="sort-by">
-                    <option>Date</option>
-                    <option>Alphabetical</option>
-                    <option>Priority</option>
-                </select>
-            </div>
-
-            <div class="filter">
-                <label for="filter-by" class="filter-label">Filter:</label>
-                <select id="filter-by">
-                    <option value="all">All</option>
+                    <option value="none">None</option>
                     <option value="date">Date</option>
+                    <option value="priority">Priority</option>
                 </select>
             </div>
+            <button class="filter-button">Filter</button>
         </div>
 
         <div class="task-list">
@@ -48,8 +41,8 @@
                     </div>
                 </div>
                 <div class="right-side">
-                    <span class="task-date">May 1, 2024</span>
-                    <div class="buttons">
+                    <span class="task-date">2025-05-01</span>
+                    <div class="edit-and-delete-buttons">
                         <button class="edit-button">
                             <img src="./images/edit.svg" alt="Edit">
                         </button>
@@ -73,8 +66,8 @@
                     </div>
                 </div>
                 <div class="right-side">
-                    <span class="task-date">April 25, 2024</span>
-                    <div class="buttons">
+                    <span class="task-date">2025-04-25</span>
+                    <div class="edit-and-delete-buttons">
                         <button class="edit-button">
                             <img src="./images/edit.svg" alt="Edit">
                         </button>
@@ -98,8 +91,8 @@
                     </div>
                 </div>
                 <div class="right-side">
-                    <span class="task-date">April 23, 2024</span>
-                    <div class="buttons">
+                    <span class="task-date">2025-04-23</span>
+                    <div class="edit-and-delete-buttons">
                         <button class="edit-button">
                             <img src="./images/edit.svg" alt="Edit">
                         </button>
@@ -123,8 +116,8 @@
                     </div>
                 </div>
                 <div class="right-side">
-                    <span class="task-date">April 20, 2024</span>
-                    <div class="buttons">
+                    <span class="task-date">2025-04-20</span>
+                    <div class="edit-and-delete-buttons">
                         <button class="edit-button">
                             <img src="./images/edit.svg" alt="Edit">
                         </button>
@@ -137,13 +130,14 @@
         </div>
     </div>
 
-    <div class="date-filter-input hidden">
+    <div class="filter-container">
         <span>Filter by date</span>
         <div class="container-date-filter">
             <select class="date-filter">
-                <option>Last</option>
-                <option>Current</option>
-                <option>Next</option>
+                <option value="all">All</option>
+                <option value="last">Last</option>
+                <option value="current">Current</option>
+                <option value="next">Next</option>
             </select>
         </div>
 
@@ -157,25 +151,25 @@
         </div>
     </div>
 
-    <form class="task-form hidden">
-        <div class="form-name">
+    <form class="task-form">
+        <div class="form-name-container">
             <span class="task">Task</span>
-            <button class="cancel-image-button">
+            <button type="button" class="cancel-image-button">
                 <img src="./images/cancel.svg" alt="Cancel" width="20" height="20">
             </button>
         </div>
-        <div class="add-task">
+        <div class="add-task-container">
             <label for="task-name">Task name</label>
             <input type="text" id="task-name" name="task-name" placeholder="Example: Task1">
         </div>
-        <div class="add-date">
+        <div class="add-date-container">
             <label for="task-date">Due date</label>
             <div class="custom-date-picker">
             <input type="date" id="task-date" name="task-date">
             <img src="./images/calendar.svg" alt="Calerdar" class="calendar-icon" width="20" height="20">
             </div>
         </div>
-        <div class="add-priority">
+        <div class="add-priority-container">
             <label class="task-priority">Priority</label>
             <div class="priority-options">
                 <label class="custom-radio">

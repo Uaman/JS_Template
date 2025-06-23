@@ -1,0 +1,91 @@
+[
+    {
+        "title": "The Great Gatsby",
+        "author": "F. Scott Fitzgerald",
+        "image": "images/gatsby.png",
+        "genre": "Tragedy",
+        "year":  1925,
+        "language": "English"
+    },
+    {
+        "title": "To Kill a Mockingbird",
+        "author": "Harper Lee",
+        "image": "images/to-kill-a-mockingbird.png",
+        "genre": "Southern Gothic",
+        "year": 1960,
+        "language": "English"
+    },
+    {
+        "title": "1984",
+        "author": "George Orwell",
+        "image": "images/1984.png",
+        "genre": "Dystopian",
+        "year": 1949,
+        "language": "English"
+    },
+    {
+        "title": "Moby Dick",
+        "author": "Herman Melville",
+        "image": "images/moby-dick.png",
+        "genre": "Adventure",
+        "year": 1851,
+        "language": "English"
+    },
+    {
+        "title": "The Catcher in the Rye",
+        "author": "J.D. Salinger",
+        "image": "images/catcher.png",
+        "genre": "Realistic",
+        "year": 1951,
+        "language": "English"
+    },
+    {
+        "title": "Pride and Prejudice",
+        "author": "Jane Austen",
+        "image": "images/pride-and-prejudice.png",
+        "genre": "Classic Regency",
+        "year": 1813,
+        "language": "English"
+    },
+    {
+        "title": "Hiroshima",
+        "author": "John Hersey",
+        "image": "images/hiroshima.jpg",
+        "genre": "Historic",
+        "year": 1946,
+        "language": "English"
+    },
+    {
+        "title": "The Hobbit",
+        "author": "J.R.R. Tolkien",
+        "image": "images/hobbit.png",
+        "genre": "Fantasy",
+        "year": 1937,
+        "language": "English"
+    },
+    {
+        "title": "Fahrenheit 451",
+        "author": "Ray Bradbury",
+        "image": "images/fahrenheit.png",
+        "genre": "Science Fiction",
+        "year": 1953,
+        "language": "English"
+    },
+    {
+        "title": "Енеїда",
+        "author": "Іван Котляревський",
+        "image": "images/eneyida.jpeg",
+        "genre": "Burlesque",
+        "year": 1798,
+        "language": "Українська"
+    },
+    {
+        "title": "Кайдашева Сім'я",
+        "author": "Іван Нечуй-Левицький",
+        "image": "images/kaydasheva-simya.jpg",
+        "genre": "Social",
+        "year": 1879,
+        "language": "Українська"
+    }
+    
+]

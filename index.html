@@ -3,11 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple HTML Page</title>
+    <title>Online Book Library</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./style/style.css">
     <script src="./src/main.js" defer></script>
 </head>
-<body>
 
+<body>
+    <div class="container">
+        <header class="header mobile-or-normal-display">
+            <h1 class="header-title mobile-display">Online Library</h1>
+            <h1 class="header-title normal-display">ONLINE LIBRARY</h1>
+            <div class="header-actions">
+                <button class="filter-button">Filter</button>
+                <select class="sort-button dropdown">
+                    <option value="default">Sort</option>
+                    <option value="date-newest">Newest</option>
+                    <option value="date-oldest">Oldest</option>
+                    <option value="genre">Genre</option>
+                </select>
+            </div>
+        </header>
+
+        <header class="header desktop-display">
+            <h1 class="header-title">Online Book Library</h1>
+            <div class="desktop-button-container">
+                <button class="favorites-page-button" onclick="window.location.href='favorites.html'">Favorites</button>
+                <button class="sign-in-button">Sign In</button>
+            </div>
+            
+        </header>
+
+    
+        <main class="main-layout">
+            <aside class="filter-panel desktop-display">
+                <h2>Filter</h2>
+                <section class="filter-group" id="genre-section">
+                    <h3>Genre</h3>
+                </section>
+                <section class="filter-group" id="author-section">
+                    <h3>Author</h3>
+                    <input class="author-field" type="text" name="author" placeholder="Enter author">
+                </section>
+                <section class="filter-group" id="year-section">
+                    <h3>Year</h3>
+                </section>
+                <section class="filter-group" id="language-section">
+                    <h3>Language</h3>
+                </section>
+            </aside>
+            <section class="featured-books">
+                <div class="mobile-normal-featured-header mobile-or-normal-display">
+                    <h2 class="featured-heading mobile-display">Featured Books</h2>
+                    <h2 class="featured-heading normal-display">Featured</h2>
+                    <button class="favorites-page-button" onclick="window.location.href='favorites.html'">Favorites</button>
+                </div>
+                <div class="featured-header desktop-display">
+                    <h2 class="featured-heading">Featured</h2>
+
+                    <select class="dropdown" name="sort-options" id="sort-options">
+                        <option value="default">Sort by:</option>
+                        <option value="date-newest">Newest</option>
+                        <option value="date-oldest">Oldest</option>
+                        <option value="genre">Genre</option>
+                    </select>
+                </div>
+                
+                <div class="books" id="book-list"></div>
+            </section>
+        </main>
+    </div>    
+    <div class="modal-overlay hidden" id="modal-overlay">
+        <div class="modal" id="book-modal">
+        <button class="modal-close" id="modal-close">✖</button>
+        <div class="modal-content" id="modal-content"></div>
+    </div>
+</div>
 </body>
 </html>

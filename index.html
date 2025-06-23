@@ -8,6 +8,71 @@
     <script src="./src/main.js" defer></script>
 </head>
 <body>
+<div class="container">
+    <div class="create-poll-header">
+        <a href="#createPopup" class="create-poll-btn">Create Poll</a>
+    </div>
 
+    <div class="search-bar">
+        <input type="text" class="search-input" placeholder="Search polls...">
+        <select class="category-dropdown">
+            <option value="">Category</option>
+            <option value="technology">Technology</option>
+            <option value="social">Social Media</option>
+            <option value="lifestyle">Lifestyle</option>
+            <option value="business">Business</option>
+            <option value="education">Education</option>
+            <option value="entertainment">Entertainment</option>
+            <option value="sports">Sports</option>
+        </select>
+    </div>
+
+
+    <div class="polls-grid" id="pollsGrid">
+    </div>
+</div>
+
+<div id="dynamicPopups"></div>
+
+<!-- Create Poll Popup -->
+<div id="createPopup" class="popup-overlay">
+    <div class="popup-content create-popup">
+        <a href="#" class="popup-close">&times;</a>
+        <h1>Create Poll</h1>
+        <form action="#" method="post">
+            <div class="form-group">
+                <label for="question">Question</label>
+                <input type="text" id="question" name="question" placeholder="Enter your question" required>
+            </div>
+
+            <div class="form-group">
+                <label for="category">Category</label>
+                <select class="category-select" id="category" name="category" required>
+                    <option value="">Select a category</option>
+                    <option value="Technology">Technology</option>
+                    <option value="Social Media">Social Media</option>
+                    <option value="Lifestyle">Lifestyle</option>
+                    <option value="Business">Business</option>
+                    <option value="Education">Education</option>
+                    <option value="Entertainment">Entertainment</option>
+                    <option value="Sports">Sports</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Options</label>
+                <div class="options-container">
+                    <input type="text" class="option-input" name="option1" placeholder="Option 1" required>
+                    <input type="text" class="option-input" name="option2" placeholder="Option 2" required>
+                    <input type="text" class="option-input" name="option3" placeholder="Option 3">
+                    <input type="text" class="option-input" name="option4" placeholder="Option 4">
+                </div>
+                <a href="#" class="add-option">Add option</a>
+            </div>
+
+            <button type="submit" class="create-btn">Create</button>
+        </form>
+    </div>
+</div>
 </body>
 </html>

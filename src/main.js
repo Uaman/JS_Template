@@ -1,4 +1,3 @@
-// Початкові дані опитувань (будуть використані тільки при першому завантаженні)
 const defaultPollsData = {
     "polls": [
         {
@@ -98,11 +97,9 @@ const defaultPollsData = {
     ]
 };
 
-// Функції для роботи з localStorage
 const LocalStorageManager = {
     STORAGE_KEY: 'pollsAppData',
 
-    // Завантажити дані з localStorage
     loadData() {
         try {
             const savedData = localStorage.getItem(this.STORAGE_KEY);
@@ -115,7 +112,6 @@ const LocalStorageManager = {
         return null;
     },
 
-    // Зберегти дані в localStorage
     saveData(data) {
         try {
             localStorage.setItem(this.STORAGE_KEY, JSON.stringify(data));
@@ -126,25 +122,8 @@ const LocalStorageManager = {
             return false;
         }
     },
-
-    // Очистити дані
-    clearData() {
-        try {
-            localStorage.removeItem(this.STORAGE_KEY);
-            console.log('Data cleared from localStorage');
-            return true;
-        } catch (error) {
-            console.error('Error clearing data from localStorage:', error);
-            return false;
-        }
-    },
-
-    hasData() {
-        return localStorage.getItem(this.STORAGE_KEY) !== null;
-    }
 };
 
-// Ініціалізація даних: завантажити з localStorage або використати початкові дані
 function initializePollsData() {
     const savedData = LocalStorageManager.loadData();
     if (savedData && savedData.polls && Array.isArray(savedData.polls)) {
@@ -152,16 +131,12 @@ function initializePollsData() {
         return savedData;
     } else {
         console.log('No saved data found, using default data');
-        // Зберігаємо початкові дані в localStorage
         LocalStorageManager.saveData(defaultPollsData);
         return defaultPollsData;
     }
 }
-
-// Глобальна змінна з даними опитувань
 let pollsData = initializePollsData();
 
-// Функція для оновлення відсотків для конкретного опитування
 function updatePollPercentages(poll) {
     if (poll.totalVotes === 0) {
         poll.options.forEach(option => {
@@ -173,7 +148,6 @@ function updatePollPercentages(poll) {
         option.percentage = Math.round((option.votes / poll.totalVotes) * 100);
     });
 
-    // Важливо: перерозподілити відсотки, якщо сума не дорівнює 100 через округлення
     let currentTotalPercentage = poll.options.reduce((sum, option) => sum + option.percentage, 0);
     if (currentTotalPercentage !== 100) {
         const diff = 100 - currentTotalPercentage;
@@ -183,36 +157,31 @@ function updatePollPercentages(poll) {
     }
 }
 
-// Функція для збереження змін у localStorage
 function savePollsData() {
     const success = LocalStorageManager.saveData(pollsData);
     if (success) {
-        // Якщо є відкрита сторінка звітів, оновити дані там
         if (typeof window.updateReportData === 'function') {
             window.updateReportData();
         }
 
-        // Відправити подію для інших вкладок/вікон
         window.dispatchEvent(new CustomEvent('pollsDataUpdated', { detail: pollsData }));
     }
     return success;
 }
 
-// Слухач для оновлень localStorage з інших вкладок
 window.addEventListener('storage', function(e) {
     if (e.key === LocalStorageManager.STORAGE_KEY && e.newValue) {
         try {
             const updatedData = JSON.parse(e.newValue);
             pollsData = updatedData;
             console.log('Data updated from another tab');
-            renderPolls(); // Перемалювати опитування
+            renderPolls();
         } catch (error) {
             console.error('Error parsing updated data from storage:', error);
         }
     }
 });
 
-// Function to render polls
 function renderPolls(polls = pollsData.polls) {
     const pollsGrid = document.getElementById('pollsGrid');
     const dynamicPopups = document.getElementById('dynamicPopups');
@@ -223,7 +192,6 @@ function renderPolls(polls = pollsData.polls) {
     dynamicPopups.innerHTML = '';
 
     polls.forEach(poll => {
-        // Create poll card
         const pollCard = document.createElement('a');
         pollCard.href = `#votePopup${poll.id}`;
         pollCard.className = 'poll-card';
@@ -252,7 +220,6 @@ function renderPolls(polls = pollsData.polls) {
 
         pollsGrid.appendChild(pollCard);
 
-        // Create vote popup
         const popup = document.createElement('div');
         popup.id = `votePopup${poll.id}`;
         popup.className = 'popup-overlay';
@@ -287,7 +254,6 @@ function renderPolls(polls = pollsData.polls) {
 
         dynamicPopups.appendChild(popup);
 
-        // Add form submit handler for voting
         const form = popup.querySelector('form');
         form.addEventListener('submit', function(e) {
             e.preventDefault();
@@ -295,26 +261,18 @@ function renderPolls(polls = pollsData.polls) {
             const selectedOptionName = formData.get(`poll${poll.id}`);
 
             if (selectedOptionName) {
-                // Знаходимо опитування в pollsData за його ID
                 const currentPoll = pollsData.polls.find(p => p.id === poll.id);
 
                 if (currentPoll) {
-                    // Збільшуємо загальну кількість голосів для цього опитування
                     currentPoll.totalVotes++;
 
-                    // Знаходимо обраний варіант і збільшуємо його голоси
                     const selectedOption = currentPoll.options.find(opt => opt.name === selectedOptionName);
                     if (selectedOption) {
                         selectedOption.votes++;
                     }
 
-                    // Перераховуємо відсотки для всіх варіантів цього опитування
                     updatePollPercentages(currentPoll);
-
-                    // Зберігаємо оновлені дані в localStorage
                     savePollsData();
-
-                    // Після оновлення даних, перемальовуємо ВСІ опитування
                     renderPolls();
 
                     alert(`Дякуємо за ваш голос за: ${selectedOptionName}!`);
@@ -326,13 +284,10 @@ function renderPolls(polls = pollsData.polls) {
         });
     });
 }
-
-// Отримуємо форму створення опитування та контейнер для опцій
 const createPollForm = document.querySelector('#createPopup form');
 const optionsContainer = document.querySelector('.options-container');
 const addOptionBtn = document.querySelector('.add-option');
 
-// Функція для додавання нового поля для опції
 function addOptionInput() {
     if (optionsContainer) {
         const newOptionInput = document.createElement('input');
@@ -343,16 +298,12 @@ function addOptionInput() {
         optionsContainer.appendChild(newOptionInput);
     }
 }
-
-// Обробник події для кнопки "Add option"
 if (addOptionBtn) {
     addOptionBtn.addEventListener('click', function(e) {
         e.preventDefault();
         addOptionInput();
     });
 }
-
-// Обробник події для відправки форми створення опитування
 if (createPollForm) {
     createPollForm.addEventListener('submit', function(e) {
         e.preventDefault();
@@ -373,13 +324,11 @@ if (createPollForm) {
             }
         });
 
-        // Проста валідація: щонайменше 2 опції
         if (options.length < 2) {
             alert('Будь ласка, додайте щонайменше дві опції.');
             return;
         }
 
-        // Генеруємо новий ID для опитування
         const newId = pollsData.polls.length > 0 ? Math.max(...pollsData.polls.map(p => p.id)) + 1 : 1;
 
         const newPoll = {
@@ -395,12 +344,9 @@ if (createPollForm) {
         renderPolls();
 
         createPollForm.reset();
-        // Прибираємо додаткові поля опцій, залишаючи перші два
         while (optionsContainer.children.length > 2) {
             optionsContainer.removeChild(optionsContainer.lastChild);
         }
-
-        // Закриваємо попап створення опитування
         window.location.hash = '#';
 
         alert('Опитування успішно створено та збережено!');

@@ -1,7 +1,3 @@
-// Імпортуємо дані з main.js (якщо потрібно, можна скопіювати pollsData сюди)
-// Або підключити main.js перед report.js в HTML
-
-// Функція для перетворення даних опитувань у формат для WebDataRocks
 function transformPollsDataForWebDataRocks(pollsData) {
     const transformedData = [];
 
@@ -14,12 +10,7 @@ function transformPollsDataForWebDataRocks(pollsData) {
                 "Option": option.name,
                 "Votes": option.votes,
                 "Percentage": option.percentage,
-                "Total Poll Votes": poll.totalVotes,
-                "Option Rank": poll.options.indexOf(option) + 1,
-                "Is Top Option": option.votes === Math.max(...poll.options.map(o => o.votes)) ? "Yes" : "No",
-                "Vote Range": option.votes < 20 ? "Low (0-19)" :
-                    option.votes < 50 ? "Medium (20-49)" :
-                        option.votes < 100 ? "High (50-99)" : "Very High (100+)"
+                "Total Poll Votes": poll.totalVotes
             });
         });
     });
@@ -27,7 +18,6 @@ function transformPollsDataForWebDataRocks(pollsData) {
     return transformedData;
 }
 
-// Дані для демонстрації (якщо pollsData недоступний)
 const fallbackPollsData = {
     "polls": [
         {
@@ -127,7 +117,6 @@ const fallbackPollsData = {
     ]
 };
 
-// Функція для завантаження даних з localStorage
 function loadPollsDataFromStorage() {
     try {
         const savedData = localStorage.getItem('pollsAppData');
@@ -140,25 +129,18 @@ function loadPollsDataFromStorage() {
         console.error('Error loading data from localStorage:', error);
     }
 
-    // Використовуємо fallback дані, якщо немає збережених
     console.log('Using fallback data for report');
     return typeof pollsData !== 'undefined' ? pollsData : fallbackPollsData;
 }
 
-// Глобальна змінна для pivot
 let pivot;
 
-// Ініціалізація WebDataRocks після завантаження сторінки
 document.addEventListener('DOMContentLoaded', function() {
-    // Завантажуємо дані з localStorage
     const dataToUse = loadPollsDataFromStorage();
-
-    // Перетворюємо дані для WebDataRocks
     const transformedData = transformPollsDataForWebDataRocks(dataToUse);
 
     console.log('Transformed data for WebDataRocks:', transformedData);
 
-    // Ініціалізуємо WebDataRocks
     pivot = new WebDataRocks({
         container: "#wdr-component",
         toolbar: true,
@@ -171,29 +153,29 @@ document.addEventListener('DOMContentLoaded', function() {
                 rows: [
                     {
                         uniqueName: "Category",
-                        caption: "Категорія"
+                        caption: "Category"
                     },
                     {
                         uniqueName: "Question",
-                        caption: "Питання"
+                        caption: "Question"
                     }
                 ],
                 columns: [
                     {
                         uniqueName: "Option",
-                        caption: "Варіант відповіді"
+                        caption: "Option"
                     }
                 ],
                 measures: [
                     {
                         uniqueName: "Votes",
                         aggregation: "sum",
-                        caption: "Кількість голосів"
+                        caption: "Votes"
                     },
                     {
                         uniqueName: "Percentage",
                         aggregation: "average",
-                        caption: "Середній відсоток"
+                        caption: "Percentage"
                     }
                 ]
             },
@@ -202,23 +184,13 @@ document.addEventListener('DOMContentLoaded', function() {
                     showGrandTotals: "on",
                     showTotals: "on"
                 }
-            },
-            formats: [
-                {
-                    name: "percentage",
-                    decimalPlaces: 1,
-                    textAlign: "right"
-                }
-            ]
+            }
         },
         customizeCell: function(cell, data) {
-            // Кастомізація клітинок (наприклад, кольорове кодування)
             if (data.isClassicTotalRow || data.isClassicTotalColumn || data.isGrandTotalRow || data.isGrandTotalColumn) {
                 cell.style.backgroundColor = "#f5f5f5";
                 cell.style.fontWeight = "bold";
             }
-
-            // Виділення високих значень голосів
             if (data.measure && data.measure.uniqueName === "Votes" && data.value > 80) {
                 cell.style.backgroundColor = "#e8f5e8";
                 cell.style.color = "#2e7d32";
@@ -226,13 +198,10 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         reportcomplete: function() {
             console.log('WebDataRocks report completed successfully');
-
-            // Додаємо кнопку для оновлення даних
             addRefreshButton();
         }
     });
 
-    // Функція для додавання кнопки оновлення даних
     function addRefreshButton() {
         const toolbar = document.querySelector('.wdr-toolbar-wrapper');
         if (toolbar) {
@@ -256,7 +225,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Глобально доступна функція для оновлення даних із зовнішнього коду
     window.updateReportData = function() {
         console.log('Updating report data from localStorage');
         const currentData = loadPollsDataFromStorage();
@@ -270,7 +238,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     };
 
-    // Слухач для оновлень localStorage
     window.addEventListener('storage', function(e) {
         if (e.key === 'pollsAppData' && e.newValue) {
             console.log('Detected localStorage update, refreshing report data');
@@ -278,25 +245,12 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Слухач для кастомної події з тієї ж вкладки
     window.addEventListener('pollsDataUpdated', function(e) {
         console.log('Detected polls data update event, refreshing report');
         window.updateReportData();
     });
 });
 
-// Функція для автоматичного оновлення даних кожні 30 секунд
-function startAutoRefresh() {
-    setInterval(function() {
-        console.log('Auto-refreshing report data...');
-        window.updateReportData();
-    }, 30000); // Оновлення кожні 30 секунд
-}
-
-// Запустити автооновлення (можна закоментувати, якщо не потрібно)
-// startAutoRefresh();
-
-// Експортуємо функцію трансформації для використання в інших файлах
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = { transformPollsDataForWebDataRocks };
 }

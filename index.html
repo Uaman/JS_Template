@@ -1,13 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+    <link href="https://cdn.webdatarocks.com/latest/webdatarocks.min.css" rel="stylesheet" />
+    <script src="https://cdn.webdatarocks.com/latest/webdatarocks.toolbar.min.js"></script>
+    <script src="https://cdn.webdatarocks.com/latest/webdatarocks.js"></script>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple HTML Page</title>
+    <title>Опитування</title>
     <link rel="stylesheet" href="./style/style.css">
     <script src="./src/main.js" defer></script>
 </head>
-<body>
 
+<body>
+    <div id="pivotContainer"></div>
+
+    <div class="content-container">
+        <!-- CREATE POLL AND FIND POLL -->
+        <div class="create-poll-container">
+            <button id="open-poll-creator">Створити опитування</button>
+            <div class="category-container">
+                <input type="text" placeholder="Пошук опитувань">
+                <select>
+                    <option>Категорія</option>
+                    <option>Тварини</option>
+                    <option>Програмування</option>
+                    <option>Література</option>
+                    <option>Філософія</option>
+                    <option>Історія</option>
+                    <option>Математика</option>
+                    <option>Інше</option>
+                </select>
+            </div>
+            <button id="open-report">Аналітика опитувань</button>
+        </div>
+        
+        <!-- POLL LIST -->
+        <div class="poll-list-container">
+            <ul id="poll-list"> 
+            </ul>
+        </div>
+    </div>
+    
+    <!-- HIDDEN POLL CREATOR -->
+    <div class="poll-creator">
+        <div class="close-btn"></div>
+        <div class="poll-creator-container">
+            <div class="question-input-container">
+                <label for="question" class="text">Питання</label>
+                <input id="question" placeholder="Введіть ваше питання">
+            </div>
+            <div class="category-selector-container">
+                <label for="category" class="text">Оберіть категорію</label>
+                <select id="category">
+                    <option>Категорія</option>
+                    <option>Тварини</option>
+                    <option>Програмування</option>
+                    <option>Література</option>
+                    <option>Філософія</option>
+                    <option>Історія</option>
+                    <option>Математика</option>
+                    <option>Інше</option>
+                </select>
+            </div>
+        </div>
+        <div class="options-input-container">
+            <div class="enter-options">
+                <label for="option" class="text">Варіанти відповіді</label>
+                <ul id="options-list">
+                    <li class="option">
+                        <input class="option-input" placeholder="Варіант 1">
+                    </li>
+                    <li class="option">
+                        <input class="option-input" placeholder="Варіант 2">
+                    </li>
+                    <li class="option">
+                        <input class="option-input" placeholder="Варіант 3">
+                    </li>
+                    <li class="option">
+                        <input class="option-input" placeholder="Варіант 4">
+                    </li>
+                </ul>
+                <button id="add-new-option">Додати варіант</button>
+            </div>
+        </div>
+        <button id="create-new-poll">Створити</button>
+    </div>
 </body>
+
 </html>

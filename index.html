@@ -1,13 +1,75 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uk">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple HTML Page</title>
-    <link rel="stylesheet" href="./style/style.css">
-    <script src="./src/main.js" defer></script>
+    <title>Погода - Пошук по містах</title>
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/popup.css">
 </head>
 <body>
+<div class="container">
+    <div class="search-section">
+        <input type="text" class="search-input" placeholder="Enter city name" id="cityInput">
+        <button class="search-button" onclick="searchCity()">Search</button>
+    </div>
+    <div style="text-align:center; margin-bottom: 30px;">
+        <a href="weather-report.html" class="search-button" style="text-decoration:none; display:inline-block; margin-top:10px;">Звіт по погоді</a>
+    </div>
 
+    <div class="main-weather">
+        <div class="weather-info">
+            <h1 class="city-name" id="cityName">Kyiv</h1>
+            <p class="country" id="country">Ukraine</p>
+            <div class="temperature" id="temperature">23°C</div>
+            <div class="weather-description" id="description">Clear</div>
+            <div class="weather-details mobile-only">
+                <div class="detail-item">
+                    <span class="detail-label">Wind:</span>
+                    <span class="detail-value" id="wind">13 km/h</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Humidity:</span>
+                    <span class="detail-value" id="humidity">56%</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="weather-visual">
+            <div class="main-weather-icon">
+                <div class="sun-rays">
+                    <div class="ray"></div>
+                    <div class="ray"></div>
+                    <div class="ray"></div>
+                    <div class="ray"></div>
+                    <div class="ray"></div>
+                    <div class="ray"></div>
+                    <div class="ray"></div>
+                    <div class="ray"></div>
+                </div>
+                <div class="sun-icon"></div>
+            </div>
+            <div class="weather-details desktop-only">
+                <div class="detail-item">
+                    <span class="detail-label">Wind:</span>
+                    <span class="detail-value" id="wind-desktop">13 km/h</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Humidity:</span>
+                    <span class="detail-value" id="humidity-desktop">56%</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="forecast-section">
+        <div class="forecast-container" id="forecastContainer">
+            <div class="forecast-carousel" id="forecastCarousel">
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="script/script.js"></script>
 </body>
 </html>

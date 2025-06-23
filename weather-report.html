@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Звіт по погоді</title>
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/popup.css">
+    <link href="https://cdn.webdatarocks.com/latest/webdatarocks.min.css" rel="stylesheet" />
+    <style>
+        .report-container { max-width: 1000px; margin: 40px auto; background: white; border-radius: 20px; padding: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .back-link { display: inline-block; margin-bottom: 20px; color: #4285f4; text-decoration: none; font-weight: 500; }
+        .back-link:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+<div class="report-container">
+    <a href="index.html" class="back-link">&larr; На головну</a>
+    <h1 style="text-align:center; margin-bottom:30px;">Звіт по погоді</h1>
+    <div id="wdr-component"></div>
+</div>
+<script src="https://cdn.webdatarocks.com/latest/webdatarocks.toolbar.min.js"></script>
+<script src="https://cdn.webdatarocks.com/latest/webdatarocks.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const weatherData = JSON.parse(localStorage.getItem('weatherHistory')) || [];
+        const reportContainer = document.getElementById('wdr-component');
+
+        if (weatherData.length === 0) {
+            reportContainer.innerHTML = '<p style="text-align:center;">Історія пошуку порожня. Будь ласка, знайдіть погоду для кількох міст на головній сторінці, щоб побачити звіт.</p>';
+            return;
+        }
+
+        new WebDataRocks({
+            container: "#wdr-component",
+            toolbar: true,
+            height: 500,
+            report: {
+                dataSource: {
+                    data: weatherData
+                },
+                slice: {
+                    rows: [{ uniqueName: "Місто" }],
+                    columns: [{ uniqueName: "Measures" }],
+                    measures: [
+                        { uniqueName: "Температура", aggregation: "average" },
+                        { uniqueName: "Вітер (km/h)", aggregation: "average" },
+                        { uniqueName: "Вологість (%)", aggregation: "average" },
+                        { uniqueName: "Тиск (mb)", aggregation: "average" },
+                    ]
+                }
+            }
+        });
+    });
+</script>
+</body>
+</html> 

@@ -1,0 +1,98 @@
+[
+    {
+        "id": 1,
+        "question": "Яка ваша улюблена мова програмування?",
+        "category": "Технології",
+        "options": [
+            { "text": "JavaScript", "votes": 525 },
+            { "text": "Python", "votes": 600 },
+            { "text": "Java", "votes": 300 },
+            { "text": "C++", "votes": 75 }
+        ],
+        "totalVotes": 1500
+    },
+    {
+        "id": 2,
+        "question": "Якою соціальною мережею ви користуєтесь найбільше?",
+        "category": "Соціальні мережі",
+        "options": [
+            { "text": "Instagram", "votes": 540 },
+            { "text": "TikTok", "votes": 450 },
+            { "text": "Facebook", "votes": 315 },
+            { "text": "Twitter", "votes": 195 }
+        ],
+        "totalVotes": 1500
+    },
+    {
+        "id": 3,
+        "question": "Який ваш улюблений жанр фільмів?",
+        "category": "Розваги",
+        "options": [
+            { "text": "Драма", "votes": 280 },
+            { "text": "Комедія", "votes": 350 },
+            { "text": "Бойовик", "votes": 300 },
+            { "text": "Жахи", "votes": 170 }
+        ],
+        "totalVotes": 1100
+    },
+    {
+        "id": 4,
+        "question": "Яке ваше улюблене заняття у вільний час?",
+        "category": "Розваги",
+        "options": [
+            { "text": "Читання", "votes": 250 },
+            { "text": "Спорт", "votes": 400 },
+            { "text": "Відеоігри", "votes": 350 },
+            { "text": "Подорожі", "votes": 300 }
+        ],
+        "totalVotes": 1300
+    },
+    {
+        "id": 5,
+        "question": "Який найкращий спосіб навчання?",
+        "category": "Освіта",
+        "options": [
+            { "text": "Онлайн курси", "votes": 450 },
+            { "text": "Книги", "votes": 300 },
+            { "text": "Відео", "votes": 600 },
+            { "text": "Практика", "votes": 650 }
+        ],
+        "totalVotes": 2000
+    },
+    {
+        "id": 6,
+        "question": "Який ваш улюблений вид спорту?",
+        "category": "Спорт",
+        "options": [
+            { "text": "Футбол", "votes": 500 },
+            { "text": "Баскетбол", "votes": 300 },
+            { "text": "Теніс", "votes": 200 },
+            { "text": "Плавання", "votes": 250 }
+        ],
+        "totalVotes": 1250
+    },
+    {
+        "id": 7,
+        "question": "Яка ваша улюблена кухня?",
+        "category": "Їжа",
+        "options": [
+            { "text": "Італійська", "votes": 400 },
+            { "text": "Японська", "votes": 350 },
+            { "text": "Українська", "votes": 300 },
+            { "text": "Французька", "votes": 150 }
+        ],
+        "totalVotes": 1200
+    },
+    {
+        "id": 8,
+        "question": "Куди б ви хотіли поїхати у відпустку?",
+        "category": "Подорожі",
+        "options": [
+            { "text": "Європа", "votes": 450 },
+            { "text": "Азія", "votes": 350 },
+            { "text": "Америка", "votes": 250 },
+            { "text": "Океанія", "votes": 100 }
+        ],
+        "totalVotes": 1150
+    }
+]

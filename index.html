@@ -1,13 +1,81 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uk">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple HTML Page</title>
-    <link rel="stylesheet" href="./style/style.css">
-    <script src="./src/main.js" defer></script>
+    <title>Голосування</title>
+    <link rel="stylesheet" href="style\style.css">
 </head>
 <body>
+    <div class="container">
+        <div class="header">
+            <button class="reports-btn" onclick="location.href='reports.html'">Перейти до звітів</button>
+            <button class="create-poll-btn" onclick="openCreateModal()">Створити опитування</button>
+        </div>
+        <div class="search-section">
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="Шукати опитування..." id="searchInput">
+                <select class="category-select" id="categorySelect">
+                    <option value="">Всі категорії</option>
+                    <option value="Технології">Технології</option>
+                    <option value="Соціальні мережі">Соціальні мережі</option>
+                    <option value="Розваги">Розваги</option>
+                    <option value="Освіта">Освіта</option>
+                    <option value="Спорт">Спорт</option>
+                    <option value="Їжа">Їжа</option>
+                    <option value="Подорожі">Подорожі</option>
+                </select>
+                <button class="search-btn" onclick="performSearch()">Пошук</button>
+            </div>
+        </div>
+        <div class="polls-grid" id="pollsGrid"></div>
+    </div>
 
+    <div class="modal" id="voteModal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal('voteModal')">&times;</button>
+            <h2 class="modal-title">Голосування</h2>
+            <h3 class="modal-question" id="voteQuestion">Питання опитування</h3>
+            <div class="vote-options" id="voteOptions"></div>
+            <button class="vote-btn" onclick="submitVote()">Проголосувати</button>
+        </div>
+    </div>
+
+    <div class="modal" id="createModal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal('createModal')">&times;</button>
+            <h2 class="modal-title">Створити опитування</h2>
+            <div class="form-group">
+                <label class="form-label">Питання</label>
+                <input type="text" class="form-input" id="questionInput" placeholder="Введіть ваше питання">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Категорія</label>
+                <select class="form-input" id="categorySelectCreate">
+                    <option value="">Оберіть категорію</option>
+                    <option value="Технології">Технології</option>
+                    <option value="Соціальні мережі">Соціальні мережі</option>
+                    <option value="Розваги">Розваги</option>
+                    <option value="Освіта">Освіта</option>
+                    <option value="Спорт">Спорт</option>
+                    <option value="Їжа">Їжа</option>
+                    <option value="Подорожі">Подорожі</option>
+                    <option value="Інше">Інше</option>
+                </select>
+            </div>
+            <div class="form-group" id="optionsGroup">
+                <label class="form-label">Варіанти відповідей</label>
+                <input type="text" class="form-input option-input" placeholder="Варіант 1">
+                <input type="text" class="form-input option-input" placeholder="Варіант 2">
+                <input type="text" class="form-input option-input" placeholder="Варіант 3">
+                <input type="text" class="form-input option-input" placeholder="Варіант 4">
+                <button class="add-option-btn" onclick="addOption()">+ Додати варіант</button>
+            </div>
+            <button class="create-btn" onclick="createPoll()">Створити</button>
+        </div>
+    </div>
+
+    <div class="notification" id="notification"></div>
+    <script src="src\main.js"></script>
 </body>
 </html>

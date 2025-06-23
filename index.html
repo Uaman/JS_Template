@@ -3,11 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple HTML Page</title>
-    <link rel="stylesheet" href="./style/style.css">
-    <script src="./src/main.js" defer></script>
+    <title>Polling Website</title>
+    <link rel="stylesheet" href="style/style.css">
 </head>
 <body>
+<script src="src/main.js"></script>
+<div class="container">
+    <div class="create-poll-header">
+        <a href="report.html" class="create-poll-btn stats-btn">View Stats</a>
+        <a href="#create-poll-modal" class="create-poll-btn">Create Poll</a>
+    </div>
+
+    <div class="search-bar">
+        <input type="text" class="search-input" placeholder="Search polls...">
+        <select class="category-dropdown">
+            <option value="">Category</option>
+            <option value="business">Business</option>
+            <option value="lifestyle">Lifestyle</option>
+            <option value="technology">Technology</option>
+            <option value="entertainment">Entertainment</option>
+        </select>
+    </div>
+
+    <div class="poll-grid">
+        <!-- Polls will be loaded dynamically by JavaScript -->
+    </div>
+</div>
+
+<!-- Create Poll Modal -->
+<div id="create-poll-modal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Create Poll</h2>
+            <a href="#" class="close-btn">&times;</a>
+        </div>
+        <form class="poll-form" action="#" method="post">
+            <div class="form-group">
+                <label for="question">Question</label>
+                <input type="text" id="question" name="question" placeholder="Enter your question" required>
+            </div>
+
+            <div class="form-group">
+                <label for="category">Category</label>
+                <select id="category" name="category" required>
+                    <option value="">Select category</option>
+                    <option value="business">Business</option>
+                    <option value="lifestyle">Lifestyle</option>
+                    <option value="technology">Technology</option>
+                    <option value="entertainment">Entertainment</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Options</label>
+                <div class="options-container">
+                    <input type="text" class="option-input" name="option1" placeholder="Option 1" required>
+                    <input type="text" class="option-input" name="option2" placeholder="Option 2" required>
+                    <input type="text" class="option-input" name="option3" placeholder="Option 3">
+                    <input type="text" class="option-input" name="option4" placeholder="Option 4">
+                </div>
+                <button type="button" class="add-option-btn">Add option</button>
+            </div>
+
+            <div class="modal-actions">
+                <a href="#" class="cancel-btn">Cancel</a>
+                <button type="submit" class="create-btn">Create</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Voting modals will be created dynamically by JavaScript -->
 
 </body>
 </html>

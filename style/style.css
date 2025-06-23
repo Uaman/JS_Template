@@ -407,7 +407,6 @@ body {
     margin-top: 50px;
 }
 
-/* Notification */
 .notification {
     position: fixed;
     top: 20px;
@@ -432,6 +431,23 @@ body {
 
 .notification.error {
     background-color: #ea4335;
+}
+
+.reports-btn {
+    background-color: #0f9d58;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    width: 100%;
+}
+
+.reports-btn:hover {
+    background-color: #0b8045;
 }
 
 /* Responsive Design */
@@ -488,5 +504,11 @@ body {
         align-self: flex-end;
         width: 100%;
         text-align: right;
+    }
+
+    .create-poll-btn,
+    .reports-btn {
+        width: 100%;
+        margin-bottom: 10px;
     }
 }

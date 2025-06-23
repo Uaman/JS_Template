@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uk">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vote-vote-vote</title>
-    <link rel="stylesheet" href="./style/style.css">
-    <script src="./src/main.js" defer></script>
+    <title>Голосування</title>
+    <link rel="stylesheet" href="style\style.css">
 </head>
 <body>
     <div class="container">
@@ -13,144 +12,45 @@
             <button class="create-poll-btn" onclick="openCreateModal()">Створити опитування</button>
         </div>
         <div class="search-section">
-            <input type="text" class="search-input" placeholder="Шукати опитування...">
-            <select class="category-select">
-                <option>Категорія</option>
-                <option>Технології</option>
-                <option>Соціальні мережі</option>
-                <option>Розваги</option>
-                <option>Освіта</option>
-            </select>
-        </div>
-        <div class="polls-grid">
-            <div class="poll-card" data-question="Яка ваша улюблена мова програмування?" data-options='["JavaScript", "Python", "Java", "C++"]'>
-                <h3 class="poll-question">Яка ваша улюблена мова програмування?</h3>
-                <div class="poll-options">
-                    <div class="poll-option">
-                        <span class="option-text">JavaScript</span>
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 35%"></div>
-                        </div>
-                        <span class="percentage">35%</span>
-                    </div>
-                    <div class="poll-option">
-                        <span class="option-text">Python</span>
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 40%"></div>
-                        </div>
-                        <span class="percentage">40%</span>
-                    </div>
-                    <div class="poll-option">
-                        <span class="option-text">Java</span>
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 20%"></div>
-                        </div>
-                        <span class="percentage">20%</span>
-                    </div>
-                    <div class="poll-option">
-                        <span class="option-text">C++</span>
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 5%"></div>
-                        </div>
-                        <span class="percentage">5%</span>
-                    </div>
-                </div>
-                <div class="vote-count">150 голосів</div>
-            </div>
-            <div class="poll-card" data-question="Якою соціальною мережею ви користуєтесь найбільше?" data-options='["Facebook", "Twitter", "Instagram", "LinkedIn"]'>
-                <h3 class="poll-question">Якою соціальною мережею ви користуєтесь найбільше?</h3>
-                <div class="poll-options">
-                    <div class="poll-option">
-                        <span class="option-text">Facebook</span>
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 35%"></div>
-                        </div>
-                        <span class="percentage">35%</span>
-                    </div>
-                    <div class="poll-option">
-                        <span class="option-text">Twitter</span>
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 25%"></div>
-                        </div>
-                        <span class="percentage">25%</span>
-                    </div>
-                    <div class="poll-option">
-                        <span class="option-text">Instagram</span>
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 30%"></div>
-                        </div>
-                        <span class="percentage">30%</span>
-                    </div>
-                    <div class="poll-option">
-                        <span class="option-text">LinkedIn</span>
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 10%"></div>
-                        </div>
-                        <span class="percentage">10%</span>
-                    </div>
-                </div>
-                <div class="vote-count">180 голосів</div>
-            </div>
-            <div class="poll-card" data-question="Який ваш улюблений колір?" data-options='["Синій", "Зелений", "Червоний", "Жовтий"]'>
-                <h3 class="poll-question">Який ваш улюблений колір?</h3>
-                <div class="poll-options">
-                    <div class="poll-option">
-                        <span class="option-text">Синій</span>
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 40%"></div>
-                        </div>
-                        <span class="percentage">40%</span>
-                    </div>
-                    <div class="poll-option">
-                        <span class="option-text">Зелений</span>
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 30%"></div>
-                        </div>
-                        <span class="percentage">30%</span>
-                    </div>
-                    <div class="poll-option">
-                        <span class="option-text">Червоний</span>
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 20%"></div>
-                        </div>
-                        <span class="percentage">20%</span>
-                    </div>
-                    <div class="poll-option">
-                        <span class="option-text">Жовтий</span>
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 10%"></div>
-                        </div>
-                        <span class="percentage">10%</span>
-                    </div>
-                </div>
-                <div class="vote-count">95 голосів</div>
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="Шукати опитування..." id="searchInput">
+                <select class="category-select" id="categorySelect">
+                    <option value="">Всі категорії</option>
+                    <option value="Технології">Технології</option>
+                    <option value="Соціальні мережі">Соціальні мережі</option>
+                    <option value="Розваги">Розваги</option>
+                    <option value="Освіта">Освіта</option>
+                    <option value="Спорт">Спорт</option>
+                    <option value="Їжа">Їжа</option>
+                    <option value="Подорожі">Подорожі</option>
+                </select>
+                <button class="search-btn" onclick="performSearch()">Пошук</button>
             </div>
         </div>
+        <div class="polls-grid" id="pollsGrid"></div>
     </div>
+
     <div class="modal" id="voteModal">
         <div class="modal-content">
             <button class="close-btn" onclick="closeModal('voteModal')">&times;</button>
             <h2 class="modal-title">Голосування</h2>
             <h3 class="modal-question" id="voteQuestion">Питання опитування</h3>
-            
-            <div class="vote-options" id="voteOptions">
-            </div>
-
+            <div class="vote-options" id="voteOptions"></div>
             <button class="vote-btn" onclick="submitVote()">Проголосувати</button>
         </div>
     </div>
+
     <div class="modal" id="createModal">
         <div class="modal-content">
             <button class="close-btn" onclick="closeModal('createModal')">&times;</button>
             <h2 class="modal-title">Створити опитування</h2>
-            
             <div class="form-group">
                 <label class="form-label">Питання</label>
                 <input type="text" class="form-input" id="questionInput" placeholder="Введіть ваше питання">
             </div>
             <div class="form-group">
                 <label class="form-label">Категорія</label>
-                <select class="form-input" id="categorySelect">
+                <select class="form-input" id="categorySelectCreate">
                     <option value="">Оберіть категорію</option>
                     <option value="Технології">Технології</option>
                     <option value="Соціальні мережі">Соціальні мережі</option>
@@ -174,108 +74,7 @@
         </div>
     </div>
 
-    <script>
-        function openCreateModal() {
-            document.getElementById('createModal').style.display = 'flex';
-        }
-        function openVoteModal(question, options) {
-            const modal = document.getElementById('voteModal');
-            const questionElement = document.getElementById('voteQuestion');
-            const optionsContainer = document.getElementById('voteOptions');
- 
-            questionElement.textContent = question;
-
-            optionsContainer.innerHTML = '';
-
-            options.forEach((option, index) => {
-                const optionElement = document.createElement('label');
-                optionElement.className = 'vote-option';
-                optionElement.innerHTML = `
-                    <input type="radio" name="vote" value="${option}" class="vote-radio">
-                    <span class="vote-text">${option}</span>
-                `;
-                optionsContainer.appendChild(optionElement);
-            });
-            
-            modal.style.display = 'flex';
-        }
-
-        function closeModal(modalId) {
-            document.getElementById(modalId).style.display = 'none';
-        }
-
-        function submitVote() {
-            const selected = document.querySelector('input[name="vote"]:checked');
-            if (selected) {
-                alert(`Ваш голос за "${selected.value}" подано!`);
-                closeModal('voteModal');
-            } else {
-                alert('Будь ласка, оберіть варіант відповіді');
-            }
-        }
-
-        function createPoll() {
-            const question = document.getElementById('questionInput').value;
-            const category = document.getElementById('categorySelect').value;
-            const optionInputs = document.querySelectorAll('.option-input');
-            const options = Array.from(optionInputs)
-                .map(input => input.value.trim())
-                .filter(value => value !== '');
-
-            if (question.trim() === '') {
-                alert('Будь ласка, введіть питання');
-                return;
-            }
-
-            if (category === '') {
-                alert('Будь ласка, оберіть категорію');
-                return;
-            }
-
-            if (options.length < 2) {
-                alert('Будь ласка, додайте принаймні 2 варіанти відповідей');
-                return;
-            }
-
-            alert(`Опитування створено успішно! \nПитання: ${question} \nКатегорія: ${category}\nВаріанти: ${options.join(', ')}`);
-            
-            document.getElementById('questionInput').value = '';
-            document.getElementById('categorySelect').value = '';
-            optionInputs.forEach(input => input.value = '');
-            
-            closeModal('createModal');
-        }
-
-        function addOption() {
-            const optionsGroup = document.getElementById('optionsGroup');
-            const addBtn = optionsGroup.querySelector('.add-option-btn');
-            const optionCount = optionsGroup.querySelectorAll('.option-input').length;
-            
-            const newInput = document.createElement('input');
-            newInput.type = 'text';
-            newInput.className = 'form-input option-input';
-            newInput.placeholder = `Варіант ${optionCount + 1}`;
-            
-            optionsGroup.insertBefore(newInput, addBtn);
-        }
-
-        window.addEventListener('click', function(e) {
-            if (e.target.classList.contains('modal')) {
-                e.target.style.display = 'none';
-            }
-        });
-
-        document.addEventListener('DOMContentLoaded', function() {
-            const pollCards = document.querySelectorAll('.poll-card');
-            
-            pollCards.forEach(card => {
-                card.addEventListener('click', function() {
-                    const question = this.getAttribute('data-question');
-                    const options = JSON.parse(this.getAttribute('data-options'));
-                    openVoteModal(question, options);
-                });
-            });
-        });
-    </script>
+    <div class="notification" id="notification"></div>
+    <script src="src\main.js"></script>
 </body>
 </html>

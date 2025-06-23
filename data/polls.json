@@ -1,0 +1,98 @@
+[
+  {
+    "id": "1",
+    "question": "Яка ваша улюблена мова програмування?",
+    "category": "Програмування",
+    "options": [
+      { "text": "Python", "votes": 30 },
+      { "text": "Java", "votes": 50 },
+      { "text": "Javascript", "votes": 15 },
+      { "text": "Swift", "votes": 5 }
+    ],
+    "totalVotes": 100
+  },
+  {
+    "id": "2",
+    "question": "Якою соціальною мережею ви користуєтесь частіше над усе?",
+    "category": "Інше",
+    "options": [
+      { "text": "Instagram", "votes": 30 },
+      { "text": "Tiktok", "votes": 50 },
+      { "text": "Facebook", "votes": 15 },
+      { "text": "LinkedIn", "votes": 5 }
+    ],
+    "totalVotes": 100
+  },
+  {
+    "id": "3",
+    "question": "Ваша улюблена пора року?",
+    "category": "Інше",
+    "options": [
+      { "text": "Весна", "votes": 25 },
+      { "text": "Літо", "votes": 40 },
+      { "text": "Осінь", "votes": 20 },
+      { "text": "Зима", "votes": 15 }
+    ],
+    "totalVotes": 100
+  },
+  {
+    "id": "4",
+    "question": "Який ваш улюблений жанр літератури?",
+    "category": "Література",
+    "options": [
+      { "text": "Фантастика", "votes": 35 },
+      { "text": "Фентезі", "votes": 30 },
+      { "text": "Детектив", "votes": 20 },
+      { "text": "Роман", "votes": 15 }
+    ],
+    "totalVotes": 100
+  },
+  {
+    "id": "5",
+    "question": "Яка ваша улюблена тварина?",
+    "category": "Тварини",
+    "options": [
+      { "text": "Собака", "votes": 45 },
+      { "text": "Кішка", "votes": 35 },
+      { "text": "Папуга", "votes": 10 },
+      { "text": "Рибка", "votes": 10 }
+    ],
+    "totalVotes": 100
+  },
+  {
+    "id": "6",
+    "question": "Який філософський напрямок вам найближчий?",
+    "category": "Філософія",
+    "options": [
+      { "text": "Екзистенціалізм", "votes": 20 },
+      { "text": "Стоїцизм", "votes": 40 },
+      { "text": "Раціоналізм", "votes": 25 },
+      { "text": "Емпіризм", "votes": 15 }
+    ],
+    "totalVotes": 100
+  },
+  {
+    "id": "7",
+    "question": "Найважливіша історична подія 20 століття?",
+    "category": "Історія",
+    "options": [
+      { "text": "Перша світова війна", "votes": 20 },
+      { "text": "Друга світова війна", "votes": 60 },
+      { "text": "Холодна війна", "votes": 10 },
+      { "text": "Розпад СРСР", "votes": 10 }
+    ],
+    "totalVotes": 100
+  },
+  {
+    "id": "8",
+    "question": "Яка математична операція найважливіша?",
+    "category": "Математика",
+    "options": [
+      { "text": "Додавання", "votes": 25 },
+      { "text": "Віднімання", "votes": 25 },
+      { "text": "Множення", "votes": 25 },
+      { "text": "Ділення", "votes": 25 }
+    ],
+    "totalVotes": 100
+  }
+]

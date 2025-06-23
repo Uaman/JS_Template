@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Аналітика опитувань</title>
+    <link rel="stylesheet" href="style/style.css">
+    <script src="https://cdn.webdatarocks.com/latest/webdatarocks.js"></script>
+    <link rel="stylesheet" href="https://cdn.webdatarocks.com/latest/webdatarocks.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f5f7fa;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+        
+        .report-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background-color: #4277d7;
+            color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .back-btn {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1em;
+            padding: 8px 15px;
+            border-radius: 4px;
+            background-color: rgba(255, 255, 255, 0.2);
+            transition: background-color 0.3s;
+        }
+        
+        .report-container {
+            padding: 20px;
+            height: calc(100vh - 70px);
+            box-sizing: border-box;
+        }
+        
+        #wdr-component {
+            height: 100%;
+            border: 1px solid #dbe3ea;
+            border-radius: 5px;
+            box-shadow: 0.5vw 0.5vw 1vw #dbe3ea;
+            background: white;
+        }
+    </style>
+</head>
+<body>
+    <header class="report-header">
+        <h1>Аналітика опитувань</h1>
+        <a href="index.html" class="back-btn">← Повернутись</a>
+    </header>
+    
+    <div class="report-container">
+        <div id="wdr-component"></div>
+    </div>
+    
+    <script src="src/report.js"></script>
+</body>
+</html>

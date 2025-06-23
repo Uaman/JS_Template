@@ -2,6 +2,10 @@
 <html lang="en">
 
 <head>
+    <link href="https://cdn.webdatarocks.com/latest/webdatarocks.min.css" rel="stylesheet" />
+    <script src="https://cdn.webdatarocks.com/latest/webdatarocks.toolbar.min.js"></script>
+    <script src="https://cdn.webdatarocks.com/latest/webdatarocks.js"></script>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Опитування</title>
@@ -10,10 +14,12 @@
 </head>
 
 <body>
+    <div id="pivotContainer"></div>
+
     <div class="content-container">
         <!-- CREATE POLL AND FIND POLL -->
         <div class="create-poll-container">
-            <button aria-label="Створити опитування" id="open-poll-creator">Створити опитування</button>
+            <button id="open-poll-creator">Створити опитування</button>
             <div class="category-container">
                 <input type="text" placeholder="Пошук опитувань">
                 <select>
@@ -21,86 +27,18 @@
                     <option>Тварини</option>
                     <option>Програмування</option>
                     <option>Література</option>
+                    <option>Філософія</option>
+                    <option>Історія</option>
+                    <option>Математика</option>
+                    <option>Інше</option>
                 </select>
             </div>
+            <!-- <button id="open-report">Аналітика опитувань</button> -->
         </div>
         
         <!-- POLL LIST -->
-        <div class="poll-list">
-            <ul>
-                <li class="poll-container stats-view" data-original-content="">
-                    <header class="poll-title">Яка ваша улюблена мова програмування?</header>
-                    <section class="options-results">
-                        <ul class="options-results-list">
-                            <li class="options-results-row">
-                                <label>Python</label>
-                                <div class="slidecontainer">
-                                    <input type="range" min="1" max="100" value="30" class="slider" disabled>
-                                </div>
-                                <span class="percent">30%</span>
-                            </li>
-                            <li class="options-results-row">
-                                <label>Java</label>
-                                <div class="slidecontainer">
-                                    <input type="range" min="1" max="100" value="50" class="slider" disabled>
-                                </div>
-                                <span class="percent">50%</span>
-                            </li>
-                            <li class="options-results-row">
-                                <label>Javascript</label>
-                                <div class="slidecontainer">
-                                    <input type="range" min="1" max="100" value="15" class="slider" disabled>
-                                </div>
-                                <span class="percent">15%</span>
-                            </li>
-                            <li class="options-results-row">
-                                <label>Swift</label>
-                                <div class="slidecontainer">
-                                    <input type="range" min="1" max="100" value="5" class="slider" disabled>
-                                </div>
-                                <span class="percent">5%</span>
-                            </li>
-                        </ul>
-                    </section>
-                    <span class="votes-quantity">150 votes</span>
-                </li>
-                
-                <li class="poll-container stats-view" data-original-content="">
-                    <header class="poll-title">Якою соціальною мережею ви користуєтесь частіше над усе?</header>
-                    <section class="options-results">
-                        <ul class="options-results-list">
-                            <li class="options-results-row">
-                                <label>Instagram</label>
-                                <div class="slidecontainer">
-                                    <input type="range" min="1" max="100" value="30" class="slider" disabled>
-                                </div>
-                                <span class="percent">30%</span>
-                            </li>
-                            <li class="options-results-row">
-                                <label>Tiktok</label>
-                                <div class="slidecontainer">
-                                    <input type="range" min="1" max="100" value="50" class="slider" disabled>
-                                </div>
-                                <span class="percent">50%</span>
-                            </li>
-                            <li class="options-results-row">
-                                <label>Facebook</label>
-                                <div class="slidecontainer">
-                                    <input type="range" min="1" max="100" value="15" class="slider" disabled>
-                                </div>
-                                <span class="percent">15%</span>
-                            </li>
-                            <li class="options-results-row">
-                                <label>LinkedIn</label>
-                                <div class="slidecontainer">
-                                    <input type="range" min="1" max="100" value="5" class="slider" disabled>
-                                </div>
-                                <span class="percent">5%</span>
-                            </li>
-                        </ul>
-                    </section>
-                    <span class="votes-quantity">180 votes</span>
-                </li>
+        <div class="poll-list-container">
+            <ul id="poll-list"> 
             </ul>
         </div>
     </div>
@@ -115,29 +53,33 @@
             </div>
             <div class="category-selector-container">
                 <label for="category" class="text">Оберіть категорію</label>
-                <select>
+                <select id="category">
                     <option>Категорія</option>
                     <option>Тварини</option>
                     <option>Програмування</option>
                     <option>Література</option>
+                    <option>Філософія</option>
+                    <option>Історія</option>
+                    <option>Математика</option>
+                    <option>Інше</option>
                 </select>
             </div>
         </div>
         <div class="options-input-container">
             <div class="enter-options">
                 <label for="option" class="text">Варіанти відповіді</label>
-                <ul>
+                <ul id="options-list">
                     <li class="option">
-                        <input id="option" placeholder="Варіант 1">
+                        <input class="option-input" placeholder="Варіант 1">
                     </li>
                     <li class="option">
-                        <input id="option" placeholder="Варіант 2">
+                        <input class="option-input" placeholder="Варіант 2">
                     </li>
                     <li class="option">
-                        <input id="option" placeholder="Варіант 3">
+                        <input class="option-input" placeholder="Варіант 3">
                     </li>
                     <li class="option">
-                        <input id="option" placeholder="Варіант 4">
+                        <input class="option-input" placeholder="Варіант 4">
                     </li>
                 </ul>
                 <button id="add-new-option">Додати варіант</button>

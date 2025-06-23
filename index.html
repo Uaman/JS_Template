@@ -7,8 +7,10 @@
     <link rel="stylesheet" href="style/style.css">
 </head>
 <body>
+<script src="src/main.js"></script>
 <div class="container">
     <div class="create-poll-header">
+        <a href="report.html" class="create-poll-btn stats-btn">View Stats</a>
         <a href="#create-poll-modal" class="create-poll-btn">Create Poll</a>
     </div>
 
@@ -24,104 +26,7 @@
     </div>
 
     <div class="poll-grid">
-        <a class="poll-card" href="#vote-modal1">
-            <div class="poll-title">What is your favorite programming language?</div>
-            <div class="poll-option">
-                <span class="option-label">JavaScript</span>
-                <div class="progress-container">
-                    <div class="progress-bar" style="width: 45%"></div>
-                </div>
-                <span class="percentage">45%</span>
-            </div>
-            <div class="poll-option">
-                <span class="option-label">Python</span>
-                <div class="progress-container">
-                    <div class="progress-bar" style="width: 35%"></div>
-                </div>
-                <span class="percentage">35%</span>
-            </div>
-            <div class="poll-option">
-                <span class="option-label">Java</span>
-                <div class="progress-container">
-                    <div class="progress-bar" style="width: 15%"></div>
-                </div>
-                <span class="percentage">15%</span>
-            </div>
-            <div class="poll-option">
-                <span class="option-label">C++</span>
-                <div class="progress-container">
-                    <div class="progress-bar" style="width: 5%"></div>
-                </div>
-                <span class="percentage">5%</span>
-            </div>
-            <div class="vote-count">150 votes</div>
-        </a>
-
-        <a class="poll-card" href="#vote-modal2">
-            <div class="poll-title">Which social media platform do you use the most?</div>
-            <div class="poll-option">
-                <span class="option-label">Facebook</span>
-                <div class="progress-container">
-                    <div class="progress-bar" style="width: 35%"></div>
-                </div>
-                <span class="percentage">35%</span>
-            </div>
-            <div class="poll-option">
-                <span class="option-label">Instagram</span>
-                <div class="progress-container">
-                    <div class="progress-bar" style="width: 30%"></div>
-                </div>
-                <span class="percentage">30%</span>
-            </div>
-            <div class="poll-option">
-                <span class="option-label">Twitter</span>
-                <div class="progress-container">
-                    <div class="progress-bar" style="width: 25%"></div>
-                </div>
-                <span class="percentage">25%</span>
-            </div>
-            <div class="poll-option">
-                <span class="option-label">LinkedIn</span>
-                <div class="progress-container">
-                    <div class="progress-bar" style="width: 10%"></div>
-                </div>
-                <span class="percentage">10%</span>
-            </div>
-            <div class="vote-count">280 votes</div>
-        </a>
-
-        <a class="poll-card" href="#vote-modal3">
-            <div class="poll-title">What is your favorite color?</div>
-            <div class="poll-option">
-                <span class="option-label">Blue</span>
-                <div class="progress-container">
-                    <div class="progress-bar" style="width: 40%"></div>
-                </div>
-                <span class="percentage">40%</span>
-            </div>
-            <div class="poll-option">
-                <span class="option-label">Green</span>
-                <div class="progress-container">
-                    <div class="progress-bar" style="width: 30%"></div>
-                </div>
-                <span class="percentage">30%</span>
-            </div>
-            <div class="poll-option">
-                <span class="option-label">Red</span>
-                <div class="progress-container">
-                    <div class="progress-bar" style="width: 20%"></div>
-                </div>
-                <span class="percentage">20%</span>
-            </div>
-            <div class="poll-option">
-                <span class="option-label">Yellow</span>
-                <div class="progress-container">
-                    <div class="progress-bar" style="width: 10%"></div>
-                </div>
-                <span class="percentage">10%</span>
-            </div>
-            <div class="vote-count">95 votes</div>
-        </a>
+        <!-- Polls will be loaded dynamically by JavaScript -->
     </div>
 </div>
 
@@ -168,143 +73,7 @@
     </div>
 </div>
 
-<!-- Voting Modals -->
-<div id="vote-modal1" class="modal">
-    <div class="modal-content vote-modal">
-        <div class="modal-header">
-            <h2>Vote</h2>
-            <a href="#" class="close-btn">&times;</a>
-        </div>
-        <div class="question">What is your favorite programming language?</div>
-        <form class="vote-form" method="post">
-            <div class="vote-options">
-                <div class="vote-option">
-                    <input type="radio" id="js" name="programming" value="javascript" required>
-                    <label for="js">
-                        <div class="radio-button"></div>
-                        JavaScript
-                    </label>
-                </div>
-                <div class="vote-option">
-                    <input type="radio" id="python" name="programming" value="python">
-                    <label for="python">
-                        <div class="radio-button"></div>
-                        Python
-                    </label>
-                </div>
-                <div class="vote-option">
-                    <input type="radio" id="java" name="programming" value="java">
-                    <label for="java">
-                        <div class="radio-button"></div>
-                        Java
-                    </label>
-                </div>
-                <div class="vote-option">
-                    <input type="radio" id="cpp" name="programming" value="cpp">
-                    <label for="cpp">
-                        <div class="radio-button"></div>
-                        C++
-                    </label>
-                </div>
-            </div>
-            <div class="modal-actions">
-                <a href="#" class="cancel-btn">Cancel</a>
-                <button type="submit" class="vote-btn">Vote</button>
-            </div>
-        </form>
-    </div>
-</div>
+<!-- Voting modals will be created dynamically by JavaScript -->
 
-<div id="vote-modal2" class="modal">
-    <div class="modal-content vote-modal">
-        <div class="modal-header">
-            <h2>Vote</h2>
-            <a href="#" class="close-btn">&times;</a>
-        </div>
-        <div class="question">Which social media platform do you use the most?</div>
-        <form class="vote-form" method="post">
-            <div class="vote-options">
-                <div class="vote-option">
-                    <input type="radio" id="facebook" name="social" value="facebook" required>
-                    <label for="facebook">
-                        <div class="radio-button"></div>
-                        Facebook
-                    </label>
-                </div>
-                <div class="vote-option">
-                    <input type="radio" id="instagram" name="social" value="instagram">
-                    <label for="instagram">
-                        <div class="radio-button"></div>
-                        Instagram
-                    </label>
-                </div>
-                <div class="vote-option">
-                    <input type="radio" id="twitter" name="social" value="twitter">
-                    <label for="twitter">
-                        <div class="radio-button"></div>
-                        Twitter
-                    </label>
-                </div>
-                <div class="vote-option">
-                    <input type="radio" id="linkedin" name="social" value="linkedin">
-                    <label for="linkedin">
-                        <div class="radio-button"></div>
-                        LinkedIn
-                    </label>
-                </div>
-            </div>
-            <div class="modal-actions">
-                <a href="#" class="cancel-btn">Cancel</a>
-                <button type="submit" class="vote-btn">Vote</button>
-            </div>
-        </form>
-    </div>
-</div>
-
-<div id="vote-modal3" class="modal">
-    <div class="modal-content vote-modal">
-        <div class="modal-header">
-            <h2>Vote</h2>
-            <a href="#" class="close-btn">&times;</a>
-        </div>
-        <div class="question">What is your favorite color?</div>
-        <form class="vote-form" method="post">
-            <div class="vote-options">
-                <div class="vote-option">
-                    <input type="radio" id="blue" name="color" value="blue" required>
-                    <label for="blue">
-                        <div class="radio-button"></div>
-                        Blue
-                    </label>
-                </div>
-                <div class="vote-option">
-                    <input type="radio" id="green" name="color" value="green">
-                    <label for="green">
-                        <div class="radio-button"></div>
-                        Green
-                    </label>
-                </div>
-                <div class="vote-option">
-                    <input type="radio" id="red" name="color" value="red">
-                    <label for="red">
-                        <div class="radio-button"></div>
-                        Red
-                    </label>
-                </div>
-                <div class="vote-option">
-                    <input type="radio" id="yellow" name="color" value="yellow">
-                    <label for="yellow">
-                        <div class="radio-button"></div>
-                        Yellow
-                    </label>
-                </div>
-            </div>
-            <div class="modal-actions">
-                <a href="#" class="cancel-btn">Cancel</a>
-                <button type="submit" class="vote-btn">Vote</button>
-            </div>
-        </form>
-    </div>
-</div>
 </body>
 </html>

@@ -1,0 +1,98 @@
+[
+  {
+    "id": "poll_1",
+    "question": "What is your favorite programming language?",
+    "category": "technology",
+    "options": [
+      { "text": "JavaScript", "votes": 67 },
+      { "text": "Python", "votes": 52 },
+      { "text": "Java", "votes": 23 },
+      { "text": "C++", "votes": 8 }
+    ],
+    "totalVotes": 150
+  },
+  {
+    "id": "poll_2",
+    "question": "Which social media platform do you use the most?",
+    "category": "lifestyle",
+    "options": [
+      { "text": "Facebook", "votes": 98 },
+      { "text": "Instagram", "votes": 84 },
+      { "text": "Twitter", "votes": 70 },
+      { "text": "LinkedIn", "votes": 28 }
+    ],
+    "totalVotes": 280
+  },
+  {
+    "id": "poll_3",
+    "question": "What is your favorite color?",
+    "category": "lifestyle",
+    "options": [
+      { "text": "Blue", "votes": 38 },
+      { "text": "Green", "votes": 29 },
+      { "text": "Red", "votes": 19 },
+      { "text": "Yellow", "votes": 9 }
+    ],
+    "totalVotes": 95
+  },
+  {
+    "id": "poll_4",
+    "question": "Which business strategy is most important for startups?",
+    "category": "business",
+    "options": [
+      { "text": "Product-Market Fit", "votes": 145 },
+      { "text": "Marketing & Sales", "votes": 87 },
+      { "text": "Team Building", "votes": 63 },
+      { "text": "Funding", "votes": 41 }
+    ],
+    "totalVotes": 336
+  },
+  {
+    "id": "poll_5",
+    "question": "What's your preferred streaming service?",
+    "category": "entertainment",
+    "options": [
+      { "text": "Netflix", "votes": 156 },
+      { "text": "YouTube", "votes": 134 },
+      { "text": "Disney+", "votes": 78 },
+      { "text": "Amazon Prime", "votes": 92 }
+    ],
+    "totalVotes": 460
+  },
+  {
+    "id": "poll_6",
+    "question": "Which AI tool do you use most frequently?",
+    "category": "technology",
+    "options": [
+      { "text": "ChatGPT", "votes": 189 },
+      { "text": "Claude", "votes": 67 },
+      { "text": "Gemini", "votes": 43 },
+      { "text": "Copilot", "votes": 28 }
+    ],
+    "totalVotes": 327
+  },
+  {
+    "id": "poll_7",
+    "question": "What's your favorite movie genre?",
+    "category": "entertainment",
+    "options": [
+      { "text": "Action", "votes": 112 },
+      { "text": "Comedy", "votes": 98 },
+      { "text": "Drama", "votes": 76 },
+      { "text": "Sci-Fi", "votes": 54 }
+    ],
+    "totalVotes": 340
+  },
+  {
+    "id": "poll_8",
+    "question": "Which remote work tool is most essential?",
+    "category": "business",
+    "options": [
+      { "text": "Zoom", "votes": 134 },
+      { "text": "Slack", "votes": 89 },
+      { "text": "Microsoft Teams", "votes": 76 },
+      { "text": "Discord", "votes": 43 }
+    ],
+    "totalVotes": 342
+  }
+]

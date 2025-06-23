@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Polls Report - WebDataRocks</title>
+  <link rel="stylesheet" href="style/style.css">
+  <link href="https://cdn.webdatarocks.com/latest/webdatarocks.min.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="container">
+  <div class="analytics-header">
+    <h1 class="analytics-title">Polls Report</h1>
+    <div class="nav-links">
+      <a href="index.html" class="nav-link secondary">Back to Polls</a>
+    </div>
+  </div>
+
+  <div class="analytics-section">
+    <h2 class="section-title">Detailed Poll Data</h2>
+    <div id="wdr-component" class="pivot-container"></div>
+  </div>
+</div>
+
+<script src="https://cdn.webdatarocks.com/latest/webdatarocks.toolbar.min.js"></script>
+<script src="https://cdn.webdatarocks.com/latest/webdatarocks.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', async () => {
+    let allPolls = [];
+
+    try {
+      const response = await fetch('/data/polls.json');
+      const pollsData = await response.json();
+      allPolls = [...pollsData];
+    } catch (error) {
+      console.error('Error loading initial polls:', error);
+    }
+
+    const localPolls = localStorage.getItem('localPolls');
+    if (localPolls) {
+      try {
+        const parsedLocalPolls = JSON.parse(localPolls);
+        allPolls = [...allPolls, ...parsedLocalPolls];
+      } catch (error) {
+        console.error('Error parsing local polls from localStorage:', error);
+      }
+    }
+
+    const transformedData = [];
+    allPolls.forEach(poll => {
+      poll.options.forEach(option => {
+        transformedData.push({
+          "Poll ID": poll.id,
+          "Question": poll.question,
+          "Category": poll.category,
+          "Option Text": option.text,
+          "Votes": option.votes,
+        });
+      });
+    });
+
+    const pivot = new WebDataRocks({
+      container: "#wdr-component",
+      toolbar: true,
+      report: {
+        dataSource: {
+          data: transformedData
+        },
+        "slice": {
+          "rows": [
+            {
+              "uniqueName": "Category"
+            },
+            {
+              "uniqueName": "Question"
+            },
+            {
+              "uniqueName": "Option Text"
+            }
+          ],
+          "columns": [
+            {
+              "uniqueName": "[Measures]"
+            }
+          ],
+          "measures": [
+            {
+              "uniqueName": "Votes",
+              "aggregation": "sum",
+              "caption": "Votes per Option"
+            }
+          ]
+        },
+        "options": {
+          "grid": {
+            "title": "Polls Data Report",
+            "showGrandTotals": "on"
+          }
+        }
+      }
+    });
+  });
+</script>
+</body>
+</html>

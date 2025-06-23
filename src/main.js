@@ -28,17 +28,13 @@ const elements = {
     optionsGroup: document.getElementById('optionsGroup')
 };
 
-// Ініціалізація додатку
 document.addEventListener('DOMContentLoaded', async () => {
     try {
-        // Спроба відновити дані з localStorage
         restoreFromBackup();
-        
-        // Якщо відновлення не вдалося, завантажуємо з JSON
+
         if (state.polls.length === 0) {
             await initApp();
         } else {
-            // Обробляємо відновлені дані
             state.filteredPolls = [...state.polls];
             renderPolls(state.filteredPolls);
             populateCategorySelect();
@@ -387,7 +383,6 @@ function restoreFromBackup() {
             const data = JSON.parse(backup);
             state.polls = data.polls;
             
-            // Перевіряємо, чи дані не застарілі (старші 7 днів)
             const backupDate = new Date(data.timestamp);
             const weekAgo = new Date();
             weekAgo.setDate(weekAgo.getDate() - 7);
@@ -418,7 +413,6 @@ function showNotification(message, type) {
     }, CONFIG.NOTIFICATION_TIMEOUT);
 }
 
-// Утиліти
 function debounce(func, delay) {
     let timeoutId;
     return function(...args) {

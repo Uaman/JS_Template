@@ -16,7 +16,6 @@ body {
     margin: 0 auto;
 }
 
-/* Header */
 .header {
     display: flex;
     gap: 20px;
@@ -111,7 +110,6 @@ body {
     background-color: #2b57c7;
 }
 
-/* Polls Grid */
 .polls-grid {
     display: grid;
     gap: 20px;
@@ -231,7 +229,6 @@ body {
     margin-top: 8px;
 }
 
-/* Modal Styles */
 .modal {
     display: none;
     position: fixed;
@@ -338,7 +335,6 @@ body {
     background-color: #3367d6;
 }
 
-/* Create Poll Modal */
 .form-group {
     margin-bottom: 24px;
 }
@@ -450,7 +446,6 @@ body {
     background-color: #0b8045;
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
     .container {
         padding: 0 10px;

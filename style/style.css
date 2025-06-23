@@ -28,12 +28,9 @@ body{
 
 .filter{
     display: flex;
-    justify-self: center;
     flex-wrap: wrap;
     max-width: 700px;
     width: 100%;
-    height: 40px;
-    justify-self: center;
     gap: 20px;
     padding: 10px;
     justify-content: center;
@@ -43,7 +40,7 @@ body{
 .searching {
     display: flex;
     gap: 5px;
-    width: auto;
+    width: 550px;
     flex-grow: 1;
     justify-content: center;
     flex-wrap: wrap;
@@ -83,10 +80,14 @@ select{
 }
 
 .polls{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;
-    display: flex;
+    justify-items: center;
+    max-width: 700px; 
     flex-wrap: wrap;
-    justify-content: center;
+    width: 100%;
+    margin-top: 20px;
 }
 
 .poll{
@@ -222,6 +223,8 @@ label{
 @media (max-width: 740px) {
     .filter {
         flex-direction: column;
+        justify-content: center;
+        justify-self: center;
         align-items: center;
         height: auto;
     }
@@ -244,6 +247,10 @@ label{
 
     select {
         margin-top: 10px;
+    }
+
+    .polls {
+        grid-template-columns: 1fr;
     }
 }
 

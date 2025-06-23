@@ -3,11 +3,198 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple HTML Page</title>
+    <title>To-Do List</title>
+    <link rel="icon" href="data:,">
     <link rel="stylesheet" href="./style/style.css">
     <script src="./src/main.js" defer></script>
 </head>
 <body>
+    <div class="to-do-container">
+        <div class="add-form-container">
+            <h1>To-Do List</h1>
+            <button class="add-form-button">Add a new task</button>
+        </div>
 
+        <div class="sort-and-filter-container">
+            <div class="sort">
+                <label for="sort-by" class="sort-label">Sort by:</label>
+                <select id="sort-by">
+                    <option value="none">None</option>
+                    <option value="date">Date</option>
+                    <option value="priority">Priority</option>
+                </select>
+            </div>
+            <button class="filter-button">Filter</button>
+        </div>
+
+        <div class="task-list">
+            <div class="task-item">
+                <div class="left-side">
+                    <label class="custom-checkbox">
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                    </label>
+
+                    <div class="text-block">
+                        <span class="task-text">Complete the project</span>
+                        <span class="tag medium">Medium</span>
+                    </div>
+                </div>
+                <div class="right-side">
+                    <span class="task-date">2025-05-01</span>
+                    <div class="edit-and-delete-buttons">
+                        <button class="edit-button">
+                            <img src="./images/edit.svg" alt="Edit">
+                        </button>
+                        <button class="delete-button">
+                            <img src="./images/delete.svg" alt="Delete">
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="task-item">
+                <div class="left-side">
+                    <label class="custom-checkbox">
+                        <input type="checkbox" checked>
+                        <span class="checkmark"></span>
+                    </label>
+
+                    <div class="text-block">
+                        <span class="task-text">Read the book</span>
+                        <span class="tag low">Low</span>
+                    </div>
+                </div>
+                <div class="right-side">
+                    <span class="task-date">2025-04-25</span>
+                    <div class="edit-and-delete-buttons">
+                        <button class="edit-button">
+                            <img src="./images/edit.svg" alt="Edit">
+                        </button>
+                        <button class="delete-button">
+                            <img src="./images/delete.svg" alt="Delete">
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="task-item">
+                <div class="left-side">
+                    <label class="custom-checkbox">
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                    </label>
+
+                    <div class="text-block">
+                        <span class="task-text">Go to the gym</span>
+                        <span class="tag high">High</span>
+                    </div>
+                </div>
+                <div class="right-side">
+                    <span class="task-date">2025-04-23</span>
+                    <div class="edit-and-delete-buttons">
+                        <button class="edit-button">
+                            <img src="./images/edit.svg" alt="Edit">
+                        </button>
+                        <button class="delete-button">
+                            <img src="./images/delete.svg" alt="Delete">
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="task-item">
+                <div class="left-side">
+                    <label class="custom-checkbox">
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                    </label>
+                    
+                    <div class="text-block">
+                        <span class="task-text">Make a doctor's appointment</span>
+                        <span class="tag medium">Medium</span>
+                    </div>
+                </div>
+                <div class="right-side">
+                    <span class="task-date">2025-04-20</span>
+                    <div class="edit-and-delete-buttons">
+                        <button class="edit-button">
+                            <img src="./images/edit.svg" alt="Edit">
+                        </button>
+                        <button class="delete-button">
+                            <img src="./images/delete.svg" alt="Delete">
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="filter-container">
+        <span>Filter by date</span>
+        <div class="container-date-filter">
+            <select class="date-filter">
+                <option value="all">All</option>
+                <option value="last">Last</option>
+                <option value="current">Current</option>
+                <option value="next">Next</option>
+            </select>
+        </div>
+
+        <div class="custom-date-picker">
+            <input type="date" class="filter-date-pick" name="filter-date-pick" id="filter-date-pick">
+            <img src="./images/calendar.svg" alt="Calendar" class="calendar-icon" width="20" height="20">
+        </div>
+
+        <div class="date-filter-actions">
+            <button id="apply-filter">Apply</button>
+        </div>
+    </div>
+
+    <form class="task-form">
+        <div class="form-name-container">
+            <span class="task">Task</span>
+            <button type="button" class="cancel-image-button">
+                <img src="./images/cancel.svg" alt="Cancel" width="20" height="20">
+            </button>
+        </div>
+        <div class="add-task-container">
+            <label for="task-name">Task name</label>
+            <input type="text" id="task-name" name="task-name" placeholder="Example: Task1">
+        </div>
+        <div class="add-date-container">
+            <label for="task-date">Due date</label>
+            <div class="custom-date-picker">
+            <input type="date" id="task-date" name="task-date">
+            <img src="./images/calendar.svg" alt="Calerdar" class="calendar-icon" width="20" height="20">
+            </div>
+        </div>
+        <div class="add-priority-container">
+            <label class="task-priority">Priority</label>
+            <div class="priority-options">
+                <label class="custom-radio">
+                    <input type="radio" name="priority" value="high">
+                    <span class="radio-mark"></span>
+                    High
+                </label>
+
+                <label class="custom-radio">
+                    <input type="radio" name="priority" value="medium">
+                    <span class="radio-mark"></span>
+                    Medium
+                </label>
+
+                <label class="custom-radio">
+                    <input type="radio" name="priority" value="low">
+                    <span class="radio-mark"></span>
+                    Low
+                </label>
+            </div>
+        </div>
+        <div class="form-buttons">
+            <button type="submit" class="add-button">Add</button>
+            <button type="button" class="cancel-button">Cancel</button>
+        </div>
+    </form>
 </body>
 </html>

@@ -1,13 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple HTML Page</title>
-    <link rel="stylesheet" href="./style/style.css">
-    <script src="./src/main.js" defer></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Polling App</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="top-bar">
+      <button id="open-create" class="btn-primary">Create Poll</button>
+      <input id="search" class="input" placeholder="Search polls..." />
+      <select id="category" class="select">
+        <option value="all">Categories</option>
+        <option value="general">Neutral</option>
+        <option value="tech">IT</option>
+        <option value="other">Personal</option>
+      </select> 
+    </div>
 
+    <div id="polls" class="poll-list"></div>
+  
+    <div id="modal-create" class="modal-backdrop">
+      <div class="modal">
+        <button class="btn-close" id="close-create">×</button>
+        <h2>Create Poll</h2>
+        <div class="field">
+          <label>Question</label>
+          <input id="poll-question" placeholder="Enter your question" class="input"/>
+        </div>
+        <div class="field">
+          <label>Category</label>
+          <select id="poll-category" class="select">
+            <option value="general">Neutral</option>
+            <option value="tech">IT</option>
+            <option value="other">Personal</option>
+          </select>
+        </div>
+        <div class="field options" id="option-fields">
+          <div class="option-field"><input placeholder="Option 1" class="input"/></div>
+          <div class="option-field"><input placeholder="Option 2" class="input"/></div>
+        </div>
+        <button id="add-option" class="btn-add-option">Add option</button>
+        <button id="submit-poll" class="btn-submit">Create</button>
+      </div>
+    </div>
+  
+    <div id="modal-vote" class="modal-backdrop">
+      <div class="modal">
+        <button class="btn-close" id="close-vote">×</button>
+        <h2 id="vote-title">Poll Question</h2>
+        <form id="vote-form"></form>
+        <button id="submit-vote" class="btn-submit">Vote</button>
+      </div>
+    </div>
+
+  <script src="script.js">
+  </script>
 </body>
 </html>

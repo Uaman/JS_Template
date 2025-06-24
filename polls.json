@@ -1,0 +1,82 @@
+[
+  {
+    "question": "What's your favorite color?",
+    "category" : "Miscellaneous",
+    "options": [
+      { "text": "Blue", "votes": 0 },
+      { "text": "Green", "votes": 0 },
+      { "text": "Red", "votes": 0 },
+      { "text": "Yellow", "votes": 0 }
+    ]
+  },
+  {
+    "question": "Best programming language?",
+    "category" : "Technology",
+    "options": [
+      { "text": "JavaScript", "votes": 0 },
+      { "text": "Java", "votes": 0 },
+      { "text": "Python", "votes": 0 },
+      { "text": "C++", "votes": 0 }
+    ]
+  },
+  {
+      "question": "Preferred pet?",
+      "category" : "Preferences",
+      "options": [
+      { "text": "Dog", "votes": 6 },
+      { "text": "Cat", "votes": 2 },
+        { "text": "Fish", "votes": 5 },
+        { "text": "Bird", "votes": 10 }
+        ]
+    },
+    {
+        "question": "Favorite season?",
+        "category" : "Lifestyle",
+        "options": [
+        { "text": "Spring", "votes": 0 },
+        { "text": "Summer", "votes": 0 },
+        { "text": "Autumn", "votes": 0 },
+        { "text": "Winter", "votes": 0 }
+        ]
+    },
+    {
+        "question": "Best vacation destination?",
+        "category" : "Lifestyle",
+        "options": [
+        { "text": "Beach", "votes": 0 },
+        { "text": "Mountains", "votes": 0 },
+        { "text": "City", "votes": 0 },
+        { "text": "Countryside", "votes": 0 }
+        ]
+    },
+    {
+        "question": "Preferred mode of transport?",
+        "category" : "Preferences",
+        "options": [
+        { "text": "Car", "votes": 0 },
+        { "text": "Bicycle", "votes": 0 },
+        { "text": "Public Transport", "votes": 0 },
+        { "text": "Walking", "votes": 0 }
+        ]
+    },
+    {
+        "question": "Favorite cuisine?",
+        "category" : "Preferences",
+        "options": [
+        { "text": "Italian", "votes": 0 },
+        { "text": "Chinese", "votes": 0 },
+        { "text": "Mexican", "votes": 0 },
+        { "text": "Indian", "votes": 0 }
+        ]
+    },
+    {
+        "question": "Preferred type of music?",
+        "category" : "Lifestyle",
+        "options": [
+        { "text": "Pop", "votes": 0 },
+        { "text": "Rock", "votes": 0 },
+        { "text": "Jazz", "votes": 0 },
+        { "text": "Classical", "votes": 0 }
+        ]
+    }
+]

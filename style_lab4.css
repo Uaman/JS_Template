@@ -11,7 +11,6 @@ body {
     background: rgb(249, 249, 249);
     padding: 20px;
     border-radius: 8px;
-    width: 360px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     text-align: center;
 }
@@ -26,6 +25,7 @@ body {
 }
 
 .category-select {
+    width: 26%;
     color: rgb(104, 104, 104);
     padding: 8px;
     border: 1px solid #ccc;
@@ -36,12 +36,18 @@ body {
 .vote-container {
   background-color: white;
   border-radius: 8px;
-  padding: 36px;
-  padding-top: 20px;
-  max-width: 360px;
-  width: 80%;
-  border: lightgray 1px solid;
-  margin-top: 20px;
+  padding: 36px 24px 24px 24px;
+  width: 100%;
+  margin: 40px auto;
+  border: 1px solid lightgray;
+  box-sizing: border-box;
+}
+
+.vote-box {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
 }
 
 .poll-question {
@@ -119,12 +125,12 @@ body {
 }
 
 .bar-container {
-    background-color: #e0e0e0; /* Light gray background */
+    background-color: #e0e0e0;
     border-radius: 5px;
     height: 10px;
     flex-grow: 1;
     margin: 0 8px;
-    overflow: hidden; /* Keeps rounded corners on inner bar */
+    overflow: hidden;
 }
 
 .bar {
@@ -150,13 +156,11 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 100vw;
+    width: 100%;
+    max-width: 600px;
     display: none;
     justify-content: center;
     align-items: center;
-    background-color: transparent; 
-    border: none;                  
-    box-shadow: none; 
     z-index: 1000;
 }
 
@@ -165,8 +169,9 @@ body {
     padding: 24px;
     border-radius: 16px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-    width: 360px;
     z-index: 1001;
+    width: 80%;                 
+    box-sizing: border-box;
 }
 
 #poll-toggle:checked ~ .poll-container {
@@ -205,22 +210,15 @@ body {
 
 .close-btn {
   display: inline-block;
+  width: 90%;
+  height: 25px;
   margin-top: 16px;
-  padding: 8px 12px;
+  padding: 10px 20px;
+  padding-top: 14px;
   background-color: #ef4444;
   color: white;
   border-radius: 6px;
   cursor: pointer;
-}
-
-.poll-container {
-  align-items: flex-start;
-  padding: 32px;
-  background-color: #ffffff;
-  border-radius: 16px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  max-width: 400px;
 }
 
 .create-poll-lbl {
@@ -278,6 +276,14 @@ body {
   transition: background-color 0.3s;
 }
 
-.close-btn {
-  display: none; /* Hide since not shown in image */
+.option-input {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  margin-top: 12px;
+  margin-bottom: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  box-sizing: border-box;
 }

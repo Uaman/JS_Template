@@ -7,7 +7,7 @@ body{
     margin: 20px;
 }
 
-.create{
+.create, .tableB{
     width: 100%;
     max-width: 700px;
     height: 40px;
@@ -24,6 +24,10 @@ body{
     box-shadow: 0 0 2px #2d92e5;
     cursor: pointer;
     margin-bottom: 20px;
+}
+
+.tableB{
+    margin-top: 20px;
 }
 
 .filter{
@@ -235,7 +239,7 @@ label{
         width: 100%;
     }
 
-    input, .search, select, .create {
+    input, .search, select, .create, .tableB {
         width: 90%;
         max-width: none;
         justify-self: center;

@@ -233,5 +233,11 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
 }
 
+document.querySelector('.tableB').addEventListener('click', () => {
+    localStorage.setItem('pollData', JSON.stringify(pollsInfo));
+    location.href = 'report.html';
+});
+
+
     loadPolls();
 });

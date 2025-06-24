@@ -1,0 +1,73 @@
+[
+  {
+    "question": "What is your favorite programming language?",
+    "category": "Programming",
+    "options": {
+      "JavaScript": 45,
+      "Python": 45,
+      "Java": 45,
+      "C++": 3
+    },
+    "votes": 150
+  },
+  {
+    "question": "Which social media platform do you use the most?",
+    "category": "Social media",
+    "options": {
+      "Facebook": 35,
+      "Twitter": 25,
+      "Instagram": 30,
+      "LinkedIn": 10
+    },
+    "votes": 180
+  },
+  {
+    "question": "What is your favorite mobile OS?",
+    "category": "Programming",
+    "options": {
+      "Android": 40,
+      "iOS": 60
+    },
+    "votes": 100
+  },
+  {
+    "question": "Where do you spend the most time?",
+    "category": "Social media",
+    "options": {
+      "Reels": 40,
+      "Tik tok": 40,
+      "YouTube Shorts": 20
+    },
+    "votes": 142
+  },
+  {
+    "question": "What is your favorite browser?",
+    "category": "Programming",
+    "options": {
+      "Chrome": 30,
+      "Safari": 30,
+      "Microsoft Edge": 20,
+      "Firefox": 20
+    },
+    "votes": 203
+  },
+  {
+   "question": "What is your favorite AI?",
+    "category": "Programming",
+    "options": {
+      "GPT": 40,
+      "Gemini": 30,
+      "Copilot": 30
+    },
+    "votes": 341
+  },
+  {
+    "question": "Do you like to watch movies?",
+    "category": "Social media",
+    "options": {
+      "Yes": 90,
+      "No": 10
+    },
+    "votes": 154
+  }
+]

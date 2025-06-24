@@ -3,11 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple HTML Page</title>
+    <title>Poll</title>
     <link rel="stylesheet" href="./style/style.css">
     <script src="./src/main.js" defer></script>
 </head>
 <body>
 
+    <div class="main">
+    <button class="create">Create Poll</button>
+
+    <div class="filter">
+        <div class="searching">
+            <input class="search-input" type="text" placeholder="Search polls..."/>
+            <button class="search">Search</button>
+        </div>
+
+        <select name="category">
+            <option disabled selected>Category</option>
+            <option>Programming</option>
+            <option>Social media</option>
+        </select>
+
+    </div>
+
+    <div class="polls">
+    </div>
+    </div>
+
+    <button class="tableB" onclick="location.href='report.html'">Report</button>
+
+    <dialog class="create-poll">
+        <h3>Create Poll</h3>
+
+        <span class="span-c">Question</span>
+
+        <input class="input-c" type="text" placeholder="Enter your question"/>
+
+        <span class="span-c">Category</span>
+
+        <input class="input-c" type="text" placeholder="Category"/>
+
+        <span class="span-c">Options</span>
+
+        <div class="options">
+            <input class="input-c" type="text" placeholder="Option 1"/>
+            <input class="input-c" type="text" placeholder="Option 2"/>
+            <input class="input-c" type="text" placeholder="Option 3"/>
+            <input class="input-c" type="text" placeholder="Option 4"/>
+        </div>
+            <a>Add option</a>
+        <button class="create-f">Create</button>
+    </dialog>
+
+     <dialog class="poll-question">
+            <h3>Poll Question</h3>
+
+            <span>What is your favorite color?</span>
+
+            <label>
+            <input type="radio" />
+            Blue
+            </label>
+
+            <label>
+            <input type="radio" />
+            Green
+            </label>
+
+            <label>
+            <input type="radio" />
+            Red
+            </label>
+
+            <label>
+            <input type="radio" />
+            Yellow
+            </label>
+
+            <button class="vote">Vote</button>
+        </dialog>
 </body>
 </html>

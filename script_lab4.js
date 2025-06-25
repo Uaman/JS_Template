@@ -41,6 +41,41 @@ document.addEventListener("DOMContentLoaded", function () {
         renderPolls(filtered);
     });
 
+    createBtn.addEventListener("click", function (event) {
+        event.preventDefault();
+
+        const question = questionInput.value.trim();
+        const options = [];
+
+        optionInputs.forEach(input => {
+            const val = input.value.trim();
+            if (val !== "") options.push({ text: val, votes: 0 });
+        });
+
+        const category = categorySelect.value;
+
+        if (question === "" || options.length < 2) {
+            alert("Please enter a question, select a category, and at least two options.");
+            return;
+        }
+
+        const newPoll = {
+            question: question,
+            options: options,
+            category: category
+        };
+
+        polls.push(newPoll);
+        renderPoll(newPoll);
+
+        questionInput.value = "";
+        optionInputs.forEach(input => input.value = "");
+        categorySelect.value = "Other";
+
+        document.getElementById("poll-toggle").checked = false;
+    });
+
+
     function clearRenderedPolls() {
         const oldPolls = document.querySelectorAll(".vote-container");
         oldPolls.forEach(p => p.remove());

@@ -14,6 +14,7 @@ new WebDataRocks({
 container: "#pivotContainer",
 toolbar: true,
 height: 400,
+width: 1000,
     report: {
         dataSource: {
         data: data

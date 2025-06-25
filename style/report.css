@@ -1,7 +1,14 @@
 body {
     font-family: Arial, sans-serif;
+    display: grid;
 }
 
 h2 {
     text-align: center;
+    color: #2d92e5;
+}
+
+#pivotContainer{
+    justify-self: center;
+    margin-top: 20px;
 }

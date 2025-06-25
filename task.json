@@ -1,0 +1,26 @@
+[
+    {
+        "name": "Complete the project",
+        "priority": "medium",
+        "completed": false,
+        "date": "2025-05-01"
+    },
+    {
+        "name": "Read the book",
+        "priority": "low",
+        "completed": true,
+        "date": "2025-04-25"
+    },
+    {
+        "name": "Go to the gym",
+        "priority": "high",
+        "completed": false,
+        "date": "2025-04-23"
+    },
+    {
+        "name": "Make a doctor's appointment",
+        "priority": "medium",
+        "completed": false,
+        "date": "2025-04-20"
+    }
+]

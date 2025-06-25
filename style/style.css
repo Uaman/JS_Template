@@ -115,6 +115,18 @@ body {
     min-width: 85px;
 }
 
+.forecast-day:hover
+{
+    border: 1px solid #80b4f0;
+    cursor: pointer;
+}
+
+.forecast-day.selected
+{
+    border: 1px solid #6a47dd;
+    background: #c1dceb;
+}
+
 .forecast-day .day-name { font-weight: 600; margin-bottom: 10px; }
 .forecast-day .icon-small { font-size: 32px; margin-bottom: 10px; }
 .forecast-day .day-temp-high { font-weight: 500; }

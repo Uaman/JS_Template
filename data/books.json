@@ -1,0 +1,90 @@
+[
+  {
+    "title": "The Great Gatsby",
+    "author": "F. Scott Fitzgerald",
+    "year": 1925,
+    "genre": "Fiction",
+    "language": "en",
+    "image": "https://covers.openlibrary.org/b/id/8221256-L.jpg"
+  },
+  {
+    "title": "To Kill a Mockingbird",
+    "author": "Harper Lee",
+    "year": 1960,
+    "genre": "Fiction",
+    "language": "en",
+    "image": "https://covers.openlibrary.org/b/id/10470884-L.jpg"
+  },
+  {
+    "title": "1984",
+    "author": "George Orwell",
+    "year": 1949,
+    "genre": "Dystopian",
+    "language": "en",
+    "image": "https://covers.openlibrary.org/b/id/11141570-L.jpg"
+  },
+  {
+    "title": "Pride and Prejudice",
+    "author": "Jane Austen",
+    "year": 1813,
+    "genre": "Romance",
+    "language": "en",
+    "image": "https://covers.openlibrary.org/b/id/8231996-L.jpg"
+  },
+  {
+    "title": "Кобзар",
+    "author": "Тарас Шевченко",
+    "year": 1840,
+    "genre": "Poetry",
+    "language": "ua",
+    "image": "https://covers.openlibrary.org/b/id/10579826-L.jpg"
+  },
+  {
+    "title": "Місто",
+    "author": "Валер'ян Підмогильний",
+    "year": 1928,
+    "genre": "Modernism",
+    "language": "ua",
+    "image": "https://covers.openlibrary.org/b/id/10579826-L.jpg"
+  },
+  {
+    "title": "Brave New World",
+    "author": "Aldous Huxley",
+    "year": 1932,
+    "genre": "Dystopian",
+    "language": "en",
+    "image": "https://covers.openlibrary.org/b/id/10579790-L.jpg"
+  },
+  {
+    "title": "The Alchemist",
+    "author": "Paulo Coelho",
+    "year": 1988,
+    "genre": "Adventure",
+    "language": "en",
+    "image": "https://covers.openlibrary.org/b/id/8231843-L.jpg"
+  },
+  {
+    "title": "Les Misérables",
+    "author": "Victor Hugo",
+    "year": 1862,
+    "genre": "Historical",
+    "language": "en",
+    "image": "https://covers.openlibrary.org/b/id/8319256-L.jpg"
+  },
+  {
+    "title": "Захар Беркут",
+    "author": "Іван Франко",
+    "year": 1883,
+    "genre": "Historical",
+    "language": "ua",
+    "image": "https://covers.openlibrary.org/b/id/10579830-L.jpg"
+  },
+  {
+  "title": "The Catcher in the Rye",
+  "author": "J.D. Salinger",
+  "year": 1951,
+  "genre": "Fiction",
+  "language": "en",
+  "image": "https://covers.openlibrary.org/b/id/8221256-L.jpg"
+}
+]

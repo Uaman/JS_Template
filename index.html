@@ -1,13 +1,71 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uk">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple HTML Page</title>
-    <link rel="stylesheet" href="./style/style.css">
-    <script src="./src/main.js" defer></script>
+<meta charset="UTF-8">
+<meta name="description" content="сторінка з піцами">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="Марисик Роман">
+<title>Піца KMA, дз 4</title>
+<link rel="stylesheet" href="style/style.css">
 </head>
 <body>
+    <header class="site-header">
+        <div class="header-logo">
+            <img src="images/home-icon.png" alt="Pizza KMA Logo">
+            <span>PIZZA KMA</span>
+        </div>
+        <div class="header-info">
+            <span class="phone-number"><a href="tel:0442225222">(044) 222 5 222</a></span>
+            <span class="work-hours">24 години / 7 днів на тиждень</span>
+            <span class="delivery-info">Безкоштовна доставка піци</span>
+        </div>
+        <a href="report.html" class="report-button">Звіт по піцам</a>
+        <button class="login-button">Увійти</button>
+    </header>
 
+    <div class="site-container">
+
+        <div class="pizza-header">
+            <h3>Усі піци <span class="pizza-count">0</span></h3>
+        </div>
+
+        <nav class="main-nav">
+            <ul>
+                <li><a href="#" class="filter-btn active" data-filter="all">Усі</a></li>
+                <li><a href="#" class="filter-btn" data-filter="М'ясні">М'ясні</a></li>
+                <li><a href="#" class="filter-btn" data-filter="З ананасами">З ананасами</a></li>
+                <li><a href="#" class="filter-btn" data-filter="З грибами">З грибами</a></li>
+                <li><a href="#" class="filter-btn" data-filter="З морепродуктами">З морепродуктами</a></li>
+                <li><a href="#" class="filter-btn" data-filter="Вега">Вега</a></li>
+            </ul>
+        </nav>
+
+        <main class="main-content">
+            <div class="pizza-menu" id="pizza-list">
+                </div>
+
+            <aside class="shopping-cart">
+                <div class="cart-header">
+                    <h3>Замовлення <span class="cart-count">0</span></h3>
+                    <a href="#" class="clear-cart">Очистити замовлення</a>
+                </div>
+                <ul class="cart-items" id="cart-items">
+                    </ul>
+                <div class="cart-footer">
+                    <div class="total-sum">
+                        <span>Сума замовлення</span>
+                        <span class="total-price">0 грн</span>
+                    </div>
+                    <button class="order-button">Замовити</button>
+                </div>
+            </aside>
+        </main>
+    </div>
+
+    <div class="discount-badge">
+        ЦЬОГО ТИЖНЯ ЗНИЖКА НА ВСЕ -20%
+    </div>
+
+    <script src="src/main.js"></script>
 </body>
 </html>

@@ -1,0 +1,490 @@
+/*загальні стилі*/
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+.site-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/*header*/
+.site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    background-color: #fff;
+    border-bottom: 1px solid #eee;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    box-sizing: border-box;
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+.header-logo {
+    display: flex;
+    align-items: center;
+}
+.header-logo img {
+    height: 40px;
+    margin-right: 10px;
+}
+.header-logo span {
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.header-info .work-hours,
+.header-info .delivery-info {
+    display: none;
+}
+
+.phone-number {
+    font-weight: 500;
+}
+
+.login-button {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+/* Style for the new "Звіт по піцам" button in the header */
+.report-button {
+    background-color: #ff8c00;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background-color 0.2s;
+    margin-left: auto; /* Pushes the button to the right */
+    margin-right: 10px; /* Adds some space before the login button */
+}
+
+.report-button:hover {
+    background-color: #ff6f00;
+}
+
+
+/*nav bar (усі м'ясні з грибами т д)*/
+.main-nav {
+    padding: 0 15px;
+}
+.main-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 15px 0;
+    display: flex;
+    gap: 20px;
+}
+.main-nav a {
+    text-decoration: none;
+    color: #555;
+    font-weight: 500;
+    padding-bottom: 5px;
+}
+.main-nav a.active {
+    color: #ff6f00;
+    border-bottom: 2px solid #ff6f00;
+}
+
+/*основна сторінка*/
+.main-content {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding: 0 15px;
+}
+
+/*меню піци*/
+.pizza-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+.pizza-header h3 { 
+    margin: 0;
+    font-size: 20px; 
+}
+.pizza-count { 
+    background-color: #ff6f00; 
+    color: white; 
+    font-size: 14px; 
+    padding: 2px 7px; 
+    border-radius: 50%;
+}
+.pizza-menu {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+.pizza-card {
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.pizza-image-container {
+    position: relative;
+}
+.pizza-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    left: auto;
+    color: white;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+    background-color: #d9534f;
+}
+.popular-badge {
+    background-color: #007bff;
+}
+
+.pizza-details {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.pizza-name {
+    margin: 0 0 5px 0;
+    font-size: 24px;
+    font-weight: bold;
+    color: #ff8c00;
+}
+
+.pizza-type {
+    margin: 0 0 10px 0;
+    font-size: 14px;
+    color: #777;
+}
+
+.pizza-ingredients {
+    margin: 0 0 20px 0;
+    font-size: 15px;
+    color: #555;
+    flex-grow: 1;
+    min-height: 55px;
+    border-bottom: 1px solid #f0f0f0;
+    padding-bottom: 20px;
+}
+
+
+/*кнопки купити*/
+.pizza-purchase-options {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.purchase-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+}
+
+.purchase-option .specs {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-bottom: 10px;
+    color: #555;
+    font-size: 14px;
+}
+
+.purchase-option .spec-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.icon {
+    width: 16px;
+    height: 16px;
+}
+
+.purchase-option .price {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.buy-button {
+    background-color: #ff8c00;
+    border: none;
+    color: white;
+    padding: 10px 0;
+    width: 100%;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 16px;
+    transition: background-color 0.2s;
+}
+
+.buy-button:hover {
+    background-color: #ff6f00;
+}
+
+/*сайд бар з кошиком замовлень*/
+.shopping-cart {
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+.cart-header h3 { margin: 0; font-size: 20px; }
+.cart-count { background-color: #ff6f00; color: white; font-size: 14px; padding: 2px 7px; border-radius: 50%;}
+.clear-cart { font-size: 13px; color: #777; text-decoration: none; }
+
+.cart-items { list-style: none; padding: 0; margin: 0; }
+
+.cart-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 15px;
+    gap: 10px;
+    position: relative;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee; /*розділювачі для кожного елементу*/
+}
+.cart-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.cart-item img { width: 50px; height: 50px; border-radius: 5px; flex-shrink: 0; }
+
+.item-info { flex-grow: 1; display: flex; flex-direction: column; }
+.item-name { margin: 0 0 4px 0; font-weight: 500; }
+.item-specs { font-size: 12px; color: #888; display: flex; gap: 15px; margin-bottom: 8px;}
+
+/*розміри іконок діаметру і ваги в кошику*/
+.item-specs .spec-item .icon {
+    width: 14px;
+    height: 14px;
+}
+
+.cart-item .spec-item {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.item-controls-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-top: auto;
+}
+
+.item-price {
+    font-weight: 500;
+    text-align: right;
+    font-size: 16px;
+    min-width: 70px;
+}
+
+.quantity-control {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.quantity-btn {
+    color: white;
+    border: none;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+    line-height: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.2s;
+}
+
+.quantity-btn-minus {
+    background-color: #dc3545;
+}
+.quantity-btn-minus:hover {
+    background-color: #c82333;
+}
+
+.quantity-btn-plus {
+    background-color: #28a745;
+}
+.quantity-btn-plus:hover {
+    background-color: #218838;
+}
+
+.quantity {
+    margin: 0; 
+    font-weight: 500;
+    min-width: 20px; 
+    text-align: center;
+}
+
+.remove-item {
+    background: none; 
+    border: none;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    color: #999; 
+    cursor: pointer;
+    font-size: 20px; 
+    position: absolute; 
+    top: 5px;
+    right: 0;
+    transition: color 0.2s;
+}
+.remove-item:hover {
+    color: #dc3545; 
+}
+
+.cart-footer { border-top: 1px solid #eee; padding-top: 15px; margin-top: 5px; }
+.total-sum { display: flex; justify-content: space-between; font-size: 18px; font-weight: 500; margin-bottom: 15px; }
+.total-price { font-weight: bold; }
+.order-button { background-color: #ff8c00; color: white; border: none; width: 100%; padding: 15px; border-radius: 5px; font-size: 18px; font-weight: 500; cursor: pointer; transition: background-color 0.2s; }
+.order-button:hover { background-color: #ff6f00; }
+
+.discount-badge {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background-color: #ff8c00;
+    color: white;
+    padding: 15px 25px;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    animation: pulse 1s infinite alternate;
+}
+
+@keyframes pulse {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(1.05);
+    }
+}
+
+/* Styles specific to the report page */
+.report-page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.report-page-header h3 {
+    margin: 0;
+    font-size: 20px;
+    color: #ff8c00;
+}
+
+.back-to-home {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+    text-decoration: none;
+    color: #333;
+    transition: background-color 0.2s;
+}
+
+.back-to-home:hover {
+    background-color: #e0e0e0;
+}
+
+.report-content {
+    display: block; /* Override main-content flex for report */
+    padding: 20px 0;
+}
+
+#wdr-component {
+    width: 100%;
+    height: 600px; /* Adjust height as needed */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+
+/* Media queries */
+@media (min-width: 690px) {
+    .site-header{ padding: 10px 0; }
+    .header-info .work-hours, .header-info .delivery-info { display: inline; margin-left: 15px; font-size: 14px; color: #777; }
+    .main-content { flex-direction: row; align-items: flex-start; }
+    .pizza-menu { grid-template-columns: repeat(1, 1fr); flex-grow: 1; }
+    .shopping-cart { width: 320px; flex-shrink: 0; }
+    /* Report page header padding for larger screens */
+    .report-page-header {
+        padding: 10px 0;
+    }
+}
+
+@media (min-width: 900px) {
+    .pizza-menu { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 1110px) {
+    .pizza-menu { grid-template-columns: repeat(3, 1fr); }
+    .header-info { display: flex; align-items: center; gap: 20px; }
+    .report-button { margin-left: 20px; margin-right: 0; } /* Adjust for larger screens */
+}

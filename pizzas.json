@@ -1,0 +1,132 @@
+[
+  {
+    "id": 1,
+    "name": "Імпреза",
+    "categories": ["М'ясні"],
+    "ingredients": "Балик, салямі, куриця, сир моцарелла, сир рокфорд, ананаси, томатна паста, петрушка",
+    "image": "images/pizza_7.jpg",
+    "isNew": true,
+    "isPopular": false,
+    "prices": [
+      { "size": 30, "weight": 370, "price": 100 },
+      { "size": 40, "weight": 660, "price": 170 }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "BBQ",
+    "categories": ["М'ясні", "З грибами"],
+    "ingredients": "Мисливські ковбаски, папероні, шинка, сир домашній, шампіньйони, петрушка, оливки",
+    "image": "images/pizza_2.jpg",
+    "isNew": false,
+    "isPopular": false,
+    "prices": [
+      { "size": 30, "weight": 460, "price": 140 },
+      { "size": 40, "weight": 840, "price": 200 }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Міксовий поло",
+    "categories": ["М'ясні"],
+    "ingredients": "Вітчина, куриця копчена, сир моцарелла, ананаси, кукурудза, петрушка, соус томатний",
+    "image": "images/pizza_1.jpg",
+    "isNew": false,
+    "isPopular": true,
+    "prices": [
+      { "size": 30, "weight": 430, "price": 120 },
+      { "size": 40, "weight": 780, "price": 180 }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Rosso Густо",
+    "categories": ["Вега"],
+    "ingredients": "Помідори, сир моцарелла, томатний соус, базилік",
+    "image": "images/pizza_4.jpg",
+    "isNew": false,
+    "isPopular": false,
+    "prices": [
+      { "size": 30, "weight": 400, "price": 110 },
+      { "size": 40, "weight": 700, "price": 190 }
+    ]
+  },
+  {
+    "id": 5,
+    "name": "Капрічоза",
+    "categories": ["М'ясні", "З грибами"],
+    "ingredients": "Сир моцарела, салямі, шинка, печериці, болгарський перець, базилік, томатний соус",
+    "image": "images/pizza_5.jpg",
+    "isNew": false,
+    "isPopular": false,
+    "prices": [
+      { "size": 30, "weight": 390, "price": 105 },
+      { "size": 40, "weight": 680, "price": 175 }
+    ]
+  },
+  {
+    "id": 6,
+    "name": "Маргарита",
+    "categories": ["Вега"],
+    "ingredients": "Сир моцарелла, томати, базилік, орегано",
+    "image": "images/pizza_3.jpg",
+    "isNew": false,
+    "isPopular": false,
+    "prices": [
+      { "size": 30, "weight": 350, "price": 95 },
+      { "size": 40, "weight": 600, "price": 160 }
+    ]
+  },
+  {
+    "id": 7,
+    "name": "Домашня",
+    "categories": ["М'ясні", "З грибами"],
+    "ingredients": "Соус, сир, мисливські ковбаски, куряче філе, мариновані огірки, печериці, червона цибуля, петрушка",
+    "image": "images/pizza_6.jpg",
+    "isNew": false,
+    "isPopular": false,
+    "prices": [
+      { "size": 30, "weight": 420, "price": 130 },
+      { "size": 40, "weight": 750, "price": 210 }
+    ]
+  },
+  {
+    "id": 8,
+    "name": "Фрутті ді Маре",
+    "categories": ["З морепродуктами"],
+    "ingredients": "Томатний соус, моцарела, креветки, мідії, кальмари, восьминоги, червона ікра, зелень",
+    "image": "images/pizza_8.jpg",
+    "isNew": false,
+    "isPopular": false,
+    "prices": [
+      { "size": 30, "weight": 380, "price": 115 },
+      { "size": 40, "weight": 670, "price": 185 }
+    ]
+  },
+  {
+    "id": 9,
+    "name": "М’ясна класика",
+    "categories": ["М'ясні"],
+    "ingredients": "Томатний соус, моцарела, салямі, бекон, курка, зелень",
+    "image": "images/pizza_9.jpg",
+    "isNew": false,
+    "isPopular": false,
+    "prices": [
+      { "size": 30, "weight": 410, "price": 125 },
+      { "size": 40, "weight": 720, "price": 195 }
+    ]
+  },
+  {
+    "id": 10,
+    "name": "Супер м’ясна",
+    "categories": ["М'ясні", "З грибами"],
+    "ingredients": "Томатний соус, моцарела, салямі, ковбаски, печериці, зелені оливки, петрушка",
+    "image": "images/pizza_2.jpg",
+    "isNew": false,
+    "isPopular": false,
+    "prices": [
+      { "size": 30, "weight": 450, "price": 160 },
+      { "size": 40, "weight": 800, "price": 250 }
+    ]
+  }
+]

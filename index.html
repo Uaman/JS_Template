@@ -3,11 +3,117 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple HTML Page</title>
+    <title>Polls</title>
     <link rel="stylesheet" href="./style/style.css">
     <script src="./src/main.js" defer></script>
 </head>
 <body>
+    <div class="main">
+      <button id="createPoll">Створити опитування</button>
+      <div class="search-category">
+            <input type="text" id="searchInput" placeholder="Пошук опитувань..." />
+        <select class="category">
+            <option>Категорія</option>
+        </select>
+      </div>
+      <div class="polls">
+        <div class="poll-container" >
+            <div class="question">Яка ваша улюблена мова програмування?</div>
+            <div class="option">
+                <div class="option-main">JavaScript</div>
+                <div class="option-bar-wrapper">
+                <div class="option-bar" style="width: 45%;"></div>
+                </div>
+                <div class="option-percent">45%</div>
+            </div>
+            <div class="option">
+                <div class="option-main">Python</div>
+                <div class="option-bar-wrapper">
+                <div class="option-bar" style="width: 45%;"></div>
+                </div>
+                <div class="option-percent">45%</div>
+            </div>
+            <div class="option">
+                <div class="option-main">Java</div>
+                <div class="option-bar-wrapper">
+                <div class="option-bar" style="width: 45%;"></div>
+                </div>
+                <div class="option-percent">45%</div>
+            </div>
+            <div class="option">
+                <div class="option-main">C++</div>
+                <div class="option-bar-wrapper">
+                <div class="option-bar" style="width: 3%;"></div>
+                </div>
+                <div class="option-percent">3%</div>
+            </div>
+            <div class="votes">150 votes</div>
+        </div>
 
+        <div class="poll-container">
+          <div class="question">Яку соціальну мережу ви використовуєте найбільше?</div>
+            <div class="option">
+                <div class="option-main">Facebook</div>
+                <div class="option-bar-wrapper">
+                <div class="option-bar" style="width: 35%;"></div>
+                </div>
+                <div class="option-percent">35%</div>
+            </div>
+            <div class="option">
+                <div class="option-main">Twitter</div>
+                <div class="option-bar-wrapper">
+                <div class="option-bar" style="width: 25%;"></div>
+                </div>
+                <div class="option-percent">25%</div>
+            </div>
+            <div class="option">
+                <div class="option-main">Instagram</div>
+                <div class="option-bar-wrapper">
+                <div class="option-bar" style="width: 30%;"></div>
+                </div>
+                <div class="option-percent">30%</div>
+            </div>
+            <div class="option">
+                <div class="option-main">Linkedln</div>
+                <div class="option-bar-wrapper">
+                <div class="option-bar" style="width: 10%;"></div>
+                </div>
+                <div class="option-percent">10%</div>
+            </div>
+
+            <div class="votes">180 votes</div>
+            </div>
+        </div>
+        <a href="report.html" class="report-link"> Переглянути звіт</a>
+    </div>
+   
+        <!-- Create Poll -->
+    <div class="modal" id="createPollModal">
+        <div class="modal-content">
+        <h2>Створити опитування</h2>
+        <p>Запитання</p>
+        <input type="text" id="pollQuestion" placeholder="Введіть запитання" />
+        <p>Категорія</p>
+        <input type="text" id="pollCategory" placeholder="Введіть категорію" />
+        <p>Варіанти</p>
+        <input type="text" class="pollOption" placeholder="Варіант 1" />
+        <input type="text" class="pollOption" placeholder="Варіант 2" />
+        <input type="text" class="pollOption" placeholder="Варіант 3" />
+        <input type="text" class="pollOption" placeholder="Варіант 4" />
+        <a href="#" id="addOption">Додати варіант</a>
+        <button id="submitPoll">Створити</button>
+        </div>
+    </div>
+
+    <!-- Vote Poll -->
+    <div class="modal" id="votePollModal">
+  <div class="modal-content">
+    <h2>Опитування</h2>
+    <p id="voteQuestion"></p>
+    <br>
+    <div id="voteOptionsContainer"></div>
+    <button>Проголосувати</button>
+  </div>
+</div>
 </body>
 </html>

@@ -1,0 +1,236 @@
+body {
+  font-family: sans-serif;
+  background: #d6dde1;;
+  color: #212121;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; 
+  min-height: 100vh;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch; 
+  width: 100%;
+  max-width: 900px;
+  padding: 20px;
+  margin-top: 40px;
+  box-sizing: border-box;
+  border-radius: 15px;
+  background-color: #f3f3f3;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.34); 
+}
+
+#createPoll {
+  width: 100%;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin-bottom: 20px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 6px;
+  background-color: #3b82f6;
+  box-shadow: -1px -4px rgba(29, 14, 195, 0.278) inset;
+}
+
+.search-category {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.search-category input[type="text"],
+.search-category select.category {
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+
+.search-category select.category {
+  flex: 1;
+}
+
+#searchInput {
+  width: 100%;
+  padding: 10px 0 10px 10px; 
+  font-size: 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px; 
+  box-sizing: border-box;
+  outline: none;
+}
+
+.polls {
+  display: flex;
+  flex-wrap: wrap;          
+  gap: 20px;
+  box-sizing: border-box;
+}
+
+.poll-container {
+  flex: 1 1 300px;           
+  min-width: 250px;          
+  max-width: 100%;           
+  box-sizing: border-box;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 20px;
+  background-color: white;
+  box-shadow: 0 2px 2px rgba(0,0,0,0.05);
+}
+
+.poll-container:hover {
+  transform: scale(1.02); 
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); 
+  background-color: #f9f9f9; 
+}
+
+@media (max-width: 400px) {
+  .polls {
+    flex-direction: column;
+    align-items: center;
+  }
+  .poll-container {
+    flex-basis: 100%;
+    min-width: 100%;
+  }
+  .modal-content {
+    padding: 1rem;
+    font-size: 15px;
+    width: 70%;
+  }
+  .modal-content input[type="text"],
+  .modal-content button {
+    padding: 0.4rem;
+    font-size: 14px;
+  }
+}
+
+.question {
+  font-weight: 600;
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+
+.option-main {
+  flex: 1;
+}
+
+.option-bar-wrapper {
+  flex: 2;
+  margin-left: 10px;
+  background-color: #e5e7eb;
+  border-radius: 6px;
+  height: 8px;
+  position: relative;
+  margin-right: 10px;
+}
+
+.option-bar {
+  height: 100%;
+  background-color: #3b82f6;
+  transition: width 0.3s ease-in-out;
+}
+
+.option-percent {
+  min-width: 30px;
+  text-align: right;
+  font-size: 14px;
+}
+
+.votes {
+  text-align: right;
+  font-size: 13px;
+  color: #6b7280;
+  margin-top: 10px;
+}
+
+.modal {
+  display: none; 
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  width: 80%;
+  max-width: 400px;
+  position: relative;
+  font-size: 17px;      
+}
+
+.modal-content h2 {
+  margin-top: 0;
+  text-align: center;
+}
+
+.modal-content p {
+    margin-bottom: 0;
+}
+
+.modal-content input[type="text"],
+.modal-content button {
+  width: 100%;
+  padding: 0.5rem;
+  margin: 0.3rem 0;
+  border-radius: 5px;
+  box-sizing: border-box; 
+  font-size: 16px;
+}
+
+.modal-content input[type="text"] {
+  border: 1px solid #ccc;
+}
+
+.modal-content a {
+  color: #1b50a4;;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.modal-content a:hover {
+  text-decoration: underline;
+}
+
+.modal-content button {
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  margin-top: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.modal-content button:hover {
+  background-color: #3970ca;
+}
+
+.report-link {
+  margin-top: 20px;
+  color: #1b50a4;
+  font-size: 0.9rem;
+}

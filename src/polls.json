@@ -1,0 +1,76 @@
+[
+  {
+    "question": "Яка ваша улюблена мова програмування?",
+    "category": "Програмування",
+    "options": [
+      { "text": "JavaScript", "percent": 40 },
+      { "text": "Python", "percent": 30 },
+      { "text": "Java", "percent": 20 },
+      { "text": "C++", "percent": 10 }
+    ],
+    "votes": 150
+  },
+  {
+    "question": "Яку соціальну мережу ви використовуєте найбільше?",
+    "category": "Технології",
+    "options": [
+      { "text": "Facebook", "percent": 35 },
+      { "text": "Twitter", "percent": 25 },
+      { "text": "Instagram", "percent": 30 },
+      { "text": "LinkedIn", "percent": 10 }
+    ],
+    "votes": 180
+  },
+  {
+    "question": "Коли ви зазвичай починаєте готуватися до сесії?",
+    "category": "Навчання",
+    "options": [
+      { "text": "Готуюсь весь семестр", "percent": 20 },
+      { "text": "За тиждень", "percent": 30 },
+      { "text": "У ніч перед екзаменом", "percent": 50 }
+    ],
+    "votes": 200
+  },
+  {
+    "question": "Що краще?",
+    "category": "Технології",
+    "options": [
+      { "text": "iOS", "percent": 45 },
+      { "text": "Android", "percent": 55 }
+    ],
+    "votes": 130
+  },
+  {
+    "question": "Чи дотримуєтесь ви здорового харчування?",
+    "category": "Здоровʼя",
+    "options": [
+      { "text": "Так", "percent": 10 },
+      { "text": "Частково", "percent": 40 },
+      { "text": "Ні", "percent": 30 },
+      { "text": "Я люблю піцу", "percent": 20 }
+    ],
+    "votes": 90
+  },
+  {
+    "question": "Чи пробували ви створювати власну гру?",
+    "category": "Програмування",
+    "options": [
+      { "text": "Так", "percent": 30 },
+      { "text": "Ні", "percent": 25 },
+      { "text": "В процесі", "percent": 25 },
+      { "text": "Планую", "percent": 20 }
+    ],
+    "votes": 140
+  },
+  {
+    "question": "Як часто ви чистите зуби?",
+    "category": "Здоровʼя",
+    "options": [
+      { "text": "Двічі на день", "percent": 20 },
+      { "text": "Один раз зранку", "percent": 35 },
+      { "text": "Один раз ввечері", "percent": 30 },
+      { "text": "Ніколи", "percent": 15 }
+    ],
+    "votes": 80
+  }
+]

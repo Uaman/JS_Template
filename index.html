@@ -1,13 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple HTML Page</title>
-    <link rel="stylesheet" href="./style/style.css">
-    <script src="./src/main.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Weather Forecast App</title>
 </head>
+
 <body>
+    <div class="box">
+        <div class="search-row">
+            <input type="text" id="cityInput" placeholder="Enter city name" />
+            <button class="search-btn">Search</button>
+        </div>
+
+        <div class="weather-main">
+            <div class="left-panel">
+                <div class="location">
+                    <h2 class="city">Kyiv</h2>
+                    <p class="country">Ukraine</p>
+                </div>
+
+                <div class="temp">
+                    <h1>23°C</h1>
+                    <p class="condition">Clear</p>
+                </div>
+            </div>
+
+            <div class="current-weather-icon">
+                <img src="sunny.png" alt="sunny">
+            </div>
+
+            <div class="right-panel">
+                <div class="extra-info">
+                    <p>Wind: 13 km/h</p>
+                    <p>Humidity: 56%</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="forecast-carousel">
+            <div class="forecast-day">
+                <p>Today</p>
+                <div class="icon"><img src="sunny.png" alt="sunny"></div>
+                <p>23°C</p>
+                <p class="low-temp">14°C</p>
+            </div>
+            <div class="forecast-day">
+                <p>Tue</p>
+                <div class="icon"><img src="sunny.png" alt="sunny"></div>
+                <p>23°C</p>
+                <p class="low-temp">14°C</p>
+            </div>
+            <div class="forecast-day">
+                <p>Wed</p>
+                <div class="icon"><img src="rainy.png" alt="rainy"></div>
+                <p>20°C</p>
+                <p class="low-temp">13°C</p>
+            </div>
+            <div class="forecast-day">
+                <p>Thu</p>
+                <div class="icon"><img src="sunny.png" alt="sunny"></div>
+                <p>22°C</p>
+                <p class="low-temp">13°C</p>
+            </div>
+            <!-- додаткові 3 дні -->
+            <div class="forecast-day">
+                <p>Fri</p>
+                <div class="icon"><img src="rainy.png" alt="rainy"></div>
+                <p>18°C</p>
+                <p class="low-temp">13°C</p>
+            </div>
+            <div class="forecast-day">
+                <p>Sat</p>
+                <div class="icon"><img src="cloudy.png" alt="sunny"></div>
+                <p>20°C</p>
+                <p class="low-temp">15°C</p>
+            </div>
+            <div class="forecast-day">
+                <p>Sun</p>
+                <div class="icon"><img src="sunny.png" alt="sunny"></div>
+                <p>22°C</p>
+                <p class="low-temp">21°C</p>
+            </div>
+        </div>
+
+        <div class="report">
+            <a href="report.html" class="report-backward">View Weather Report</a>
+        </div>
+    </div>
+
+<script src="main.js"></script>
 
 </body>
+
 </html>

@@ -1,0 +1,343 @@
+:root {
+    --background-color: #f0f0f0;
+
+    --box-background-color: #ffffff;
+    --box-shadow-color: #0000001a;
+
+    --cityInput-border-color: #cccccc;
+    --cityInput-border-color-focus: #306cdb;
+    --cityInput-text-color-focus: #000000;
+
+    --search-btn-background-color: #306cdb;
+    --search-btn-text-color: #ffffff;
+    --search-btn-background-color-hover: #477de2;
+
+    --country-text-color: #2b3a40;
+    --extra-info-text-color: #000000;
+
+    --forecast-day-border-color: #cccccc;
+    --forecast-day-background-color: #ffffff;
+
+    --popup-background-color: #ffffff;
+    --popup-border-color: #cccccc;
+    --popup-content-btn-background-color: #306cdb;
+    --popup-content-btn-text-color: #ffffff;
+    --popup-content-btn-background-color-hover: #477de2;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+body {
+    background: var(--background-color);
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* -------------------------------------- */
+.box {
+    background: var(--box-background-color);
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 500px;
+    width: 100%;
+    box-shadow: 0 0 20px var(--box-shadow-color);
+}
+
+/* SEARCH ROW---------------------------- */
+.search-row {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 20px;
+}
+
+#cityInput {
+    flex: 1;
+    padding: 0 10px;
+    border: 1px solid var(--cityInput-border-color);
+    border-radius: 8px;
+    transition: border-color 0.2s;
+}
+
+#cityInput:focus {
+    outline: none;
+    border-color: var(--cityInput-border-color-focus);
+    color: var(--cityInput-text-color-focus);
+}
+
+.search-btn {
+    padding: 8px 20px;
+    background: var(--search-btn-background-color);
+    color: var(--search-btn-text-color);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.search-btn:hover {
+    background: var(--search-btn-background-color-hover);
+}
+
+/* MAIN ABOUT WEATHER-------------------- */
+.weather-main {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+        "left icon"
+        "left right";
+    gap: 20px;
+    align-items: start;
+}
+
+.left-panel {
+    grid-area: left;
+}
+
+.city {
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.country {
+    color: var(--country-text-color);
+    font-size: 16px;
+}
+
+.temp h1 {
+    font-size: 36px;
+    font-weight: 500;
+}
+
+.condition {
+    margin-bottom: 5px;
+    font-size: 16px;
+}
+
+.right-panel {
+    grid-area: right;
+    margin-bottom: 15px;
+}
+
+.current-weather-icon img {
+    width: 80px;
+    height: 80px;
+    float: right;
+    object-fit: contain;
+}
+
+.current-weather-icon {
+    grid-area: icon;
+}
+
+.right-panel,
+.current-weather-icon img {
+    margin-right: 50px;
+}
+
+.extra-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--extra-info-text-color);
+    align-items: left;
+}
+
+/* CAROUSEL------------------------------ */
+.forecast-carousel {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    overflow-x: auto;   /*дозволяє горизонтальну прокрутку, якщо вміст ширший за контейнер*/
+    scroll-snap-type: x mandatory;  /*snap (прилипання) працює по осі X*/
+    scroll-padding: 1rem;
+    position: relative;
+    block-size: auto;
+    padding-bottom: 12px;
+}
+
+.forecast-day {
+    scroll-snap-align: start;   /*цей елемент має "прилипнути" до початку області прокрутки (start — це край каруселі)*/
+    flex: 0 0 calc(100% / 4 - 1rem);    /*показує 4 елементи на екрані */
+    border: 1px solid var(--forecast-day-border-color);
+    background-color: var(--forecast-day-background-color);
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    min-width: 0;   /* без цього елементи можуть не стискатися як треба, і прокрутка буде працювати неправильно */
+}
+
+.forecast-day .icon img {
+    width: 35px;
+    height: 35px;
+    object-fit: contain;
+    margin: 5px;
+}
+
+.low-temp {
+    color: #666;
+    font-size: 14px;
+}
+
+/* POPUP----------------------------- */
+.popup {
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--popup-background-color);
+    border: 1px solid var(--popup-border-color);
+    padding: 20px;
+    z-index: 9999;
+    box-shadow: 0 0 15px var(--box-shadow-color);
+    border-radius: 10px;
+    max-width: 300px;
+}
+
+.popup-content-btn {
+    margin-top: 10px;
+    padding: 6px 12px;
+    background: var(--popup-content-btn-background-color);
+    color: var(--popup-content-btn-text-color);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.popup-content-btn:hover {
+    background-color: var(--popup-content-btn-background-color-hover);
+}
+
+/* REPORT----------------------------- */
+.report {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.report-backward {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 16px;
+    background-color: var(--search-btn-background-color);
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.report-backward:hover {
+    background-color: var(--search-btn-background-color-hover);
+}
+
+#reportTitle{
+    text-align: center;
+}
+
+#pivot-table-container{
+    margin-top:20px;
+}
+
+/* MEDIA----------------------------- */
+@media (max-width: 768px) {
+    body {
+        background: var(--box-background-color);
+    }
+
+    .box {
+        box-shadow: none;
+    }
+
+    .city {
+        font-size: 30px;
+        font-weight: 600;
+    }
+
+    .country {
+        font-size: 18px;
+    }
+
+    .temp h1 {
+        font-size: 38px;
+    }
+
+    .condition {
+        font-size: 18px;
+    }
+
+    .weather-main {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        grid-template-areas:
+            "left icon"
+            "left ."
+            "right .";
+        gap: 10px;
+    }
+
+    .left-panel {
+        align-items: flex-start;
+    }
+
+    .right-panel {
+        align-items: flex-start;
+    }
+
+    .current-weather-icon {
+        justify-self: end;
+    }
+
+    .current-weather-icon img {
+        width: 90px;
+        height: 90px;
+        object-fit: contain;
+    }
+
+    .extra-info {
+        margin-top: 10px;
+        font-size: 14px;
+    }
+
+    .forecast-day {
+        flex: 0 0 calc(100% / 3 - 1rem);
+    }
+}
+
+@media (max-width: 371px) {
+    body {
+        min-width: 350px;
+        overflow-x: auto;
+    }
+
+    .box {
+        min-width: 350px;
+    }
+
+    .search-row {
+        flex-direction: column;
+    }
+
+    #cityInput {
+        padding: 5px 10px;
+    }
+
+    .extra-info {
+        margin-top: 10px;
+        font-size: 14px;
+    }
+
+    .forecast-day p {
+        font-size: 16px;
+    }
+
+    .forecast-day .icon img {
+        width: 30px;
+        height: 30px;
+        object-fit: contain;
+    }
+}

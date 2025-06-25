@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Weather Report</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.webdatarocks.com/latest/webdatarocks.min.css" rel="stylesheet">
+    <script src="https://cdn.webdatarocks.com/latest/webdatarocks.toolbar.min.js"></script>
+    <script src="https://cdn.webdatarocks.com/latest/webdatarocks.js"></script>
+</head>
+
+<body>
+    <div class="box">
+        <h2 id="reportTitle">Звіт про погоду</h2>
+        <div id="pivot-table-container"></div>
+        <a href="index.html" class="report-backward">← Back to Weather App</a>
+    </div>
+
+    <script>
+        const forecastData = JSON.parse(localStorage.getItem('weatherForecast') || '[]');       //  Отримуємо збережені у localStorage погодні дані (weatherForecast) та перетворюємо з JSON у масив
+
+        const cityName = localStorage.getItem('forecastCity') || '';
+        document.getElementById('reportTitle').textContent = `Звіт про погоду ${cityName ? '(' + cityName + ')' : ''}`;
+
+        //  Створює новий масив об’єктів з полями, які потрібні для таблиці
+        const weatherData = forecastData.map(day => ({
+            date: day.datetime,
+            temp: day.temp,
+            humidity: day.humidity,
+            wind: day.windspeed,
+            condition: day.conditions
+        }));
+
+        const pivot = new WebDataRocks({
+            container: "#pivot-table-container",
+            toolbar: true,
+            report: {
+                dataSource: {
+                    data: weatherData
+                },
+                slice: {        //  Налаштування відображення таблиці
+                    rows: [{ uniqueName: "date" }],
+                    columns: [{ uniqueName: "Measures" }],
+                    measures: [
+                        { uniqueName: "temp", aggregation: "average" },
+                        { uniqueName: "humidity", aggregation: "average" },
+                        { uniqueName: "wind", aggregation: "average" }
+                    ]
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

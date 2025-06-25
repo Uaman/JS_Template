@@ -1,0 +1,67 @@
+#pivot-container {
+  background-color: #e39db9;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+
+#wdr-toolbar-wrapper #wdr-toolbar {
+  width: 70%;
+  height: 78px;
+  list-style: none;
+  background: #f6cadc;
+  white-space: nowrap;
+}
+
+#wdr-toolbar-wrapper #wdr-toolbar li a svg,
+#wdr-toolbar-wrapper #wdr-toolbar li a svg path {
+  transform: translateZ(0);
+  fill: #ac6581;
+}
+
+#wdr-toolbar-wrapper #wdr-toolbar,
+#wdr-toolbar-wrapper #wdr-toolbar a,
+#wdr-toolbar-wrapper #wdr-toolbar div,
+#wdr-toolbar-wrapper #wdr-toolbar input,
+#wdr-toolbar-wrapper #wdr-toolbar li,
+#wdr-toolbar-wrapper #wdr-toolbar p,
+#wdr-toolbar-wrapper #wdr-toolbar select,
+#wdr-toolbar-wrapper #wdr-toolbar span,
+#wdr-toolbar-wrapper #wdr-toolbar table,
+#wdr-toolbar-wrapper #wdr-toolbar table td,
+#wdr-toolbar-wrapper #wdr-toolbar table th,
+#wdr-toolbar-wrapper #wdr-toolbar table tr,
+#wdr-toolbar-wrapper #wdr-toolbar textarea,
+#wdr-toolbar-wrapper #wdr-toolbar ul {
+  font-size: 14px;
+  color: #111827;
+  text-align: left;
+  padding: 0;
+  margin: 0;
+  font-weight: 400;
+  text-shadow: none;
+  font-weight: 500;
+}
+
+#wdr-pivot-view .wdr-grid-layout .wdr-filters .wdr-header, #wdr-pivot-view .wdr-grid-layout.wdr-flat-view .wdr-header {
+    background-color: #ebc2d2;
+    color: #111;
+    font-weight: 700;
+    text-transform: uppercase;
+    position: relative;
+    border: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#wdr-pivot-view .wdr-grid-layout .wdr-filters {
+    position: absolute;
+    background-color: #ebc2d2;
+    color: #111;
+}
+
+#wdr-pivot-view .wdr-grid-layout div.wdr-header {
+    background-color: #ebc2d2;
+    color: #111;
+
+}

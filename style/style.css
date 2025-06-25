@@ -1,6 +1,7 @@
 body {
   margin: 0;
   padding: 0;
+  background-color: rgba(0, 0, 0, 1);
 }
 
 .container {
@@ -15,6 +16,21 @@ body {
 .title {
   text-align: center;
   margin-bottom: 20px;
+}
+
+.report-link {
+  display: inline-block;
+  margin-bottom: 20px;
+  font-size: 16px;
+  background-color: #f397bc;
+  padding: 8px 16px;
+  border-radius: 8px;
+  color: white;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+.report-link:hover {
+  background-color: #f777aa;
 }
 
 .input-section {
@@ -45,7 +61,7 @@ body {
   margin-bottom: 20px;
 }
 
-.sort {
+.sort, .filter {
   display: flex;
   align-items: center;
   gap: 5px;
@@ -56,6 +72,10 @@ body {
   padding-right: 7%;
   padding-top: 6px;
   padding-bottom: 6px;
+}
+
+.filter-option {
+ cursor: pointer;
 }
 
 .select {
@@ -144,6 +164,7 @@ body {
   cursor: pointer;
   color: #a00808;
   opacity: 0.7;
+  width:100%;
 }
 
 .edit-btn:hover,
@@ -330,20 +351,20 @@ body {
 
 .button-wrapper {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
 }
 
-.apply-button {
+.apply-button, .default-button {
   width: 40%;
   background-color: #f397bc;
   color: white;
-  padding: 10px;
+  padding: 6px;
   border: none;
   border-radius: 8px;
-  font-size: 16px;
+  font-size: 14px;
   cursor: pointer;
 }
 
-.apply-button:hover {
+.apply-button:hover, .default-button:hover {
   background-color: #f777aa;
 }

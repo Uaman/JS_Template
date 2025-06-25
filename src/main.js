@@ -214,9 +214,9 @@ document.addEventListener('DOMContentLoaded', () => {
         // Sort
         const sortSelect = document.querySelector('.sort-by select');
         var sortParam = sortSelect ? sortSelect.value : '';
-        if (sortBtn) {
-            sortParam = sortBtn.value
-        }
+        // if (sortBtn) {
+        //     sortParam = sortBtn.value
+        // }
         filtered = sortBooks(filtered, sortParam);
 
         renderBooks(filtered);
@@ -281,6 +281,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function addToFavorites(book) {
         if (!favoriteBooks.find(b => b.title === book.title)) {
             favoriteBooks.push(book);
+            localStorage.setItem("favoriteBooks", JSON.stringify(favoriteBooks));
         }
     }
 

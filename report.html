@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Звіт</title>
+  <link href="https://cdn.webdatarocks.com/latest/webdatarocks.min.css" rel="stylesheet"/>
+  <script src="https://cdn.webdatarocks.com/latest/webdatarocks.toolbar.min.js"></script>
+  <script src="https://cdn.webdatarocks.com/latest/webdatarocks.js"></script>
+</head>
+<body>
+  <h1>Звіт</h1>
+  <div id="pivotContainer"></div>
+
+  <script>
+    const currentTasks = JSON.parse(localStorage.getItem("tasks"));
+    const pivot = new WebDataRocks({
+      container: "#pivotContainer",
+      toolbar: true,
+      report: {
+        dataSource: {
+          data: currentTasks
+        },
+        slice: {
+          rows: [{ uniqueName: "name"}],
+          columns: [],
+          measures: [
+            { uniqueName: "completed", aggregation: "sum" }
+          ]
+        }
+      }
+    });
+  </script>
+</body>
+</html>

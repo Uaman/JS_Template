@@ -23,13 +23,28 @@ let elementToEdit = null;
 
 let tasks = [];
 
-// Завантажує задачі з JSON-файлу
-fetch('./task.json')
-    .then((response) => response.json())
+const tasksFromLocalStorage = localStorage.getItem('tasks');
+
+if (tasksFromLocalStorage) {
+  tasks = JSON.parse(tasksFromLocalStorage);
+  renderTasks(tasks);
+} else {
+  fetch('./task.json')
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error('Помилка завантаження task.json: ' + response.status);
+      }
+      return response.json();
+    })
     .then((json) => {
-        tasks = json.map((task, index) => ({...task, taskIndex: index}));
+        tasks = json.map((task, index) => ({ ...task, taskIndex: Date.now() + index }));
+        localStorage.setItem("tasks", JSON.stringify(tasks));
         renderTasks(tasks);
+    })
+    .catch((error) => {
+      console.error('Сталася помилка при завантаженні завдань:', error);
     });
+}
 
 document.querySelector('.add-form-button').addEventListener('click', showTaskForm); // Відриває форму
 
@@ -58,7 +73,7 @@ function renderTasks(taskArray) {
     });
 }
 
-// При наатисканні кнопки приховує форму для додавання/редагування задачі
+// При натисканні кнопки приховує форму для додавання/редагування задачі
 [cancelTaskButton, cancelImageButton].forEach(button => {
     button.addEventListener('click', (e) => {
         hideTaskForm();
@@ -79,8 +94,8 @@ filterButton.addEventListener('click', () => {
 
 // Застосовує фільтр задач
 applyFilterButton.addEventListener('click', () => {
-    currentFilter = dateFilterSelect.value;
-    selectedFilterDate = filterDateInput.value;
+    currentFilter = dateFilterSelect.value; //all, current, last, next
+    selectedFilterDate = filterDateInput.value; // 'YYYY-MM-DD'
     updateTasksView();
     filterContainer.style.display = 'none';
     document.querySelector('.to-do-container').classList.remove('disabled');
@@ -237,7 +252,7 @@ taskForm.addEventListener('submit', function (e) {
             priority,
             completed: false,
             date,
-            taskIndex: tasks.length
+            taskIndex: Date.now()
         };
 
         tasks.push(newTask);
@@ -258,6 +273,7 @@ taskForm.addEventListener('submit', function (e) {
             taskList.appendChild(taskElement);
         }
     }
+    localStorage.setItem("tasks", JSON.stringify(tasks));
     updateTasksView();
     hideTaskForm();
 });
@@ -280,7 +296,7 @@ function generateTask(task) {
     const checkbox = document.createElement('input');
     checkbox.type = 'checkbox';
     checkbox.checked = task.completed;
-    
+
     if (task.completed) {
         setTimeout(() => {
             changeTaskPosition(taskItem, true);
@@ -290,6 +306,7 @@ function generateTask(task) {
     checkbox.addEventListener('change', () => {
         task.completed = checkbox.checked;
         changeTaskPosition(taskItem, checkbox.checked);
+        localStorage.setItem("tasks", JSON.stringify(tasks)); 
     });
 
     const checkmark = document.createElement('span');
@@ -351,6 +368,7 @@ function generateTask(task) {
             const index = parseInt(taskItem.dataset.index);
             tasks = tasks.filter(task => task.taskIndex !== index);
             taskItem.remove();
+            localStorage.setItem("tasks", JSON.stringify(tasks));
         });
 
         const deleteImage = document.createElement('img');
@@ -380,44 +398,78 @@ function changeTaskPosition(taskItem, isCompleted) {
     taskList.removeChild(taskItem);
 
     const taskIndex = parseInt(taskItem.dataset.index);
+    const taskData = tasks.find(task => task.taskIndex === taskIndex);
 
     if (isCompleted) {
-        // Якщо задача виконана, додаємо її в кінець списку
         taskList.appendChild(taskItem);
-    } else {
-        // Якщо задача знову не виконана, спробуємо знайти, куди її вставити серед інших невиконаних задач
-        let added = false;
-        for (let i = 0; i < taskItems.length; i++) {
-            const element = taskItems[i];
-            const elementIndex = parseInt(element.dataset.index);
-            const checkbox = element.querySelector('input[type="checkbox"]');
+        return;
+    }
 
-            // Якщо ця задача ще не виконана і була пізніше за поточну, вставляємо нашу задачу перед цією
-            if (!checkbox.checked && elementIndex > taskIndex) {
-                taskList.insertBefore(taskItem, element);
+    let added = false;
+
+    // Якщо сортування за датою
+    if (currentSort === 'date') {
+        const date = new Date(taskData.date);
+        for (let i = 0; i < taskItems.length; i++) {
+            const checkbox = taskItems[i].querySelector('input[type="checkbox"]');
+            const index = parseInt(taskItems[i].dataset.index);
+            const elementTask = tasks.find(task => task.taskIndex === index);
+            const elementDate = new Date(elementTask.date);
+
+            if (!checkbox.checked && (date > elementDate || (date.toDateString === elementDate.toDateString && taskData.taskIndex < elementTask.taskIndex))) {
+                taskList.insertBefore(taskItem, taskItems[i]);
                 added = true;
                 break;
             }
         }
+    }
 
-        // Якщо не знайшли підходящу невиконану задачу
-        if (!added) {
-            let placed = false;
-            for (let i = 0; i < taskItems.length; i++) {
-                const element = taskItems[i];
-                const checkbox = element.querySelector('input[type="checkbox"]');
+    // Якщо сортування за пріоритетом
+    else if (currentSort === 'priority') {
+        const order = { high: 1, medium: 2, low: 3 };
+        const priority = order[taskData.priority];
 
-                // Якщо ця задача виконана, вставляємо нашу задачу перед нею
-                if (checkbox.checked) {
-                    taskList.insertBefore(taskItem, element);
-                    placed = true;
-                    break;
-                }
+        for (let i = 0; i < taskItems.length; i++) {
+            const checkbox = taskItems[i].querySelector('input[type="checkbox"]');
+            const index = parseInt(taskItems[i].dataset.index);
+            const elementTask = tasks.find(t => t.taskIndex === index);
+            const elementPriority = order[elementTask.priority];
+
+            if (!checkbox.checked && (priority < elementPriority || (priority === elementPriority && taskData.taskIndex < elementTask.taskIndex))) {
+                taskList.insertBefore(taskItem, taskItems[i]);
+                added = true;
+                break;
             }
-            // Якщо взагалі не знайшли жодної виконаної
-            if (!placed) {
-                taskList.appendChild(taskItem);
+        }
+    }
+
+    // Якщо сортування none — вставляємо за taskIndex
+    else {
+        for (let i = 0; i < taskItems.length; i++) {
+            const elementIndex = parseInt(taskItems[i].dataset.index);
+            const checkbox = taskItems[i].querySelector('input[type="checkbox"]');
+
+            if (!checkbox.checked && elementIndex > taskIndex) {
+                taskList.insertBefore(taskItem, taskItems[i]);
+                added = true;
+                break;
             }
+        }
+    }
+
+    // Якщо не вставилось у жодному випадку, шукаємо першу виконану або додаємо в кінець
+    if (!added) {
+        let placed = false;
+        for (let i = 0; i < taskItems.length; i++) {
+            const checkbox = taskItems[i].querySelector('input[type="checkbox"]');
+            if (checkbox.checked) {
+                taskList.insertBefore(taskItem, taskItems[i]);
+                placed = true;
+                break;
+            }
+        }
+        if (!placed) {
+            taskList.appendChild(taskItem);
         }
     }
 }

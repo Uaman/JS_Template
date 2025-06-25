@@ -122,6 +122,7 @@ background-color: #2563eb;
   justify-content: center;
   align-items: center;
   font-family: sans-serif;
+  overflow-y: auto;
 }
 
 .modal-content {
@@ -251,5 +252,20 @@ background-color: #2563eb;
   border-radius: 4px;
   font-size: 16px;
   cursor: pointer;
+}
+.report-btn{
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #007bff;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+.report-btn:hover {
+  background-color: #0056b3;
 }
 

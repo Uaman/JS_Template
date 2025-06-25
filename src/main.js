@@ -71,9 +71,23 @@ function renderPolls(filterText = "", filterCategory = "") {
   });
 }
 
+const voteModal = document.getElementById("modal");
+const voteModalContent = voteModal.querySelector(".modal-content");
+
+voteModal.addEventListener("click", (e) => {
+  if (!voteModalContent.contains(e.target)) {
+    voteModal.style.display = "none";
+  }
+});
+
 function openVoteModal(pollId) {
-  const voteModal = document.getElementById("modal");
   voteModal.style.display = "flex";
+
+  voteModal.addEventListener("click", (e) => {
+    if (!voteModalContent.contains(e.target)) {
+     voteModal.style.display = "none";
+    }
+  });
 
   const poll = polls.find(p => p.id === pollId);
 
@@ -159,10 +173,38 @@ document.getElementById("create-poll-btn").addEventListener("click", () => {
     category,
     options
   });
-
   document.getElementById("create-modal").style.display = "none";
   renderPolls();
 });
+document.getElementById("create-poll-btn").addEventListener("click", () => {
+  const modal = document.getElementById("create-modal");
+
+  document.getElementById("poll-question").value = "";
+
+  document.getElementById("poll-category").selectedIndex = 0;
+
+  const optionsContainer = document.getElementById("options-container");
+  optionsContainer.innerHTML = "";
+
+  for (let i = 1; i <= 4; i++) {
+    const input = document.createElement("input");
+    input.type = "text";
+    input.placeholder = "Option " + i;
+    optionsContainer.appendChild(input);
+  }
+
+  modal.style.display = "flex";
+});
+
 window.addEventListener("DOMContentLoaded", () => {
   renderPolls();
 });
+const createModal = document.getElementById("create-modal");
+const createModalContent = createModal.querySelector(".modal-content");
+
+createModal.addEventListener("click", (e) => {
+  if (!createModalContent.contains(e.target)) {
+    createModal.style.display = "none";
+  }
+});
+

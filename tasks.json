@@ -1,0 +1,26 @@
+[
+  {
+    "title": "Купити цукерки",
+    "priority": "medium",
+    "date": "2025-06-26",
+    "completed": false
+  },
+  {
+    "title": "Зробити веб",
+    "priority": "high",
+    "date": "2025-06-18",
+    "completed": true
+  },
+  {
+    "title": "Спекти хліб",
+    "priority": "low",
+    "date": "2025-06-21",
+    "completed": false
+  },
+  {
+    "title": "Купити наповнювач Мілашці",
+    "priority": "high",
+    "date": "2025-06-18",
+    "completed": false
+  }
+]

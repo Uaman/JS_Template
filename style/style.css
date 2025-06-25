@@ -60,6 +60,26 @@ body {
     font-weight: 500;
 }
 
+/* Style for the new "Звіт по піцам" button in the header */
+.report-button {
+    background-color: #ff8c00;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background-color 0.2s;
+    margin-left: auto; /* Pushes the button to the right */
+    margin-right: 10px; /* Adds some space before the login button */
+}
+
+.report-button:hover {
+    background-color: #ff6f00;
+}
+
+
 /*nav bar (усі м'ясні з грибами т д)*/
 .main-nav {
     padding: 0 15px;
@@ -399,12 +419,64 @@ body {
     }
 }
 
+/* Styles specific to the report page */
+.report-page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.report-page-header h3 {
+    margin: 0;
+    font-size: 20px;
+    color: #ff8c00;
+}
+
+.back-to-home {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+    text-decoration: none;
+    color: #333;
+    transition: background-color 0.2s;
+}
+
+.back-to-home:hover {
+    background-color: #e0e0e0;
+}
+
+.report-content {
+    display: block; /* Override main-content flex for report */
+    padding: 20px 0;
+}
+
+#wdr-component {
+    width: 100%;
+    height: 600px; /* Adjust height as needed */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+
+/* Media queries */
 @media (min-width: 690px) {
     .site-header{ padding: 10px 0; }
     .header-info .work-hours, .header-info .delivery-info { display: inline; margin-left: 15px; font-size: 14px; color: #777; }
     .main-content { flex-direction: row; align-items: flex-start; }
     .pizza-menu { grid-template-columns: repeat(1, 1fr); flex-grow: 1; }
     .shopping-cart { width: 320px; flex-shrink: 0; }
+    /* Report page header padding for larger screens */
+    .report-page-header {
+        padding: 10px 0;
+    }
 }
 
 @media (min-width: 900px) {
@@ -414,4 +486,5 @@ body {
 @media (min-width: 1110px) {
     .pizza-menu { grid-template-columns: repeat(3, 1fr); }
     .header-info { display: flex; align-items: center; gap: 20px; }
+    .report-button { margin-left: 20px; margin-right: 0; } /* Adjust for larger screens */
 }

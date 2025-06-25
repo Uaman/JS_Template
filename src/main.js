@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
             //HTTP-запит до json
             const response = await fetch('pizzas.json');
             if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
+                throw new Error(`помилка HTTP: ${response.status}`);
             }
             //парсимо відповідь у форматі JSON та зберігаємо її в allPizzas
             allPizzas = await response.json();

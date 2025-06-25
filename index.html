@@ -2,12 +2,63 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple HTML Page</title>
+    <title>Polls</title>
     <link rel="stylesheet" href="./style/style.css">
-    <script src="./src/main.js" defer></script>
 </head>
 <body>
+<div class="upper-panel">
+<div class="search-bar">
+    <input type="text" placeholder="Search polls...">
+    <select>
+        <option value="">Category</option>
+        <option value="tech">Tech</option>
+        <option value="social">Social</option>
+        <option value="food">Food</option>
+        <option value="media">Media</option>
+        <option value="custom">Custom</option>
 
+    </select>
+</div>
+
+<button class="create-btn">Create Poll</button>
+</div>
+
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Poll Question</h2>
+        <p id="poll-question-text"></p>
+        <form id="vote-form"></form>
+    </div>
+</div>
+<div id="create-modal" class="modal">
+    <div class="modal-content">
+        <span class="close-create">&times;</span>
+        <h2>Create Poll</h2>
+        <label>Question</label>
+        <input type="text" id="poll-question" placeholder="Enter your question">
+        <label>Category</label>
+        <select id="poll-category">
+            <option value="">Category</option>
+            <option value="tech">Tech</option>
+            <option value="social">Social</option>
+            <option value="food">Food</option>
+            <option value="media">Media</option>
+            <option value="custom">Custom</option>
+        </select>
+        <label>Options</label>
+        <div id="options-container">
+            <input type="text" placeholder="Option 1">
+            <input type="text" placeholder="Option 2">
+            <input type="text" placeholder="Option 3">
+            <input type="text" placeholder="Option 4">
+        </div>
+        <a href="#" id="add-option" style="color:#2563eb; display:block; margin-top:10px;">Add option</a>
+        <button id="create-poll-btn">Create</button>
+    </div>
+
+</div>
+<a href="report.html" class="report-btn">Summary(WebDataRocks)</a>
+<script src="./src/main.js"></script>
 </body>
 </html>
